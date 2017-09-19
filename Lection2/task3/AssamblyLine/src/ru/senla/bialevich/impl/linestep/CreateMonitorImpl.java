@@ -5,12 +5,11 @@ import ru.senla.bialevich.api.IProductPart;
 import ru.senla.bialevich.impl.productpart.MonitorImpl;
 
 public class CreateMonitorImpl implements ILineStep {
-    private MonitorImpl monitor = new MonitorImpl("Apple");
 
     @Override
     public IProductPart buildProductPart() {
-        System.out.println("Monitor " + monitor.getName() + " created");
+        System.out.println("Monitor created");
 
-        return monitor;
+        return new MonitorImpl("Apple");
     }
 }

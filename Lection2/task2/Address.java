@@ -1,8 +1,11 @@
+import java.util.List;
+
 public class Address {
     private String street;
     private Integer houseNumber;
     private Integer appartmentNumber;
     private Integer phone;
+    private List<Patient> patient;
 
     public Address() {
         System.out.println(Address.class.getName());
@@ -38,5 +41,13 @@ public class Address {
 
     public void setPhone(Integer phone) {
         this.phone = phone;
+    }
+
+    public List<Patient> getPatient() {
+        return patient;
+    }
+
+    public void setPatient(List<Patient> patient) {
+        this.patient = patient;
     }
 }

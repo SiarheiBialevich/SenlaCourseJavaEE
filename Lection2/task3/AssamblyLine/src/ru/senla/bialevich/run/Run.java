@@ -15,6 +15,7 @@ public class Run {
         LaptopImpl laptop = new LaptopImpl();
 
         AssemblyLineImpl assemblyLine = new AssemblyLineImpl(bodyLaptop, motherboard, monitor);
-        assemblyLine.assemblyProduct(laptop);
+
+        System.out.println(assemblyLine.assemblyProduct(laptop));
     }
 }
