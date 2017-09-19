@@ -5,12 +5,11 @@ import ru.senla.bialevich.api.IProductPart;
 import ru.senla.bialevich.impl.productpart.MotherboardImpl;
 
 public class CreateMotherboardImpl implements ILineStep {
-    private MotherboardImpl motherboard = new MotherboardImpl("Samsung");
 
     @Override
     public IProductPart buildProductPart() {
-        System.out.println("Motherboar " + motherboard.getName() + " created");
+        System.out.println("Motherboard created");
 
-        return motherboard;
+        return new MotherboardImpl("Samsung");
     }
 }

@@ -3,7 +3,11 @@ public class Patient extends AbstractPeople {
     private MedicalHistory medicalHistory;
     private Address address;
 
-    public Patient() {
+    Patient(Address address, Employment employment, MedicalHistory medicalHistory) {
+        this.employment = employment;
+        this.medicalHistory = medicalHistory;
+        this.address = address;
+
         System.out.println(Patient.class.getName());
     }
 
