@@ -38,6 +38,8 @@ public class ClinicRunner {
 
         System.out.println();
         System.out.println(doctor.toString() + "\n" + Arrays.toString(clean.cleanArray(clinic.getAllPatientsByDoctor(doctor))));
+        System.out.println();
+        System.out.println("Total patient by doctor: " + doctor.toString() +  "\n" + clean.cleanArray(clinic.getAllPatientsByDoctor(doctor)).length);
 
         System.out.println();
         System.out.println(Arrays.toString(clean.cleanArray(clinic.getPatients())));
