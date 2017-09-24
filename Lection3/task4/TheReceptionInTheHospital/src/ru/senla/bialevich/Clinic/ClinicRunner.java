@@ -28,6 +28,7 @@ public class ClinicRunner {
 
         doctor.setPatientsList(patient);
         doctor.setPatientsList(patient1);
+
         doctor1.setPatientsList(patient2);
 
         System.out.println(doctor.toString() + "\n" + Arrays.toString(clean.cleanArray(clinic.getAllPatientsByDoctor(doctor))));

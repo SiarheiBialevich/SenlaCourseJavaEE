@@ -6,7 +6,7 @@ public class Clinic {
     private Patient[] patients = new Patient[50];
     private Doctor[] doctors = new Doctor[50];
 
-    Patient[] getPatients() {
+    public Patient[] getPatients() {
         return patients;
     }
 
@@ -14,7 +14,7 @@ public class Clinic {
         this.patients = patients;
     }
 
-    Doctor[] getDoctors() {
+    public Doctor[] getDoctors() {
         return doctors;
     }
 
@@ -22,25 +22,25 @@ public class Clinic {
         this.doctors = doctors;
     }
 
-    Integer getCountDoctor() {
+    public Integer getCountDoctor() {
         return countDoctor;
     }
 
-    Integer getCountPatient() {
+    public Integer getCountPatient() {
         return countPatient;
     }
 
-    void addDoctor(Doctor doctor) {
+    public void addDoctor(Doctor doctor) {
         doctors[countDoctor] = doctor;
         countDoctor++;
     }
 
-    void addPatient(Patient patient) {
+    public void addPatient(Patient patient) {
         patients[countPatient] = patient;
         countPatient++;
     }
 
-    Patient[] getAllPatientsByDoctor(Doctor doctor) {
+    public Patient[] getAllPatientsByDoctor(Doctor doctor) {
 
         return doctor.getPatientsList();
     }
