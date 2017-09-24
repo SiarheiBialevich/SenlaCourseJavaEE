@@ -5,20 +5,20 @@ public class Doctor extends AbstractMan {
     private Patient[] patientsList = new Patient[25];
     private Integer count = 0;
 
-    Doctor(String name, String surname, String specialization) {
+    public Doctor(String name, String surname, String specialization) {
         super(name, surname);
         this.specialization = specialization;
     }
 
-    String getSpecialization() {
+    public String getSpecialization() {
         return specialization;
     }
 
-    void setSpecialization(String specialization) {
+    public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
 
-    void delPatient(Patient patient) {
+    public void delPatient(Patient patient) {
         for (int i = 0; i < patientsList.length; i++) {
             if (patientsList[i] == patient) {
                 patientsList[i] = null;
@@ -26,11 +26,11 @@ public class Doctor extends AbstractMan {
         }
     }
 
-    Patient[] getPatientsList() {
+    public Patient[] getPatientsList() {
         return patientsList;
     }
 
-    void setPatientsList(Patient patient) {
+    public void setPatientsList(Patient patient) {
         patientsList[count] = patient;
         count++;
     }

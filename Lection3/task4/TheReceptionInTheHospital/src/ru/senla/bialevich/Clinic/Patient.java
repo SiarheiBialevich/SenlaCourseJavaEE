@@ -3,16 +3,16 @@ package ru.senla.bialevich.Clinic;
 public class Patient extends AbstractMan {
     private String disease;
 
-    Patient(String name, String surname, String disease) {
+    public Patient(String name, String surname, String disease) {
         super(name, surname);
         this.disease = disease;
     }
 
-    String getDisease() {
+    public String getDisease() {
         return disease;
     }
 
-    void setDisease(String disease) {
+    public void setDisease(String disease) {
         this.disease = disease;
     }
 

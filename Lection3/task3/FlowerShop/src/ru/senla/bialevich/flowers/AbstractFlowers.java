@@ -1,8 +1,8 @@
 package ru.senla.bialevich.flowers;
 
 public abstract class AbstractFlowers {
-    String name;
-    Integer price;
+    protected String name;
+    protected Integer price;
 
     public AbstractFlowers(String name, Integer price) {
         this.name = name;

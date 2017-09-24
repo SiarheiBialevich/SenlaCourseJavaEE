@@ -1,8 +1,8 @@
 package ru.senla.bialevich.Clinic;
 
 public abstract class AbstractMan {
-    String name;
-    String surname;
+    protected String name;
+    protected String surname;
 
     AbstractMan(String name, String surname) {
         this.name = name;
