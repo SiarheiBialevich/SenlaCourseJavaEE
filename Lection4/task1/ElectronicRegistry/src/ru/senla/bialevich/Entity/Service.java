@@ -1,4 +1,4 @@
-package ru.senla.bialevich.Entity;
+package ru.senla.bialevich.entity;
 
 import java.io.Serializable;
 
