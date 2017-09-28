@@ -1,6 +1,6 @@
 package ru.senla.bialevich.util.comparator.guestComparator;
 
-import ru.senla.bialevich.Entity.Guest;
+import ru.senla.bialevich.entity.Guest;
 
 import java.util.Comparator;
 

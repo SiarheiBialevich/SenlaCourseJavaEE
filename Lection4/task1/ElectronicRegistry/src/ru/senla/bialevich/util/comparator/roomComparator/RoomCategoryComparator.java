@@ -1,6 +1,6 @@
 package ru.senla.bialevich.util.comparator.roomComparator;
 
-import ru.senla.bialevich.Entity.Room;
+import ru.senla.bialevich.entity.Room;
 
 import java.util.Comparator;
 

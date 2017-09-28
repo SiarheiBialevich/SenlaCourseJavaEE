@@ -1,7 +1,6 @@
-package ru.senla.bialevich.Entity;
+package ru.senla.bialevich.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Guest implements Serializable {
     private static final long serialVersionUID = -8798790623190134533L;

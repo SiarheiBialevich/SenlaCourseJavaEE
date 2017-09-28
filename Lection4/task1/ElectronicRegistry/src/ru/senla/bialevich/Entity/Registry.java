@@ -1,4 +1,4 @@
-package ru.senla.bialevich.Entity;
+package ru.senla.bialevich.entity;
 
 import ru.senla.bialevich.util.Printer;
 import ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator;
@@ -17,6 +17,18 @@ public class Registry {
     private List<Room> freeRooms = new ArrayList<Room>();
     private List<Guest> guests = new ArrayList<Guest>();
     private List<Order> orders = new ArrayList<Order>();
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public List<Guest> getGuests() {
+        return guests;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 
     public void addRoom(Room room) {
         rooms.add(room);

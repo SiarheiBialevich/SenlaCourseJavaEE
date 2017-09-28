@@ -1,3 +1,3 @@
 @echo
-start ElectronicRegistry-1.0.jar
+start javaw -jar ElectronicRegistry.jar
 exit
