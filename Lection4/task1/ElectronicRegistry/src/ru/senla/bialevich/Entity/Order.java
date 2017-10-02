@@ -5,13 +5,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Order implements Serializable {
+public class Order extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 8456647581162743717L;
 
+    private Integer id;
     private Integer orderNumber;
     private Date dateOfArrival;
     private Date dateOfDeparture;
     private List<Guest> guestList = new ArrayList<Guest>();
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Order(Integer orderNumber, Date dateOfArrival, Date dateOfDeparture) {
         this.orderNumber = orderNumber;
@@ -50,9 +61,9 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
-        sb.append("orderNumber=").append(orderNumber);
-        sb.append(", dateOfArrival=").append(dateOfArrival);
-        sb.append(", dateOfDeparture=").append(dateOfDeparture);
+        sb.append(" orderNumber = ").append(orderNumber);
+        sb.append(", dateOfArrival = ").append(dateOfArrival);
+        sb.append(", dateOfDeparture = ").append(dateOfDeparture);
         sb.append('}');
         return sb.toString();
     }

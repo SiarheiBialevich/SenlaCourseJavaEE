@@ -15,8 +15,9 @@ public class Printer {
     }
 
     public void printInfo(String message, Object object, Object object1) {
-        printMessage(message);
+        System.out.print(message);
         printObject(object);
         System.out.println(object1);
     }
+
 }
