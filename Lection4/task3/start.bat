@@ -1,4 +1,3 @@
 @echo
-java -cp textFileWorker.jar 
-java -jar Autoservice.jar .\guests.txt
-Pause
+java -cp "lib/*" ru.senla.bialevich.runner.Run %* lib/guest.txt
+pause
