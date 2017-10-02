@@ -4,16 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room implements Serializable {
+public class Room extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -4085288967304236682L;
 
+    private Integer id;
     private Integer roomNumber;
     private Integer countStars;
     private Integer countOfBeds;
     private boolean isFree = true;
     private Float price;
-    private List<Guest> guestList = new ArrayList<Guest>();
-    private List<Service> serviceList = new ArrayList<Service>();
+    private List<Guest> guestList = new ArrayList<>();
+    private List<UsedService> usedServiceList = new ArrayList<>();
 
     public Room(Integer roomNumber, Integer countStars, Integer countOfBeds, boolean isFree, Float price) {
         this.roomNumber = roomNumber;
@@ -21,6 +22,16 @@ public class Room implements Serializable {
         this.countOfBeds = countOfBeds;
         this.isFree = isFree;
         this.price = price;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getRoomNumber() {
@@ -66,9 +77,9 @@ public class Room implements Serializable {
     public Float getPrice() {
         Float coast = 0.0f;
 
-        for (Service service : serviceList) {
-            if (service.getPrice() != null)
-                coast += service.getPrice();
+        for (UsedService usedService : usedServiceList) {
+            if (usedService.getPrice() != null)
+                coast += usedService.getPrice();
         }
 
         return coast + price;
@@ -78,23 +89,31 @@ public class Room implements Serializable {
         this.price = price;
     }
 
+    public List<UsedService> getUsedServiceList() {
+        return usedServiceList;
+    }
+
+    public void setUsedServiceList(List<UsedService> usedServiceList) {
+        this.usedServiceList = usedServiceList;
+    }
+
     public void addGuest(Guest guest) {
         guestList.add(guest);
     }
 
-    public void addService(Service service) {
-        serviceList.add(service);
+    public void addService(UsedService usedService) {
+        usedServiceList.add(usedService);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Room{");
-        sb.append("roomNumber=").append(roomNumber);
-        sb.append(", countStars=").append(countStars);
-        sb.append(", countOfBeds=").append(countOfBeds);
-        sb.append(", isFree=").append(isFree);
-        sb.append(", price=").append(price);
-        sb.append(", serviceList=").append(serviceList);
+        sb.append("roomNumber = ").append(roomNumber);
+        sb.append(", countStars = ").append(countStars);
+        sb.append(", countOfBeds = ").append(countOfBeds);
+        sb.append(", isFree = ").append(isFree);
+        sb.append(", usedService = ").append(usedServiceList);
+        sb.append(", price = ").append(price);
         sb.append('}');
         return sb.toString();
     }

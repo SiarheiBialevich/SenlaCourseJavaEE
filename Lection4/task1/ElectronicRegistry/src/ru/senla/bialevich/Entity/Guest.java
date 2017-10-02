@@ -2,9 +2,10 @@ package ru.senla.bialevich.entity;
 
 import java.io.Serializable;
 
-public class Guest implements Serializable {
+public class Guest extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -8798790623190134533L;
 
+    private Integer id = 0;
     private String name;
     private String surname;
     private Room room;
@@ -13,6 +14,16 @@ public class Guest implements Serializable {
     public Guest(String name, String surname) {
         this.name = name;
         this.surname = surname;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,10 +61,10 @@ public class Guest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Guest{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", surname='").append(surname).append('\'');
-        sb.append(", room=").append(room);
-        sb.append(", order=").append(order);
+        sb.append(" name = '").append(name).append('\'');
+        sb.append(", surname = '").append(surname).append('\'');
+        sb.append(", room = '").append(room).append('\'');
+        sb.append(", order = ").append(order);
         sb.append('}');
         return sb.toString();
     }

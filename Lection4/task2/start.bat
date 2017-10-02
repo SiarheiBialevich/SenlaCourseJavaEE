@@ -1,3 +1,4 @@
 @echo
-start javaw -jar ElectronicRegistry.jar
-exit
+java -classpath textFileWorker.jar
+java -jar Autoservice.jar .\guests.txt
+pause
