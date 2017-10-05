@@ -7,7 +7,7 @@ import java.util.List;
 public interface UsedServiceService {
     void add(UsedService service);
 
-    void sortUsedServiceByPrice();
+    void sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
 }

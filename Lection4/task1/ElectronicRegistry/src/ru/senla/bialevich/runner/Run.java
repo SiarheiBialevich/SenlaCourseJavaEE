@@ -1,36 +1,23 @@
 package ru.senla.bialevich.runner;
 
-import com.danco.training.TextFileWorker;
-import ru.senla.bialevich.api.service.GuestService;
-import ru.senla.bialevich.api.service.OrderService;
-import ru.senla.bialevich.api.service.RoomService;
-import ru.senla.bialevich.api.service.UsedServiceService;
+import ru.senla.bialevich.api.controller.ControllerHotel;
+import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
-import ru.senla.bialevich.service.GuestServiceImpl;
-import ru.senla.bialevich.service.OrderServiceImpl;
-import ru.senla.bialevich.service.RoomServiceImpl;
-import ru.senla.bialevich.service.UsedServiceServiceImpl;
 import ru.senla.bialevich.util.DateUtil;
 import ru.senla.bialevich.util.Printer;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import ru.senla.bialevich.util.writeAndRaed.WriteAndRead;
 
 public class Run {
 
     public static void main(String[] args) throws Exception {
-        GuestService guestService = new GuestServiceImpl();
-        RoomService roomService = new RoomServiceImpl();
-        UsedServiceService usedService = new UsedServiceServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
-
+        ControllerHotel hotel = new ControllerHotelImpl();
         DateUtil dateUtil = new DateUtil();
-
         Printer printer = new Printer();
+
+        WriteAndRead writeAndRead = new WriteAndRead("d:/test.txt");
 
         Guest guest1 = new Guest("Peter", "Ivanov");
         Guest guest2 = new Guest("Alex", "Born");
@@ -46,11 +33,7 @@ public class Run {
         UsedService usedService1 = new UsedService("Cable TV", 1.5f);
         UsedService usedService2 = new UsedService("WI-FI", 2.5f);
 
-        usedService.add(usedService1);
-        usedService.add(usedService2);
-
         room1.addService(usedService1);
-
         room2.addService(usedService1);
         room2.addService(usedService2);
 
@@ -62,86 +45,58 @@ public class Run {
         guest2.setRoom(room2);
         guest3.setRoom(room2);
 
-        guestService.add(guest1);
-        guestService.add(guest2);
-        guestService.add(guest3);
+        hotel.addUsedService(usedService1);
+        hotel.addUsedService(usedService2);
 
-        roomService.add(room1);
-        roomService.add(room2);
-        roomService.add(room3);
+        hotel.addGuest(guest1);
+        hotel.addGuest(guest2);
+        hotel.addGuest(guest3);
 
-        orderService.add(order1);
-        orderService.add(order2);
+        hotel.addRoom(room1);
+        hotel.addRoom(room2);
+        hotel.addRoom(room3);
 
+        hotel.addOrder(order1);
+        hotel.addOrder(order2);
 
-        guestService.getAll();
+        hotel.getAllGuest();
 
-        printer.printMessage("");
+        printer.print("");
 
-        System.out.println(roomService.getFreeRooms());
+        hotel.getFreeRooms();
 
-        printer.printMessage("");
+        printer.print("");
 
-        roomService.sortedRoomByPrice();
+        hotel.sortedRoomsByPrice();
 
-        printer.printMessage("");
+        printer.print("");
 
-        roomService.getAll();
+        hotel.getAllRooms();
 
-        printer.printMessage("");
+        printer.print("");
 
-        roomService.sortedFreeRoomsByPrice();
+        hotel.sortedFreeRoomsByPrice();
 
-        System.out.println();
-        System.out.println();
+        printer.print("");
 
-        roomService.getTotalPrice(room1);
+        hotel.getRoomTotalPrice(room1);
 
-        printer.printMessage("");
+        printer.print("");
 
-        guestService.getTotalNumberOfGuests();
+        hotel.getTotalNumberOfGuests();
 
-        printer.printMessage("");
+        printer.print("");
 
-        guestService.getServiceByGuest(guest1);
+        hotel.getServiceByGuest(guest1);
 
-        printer.printMessage("");
+        printer.print("");
 
-        usedService.sortUsedServiceByPrice();
+        hotel.sortUsedServicesByPrice();
 
-        printer.printMessage("");
+        printer.print("");
 
-        String[] arrayGuests = new String[guestService.getListGuests().size()];
-        for (int i = 0; i < guestService.getListGuests().size(); i++) {
-            arrayGuests[i] = String.valueOf(guestService.getListGuests().get(i));
-        }
+        writeAndRead.writeToFile(hotel.getListGuests());
 
-        final String TEST_FILE = args[0];
-        final String[] testValues = arrayGuests;
-
-        // Create new file
-        Path filePath = Paths.get(TEST_FILE);
-        Files.createFile(filePath);
-
-        // Work example
-        try{
-            TextFileWorker fileWorker = new TextFileWorker(TEST_FILE);
-            fileWorker.writeToFile(testValues);
-            Object[] readedValues = fileWorker.readFromFile();
-
-            // Check result
-            for (int i = 0; i < testValues.length; i++ ){
-
-                if ( ! readedValues[i].equals(testValues[i])){
-                    throw new RuntimeException("Error. Not equal values: " + readedValues[i] + " and " + testValues[i]);
-                }
-            }
-
-            for (Object object : readedValues) {
-                printer.printObject(object);
-            }
-        }finally{
-//            Files.deleteIfExists(filePath);
-        }
+        writeAndRead.readFromFile();
     }
 }
