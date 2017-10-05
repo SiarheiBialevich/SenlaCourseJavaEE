@@ -28,7 +28,7 @@ public abstract class AbstractDaoImpl<T extends BaseEntity> implements AbstractD
 
 //        for (int i = 0; i < list.size(); i++) {
 //            if (list.get(i).equals(id)) {
-//                printer.printMessage(list.get(i).toString());
+//                printer.print(list.get(i).toString());
 //            }
 //        }
 //

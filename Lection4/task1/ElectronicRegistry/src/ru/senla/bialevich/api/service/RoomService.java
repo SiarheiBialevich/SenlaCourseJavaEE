@@ -10,17 +10,17 @@ public interface RoomService {
 
     List<Room> getFreeRooms();
 
-    void sortedRoomByPrice();
+    void sortedRoomsByPrice();
 
-    void sortedRoomByCountBegs();
+    void sortedRoomsByCountBegs();
 
-    void sortedRoomByCategory();
+    void sortedRoomsByCategory();
 
     void sortedFreeRoomsByPrice();
 
     void sortedFreeRoomsByCountBegs();
 
-    void sortedRoomsByCategory();
+    void sortedFreeRoomsByCategory();
 
     void getTotalFreeNumberOfRooms();
 

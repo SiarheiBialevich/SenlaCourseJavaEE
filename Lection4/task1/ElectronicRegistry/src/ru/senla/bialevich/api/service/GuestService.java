@@ -12,9 +12,9 @@ public interface GuestService {
 
     void getTotalNumberOfGuests();
 
-    void sortedGuestBySurname();
+    void sortedGuestsBySurname();
 
-    void sortedGuestByDateOfDeparture();
+    void sortedGuestsByDateOfDeparture();
 
     void getServiceByGuest(Guest guest);
 
