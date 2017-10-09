@@ -1,6 +1,6 @@
-package ru.senla.bialevich.constant;
+package ru.senla.bialevich.enums;
 
-public enum  Constant {
+public enum MenuConstEnum {
     ADD_NEW_GUEST("To add a new guest"),
     ADD_NEW_ROOM("To add a new room"),
     ADD_NEW_ORDER("To add a new order"),
@@ -24,7 +24,7 @@ public enum  Constant {
 
     private String description;
 
-    private Constant(String description) {
+    private MenuConstEnum(String description) {
         this.description = description;
     }
 

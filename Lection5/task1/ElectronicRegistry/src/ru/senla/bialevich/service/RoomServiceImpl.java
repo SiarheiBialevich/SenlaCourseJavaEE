@@ -4,6 +4,7 @@ import ru.senla.bialevich.api.dao.RoomDao;
 import ru.senla.bialevich.api.service.RoomService;
 import ru.senla.bialevich.dao.RoomDaoImpl;
 import ru.senla.bialevich.entity.Room;
+import ru.senla.bialevich.enums.ServiceConstEnum;
 import ru.senla.bialevich.util.CopyAndSortList;
 import ru.senla.bialevich.util.Printer;
 import ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator;
@@ -21,17 +22,6 @@ public class RoomServiceImpl implements RoomService {
     private Printer printer = new Printer();
     private CopyAndSortList<Room> copy = new CopyAndSortList<Room>();
 
-    private static final String MESSAGE1 = "Sorted rooms by price";
-    private static final String MESSAGE2 = "Sorted rooms by count begs";
-    private static final String MESSAGE3 = "Sorted rooms by category";
-    private static final String MESSAGE4 = "Sorted free rooms by price";
-    private static final String MESSAGE5 = "Sorted free rooms by count begs";
-    private static final String MESSAGE6 = "Sorted free rooms by category";
-    private static final String MESSAGE7 = "Get free rooms";
-    private static final String MESSAGE8 = "Total free rooms";
-    private static final String MESSAGE9 = "All rooms";
-    private static final String MESSAGE10 = "Total price room ";
-
     private RoomDao roomDao = new RoomDaoImpl();
 
 
@@ -46,7 +36,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> getFreeRooms() {
-        printer.print(MESSAGE7);
+        printer.print(ServiceConstEnum.GET_FREE_ROOMS.getDescription());
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < roomDao.getAll().size(); i++) {
             if (roomDao.getAll().get(i).isFree()) {
@@ -59,54 +49,54 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void sortedRoomsByPrice() {
-        printer.print(MESSAGE1);
+        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_PRICE.getDescription());
         printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), PRICE_COMPARATOR));
     }
 
     @Override
     public void sortedRoomsByCountBegs() {
-        printer.print(MESSAGE2);
+        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_COUNT_BEGS.getDescription());
         printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), COUNT_BEGS_COMPARATOR));
     }
 
     @Override
     public void sortedRoomsByCategory() {
-        printer.print(MESSAGE3);
+        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_CATEGORY.getDescription());
         printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), CATEGORY_COMPARATOR));
     }
 
     @Override
     public void sortedFreeRoomsByPrice() {
-        printer.print(MESSAGE4);
+        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_PRICE.getDescription());
         printer.print(copy.getCopiedAndSortedList(getFreeRooms(), PRICE_COMPARATOR));
     }
 
     @Override
     public void sortedFreeRoomsByCountBegs() {
-        printer.print(MESSAGE5);
+        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_COUNT_BEGS.getDescription());
         printer.print(copy.getCopiedAndSortedList(getFreeRooms(), COUNT_BEGS_COMPARATOR));
     }
 
     @Override
     public void sortedFreeRoomsByCategory() {
-        printer.print(MESSAGE6);
+        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_COUNT_CATEGORY.getDescription());
         printer.print(copy.getCopiedAndSortedList(getFreeRooms(), CATEGORY_COMPARATOR));
     }
 
     @Override
     public void getTotalFreeNumberOfRooms() {
-        printer.print(MESSAGE8);
+        printer.print(ServiceConstEnum.GET_TOTAL_FREE_ROOMS.getDescription());
         printer.print(getFreeRooms().size());
     }
 
     @Override
     public void getTotalPrice(Room room) {
-        printer.print(MESSAGE10, room.getRoomNumber(), room.getPrice());
+        printer.print(ServiceConstEnum.GET_TOTAL_PRICE_ROOMS.getDescription(), room.getRoomNumber(), room.getPrice());
     }
 
     @Override
     public void getAll() {
-        printer.print(MESSAGE9);
+        printer.print(ServiceConstEnum.GET_ALL_ROOMS.getDescription());
 
         for (int i = 0; i < roomDao.getAll().size(); i++) {
             printer.print(roomDao.getAll().get(i));

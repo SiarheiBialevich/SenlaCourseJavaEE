@@ -3,794 +3,584 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="3101.185023788965" y="123.0">ru.senla.bialevich.entity.UsedService</node>
-    <node x="5411.113238295533" y="4160.0">ru.senla.bialevich.menu.MenuRunner</node>
-    <node x="4749.435023788965" y="2109.5">ru.senla.bialevich.util.Printer</node>
-    <node x="5011.435023788965" y="2709.5">ru.senla.bialevich.util.Format</node>
-    <node x="418.4375" y="1876.5">ru.senla.bialevich.api.dao.OrderDao</node>
-    <node x="1964.488238295533" y="383.0">ru.senla.bialevich.entity.Room</node>
-    <node x="1147.2382382955325" y="2621.0">ru.senla.bialevich.service.GuestServiceImpl</node>
-    <node x="1860.5625" y="1370.0">ru.senla.bialevich.database.DataBase</node>
-    <node x="5875.406140466946" y="2698.5">ru.senla.bialevich.util.writeAndRaed.WriteAndRead</node>
-    <node x="1119.1225237889648" y="438.0">ru.senla.bialevich.entity.Order</node>
-    <node x="4445.435023788965" y="2120.0">ru.senla.bialevich.api.service.UsedServiceService</node>
-    <node x="5263.435023788965" y="2709.5">ru.senla.bialevich.util.DateUtil</node>
-    <node x="2370.185023788965" y="2153.5">ru.senla.bialevich.util.comparator.roomComparator.RoomPriceComparator</node>
-    <node x="331.8125" y="2687.0">ru.senla.bialevich.service.OrderServiceImpl</node>
-    <node x="2889.488238295533" y="3709.0">ru.senla.bialevich.menu.action.ActionRunner</node>
-    <node x="409.9375" y="1117.0">ru.senla.bialevich.api.controller.ControllerHotel</node>
-    <node x="4173.428867739674" y="2676.0">ru.senla.bialevich.service.UsedServiceServiceImpl</node>
-    <node x="358.9375" y="2142.5">ru.senla.bialevich.dao.OrderDaoImpl</node>
-    <node x="3238.185023788965" y="2153.5">ru.senla.bialevich.util.comparator.roomComparator.RoomCountBegsComparator</node>
-    <node x="2917.988238295533" y="2993.0">ru.senla.bialevich.controller.ControllerHotelImpl</node>
-    <node x="5903.156140466946" y="2153.5">ru.senla.bialevich.util.writeAndRaed.AnArrayOfStrings</node>
-    <node x="5171.406140466946" y="3213.5">ru.senla.bialevich.util.InputReader</node>
-    <node x="3469.185023788965" y="2021.0">ru.senla.bialevich.api.service.RoomService</node>
-    <node x="5429.613238295533" y="4283.0">ru.senla.bialevich.runner.Run</node>
-    <node x="1698.5625" y="1392.0">ru.senla.bialevich.api.dao.AbstractDao</node>
-    <node x="3837.435023788965" y="2142.5">ru.senla.bialevich.dao.UsedServiceDaoImpl</node>
-    <node x="69.5" y="2131.0">ru.senla.bialevich.api.service.OrderService</node>
-    <node x="1850.3958333333335" y="1843.0">ru.senla.bialevich.dao.AbstractDaoImpl</node>
-    <node x="5457.406140466946" y="3290.5">ru.senla.bialevich.constant.Constant</node>
-    <node x="890.9375" y="2153.5">ru.senla.bialevich.util.comparator.guestComparator.GuestSurnameComparator</node>
-    <node x="5624.406140466946" y="3852.0">ru.senla.bialevich.menu.MenuWorker</node>
-    <node x="2085.031140466947" y="2142.5">ru.senla.bialevich.dao.RoomDaoImpl</node>
-    <node x="2602.185023788965" y="2153.5">ru.senla.bialevich.util.CopyAndSortList</node>
-    <node x="1429.4375" y="1876.5">ru.senla.bialevich.api.dao.GuestDao</node>
-    <node x="3756.185023788965" y="1876.5">ru.senla.bialevich.api.dao.UsedServiceDao</node>
-    <node x="1118.9375" y="2153.5">ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator</node>
-    <node x="596.9375" y="2076.0">ru.senla.bialevich.api.service.GuestService</node>
-    <node x="2087.7916666666665" y="1876.5">ru.senla.bialevich.api.dao.RoomDao</node>
-    <node x="1221.6225237889648" y="825.0">ru.senla.bialevich.entity.Guest</node>
-    <node x="4140.435023788965" y="2153.5">ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator</node>
-    <node x="2921.488238295533" y="2577.0">ru.senla.bialevich.service.RoomServiceImpl</node>
-    <node x="1561.1225237889644" y="0.0">ru.senla.bialevich.entity.BaseEntity</node>
-    <node x="3006.185023788965" y="2153.5">ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator</node>
-    <node x="1369.9375" y="2142.5">ru.senla.bialevich.dao.GuestDaoImpl</node>
+    <node x="4881.295454545455" y="707.0">ru.senla.bialevich.entity.UsedService</node>
+    <node x="5155.039772727273" y="1403.5">ru.senla.bialevich.util.Printer</node>
+    <node x="5756.548644912507" y="3734.0">ru.senla.bialevich.menu.MenuRunner</node>
+    <node x="5602.039772727273" y="2148.5">ru.senla.bialevich.util.Format</node>
+    <node x="1946.1879153934283" y="123.0">ru.senla.bialevich.entity.Room</node>
+    <node x="1314.045454545455" y="1170.5">ru.senla.bialevich.api.dao.OrderDao</node>
+    <node x="3196.4028115791734" y="2060.0">ru.senla.bialevich.service.GuestServiceImpl</node>
+    <node x="6104.039772727273" y="2137.5">ru.senla.bialevich.util.writeAndRaed.WriteAndRead</node>
+    <node x="2038.420058250571" y="927.0">ru.senla.bialevich.database.DataBase</node>
+    <node x="3262.378787878788" y="178.0">ru.senla.bialevich.entity.Order</node>
+    <node x="4153.420454545455" y="1414.0">ru.senla.bialevich.api.service.UsedServiceService</node>
+    <node x="5415.039772727273" y="2148.5">ru.senla.bialevich.util.DateUtil</node>
+    <node x="2468.420454545455" y="1447.5">ru.senla.bialevich.util.comparator.roomComparator.RoomPriceComparator</node>
+    <node x="1323.503787878788" y="2126.0">ru.senla.bialevich.service.OrderServiceImpl</node>
+    <node x="4775.715311579173" y="3283.0">ru.senla.bialevich.menu.action.ActionRunner</node>
+    <node x="0.0" y="1851.0">ru.senla.bialevich.api.controller.ControllerHotel</node>
+    <node x="4663.620454545455" y="2115.0">ru.senla.bialevich.service.UsedServiceServiceImpl</node>
+    <node x="1398.170454545455" y="1436.5">ru.senla.bialevich.dao.OrderDaoImpl</node>
+    <node x="1887.1704545454547" y="1447.5">ru.senla.bialevich.util.comparator.roomComparator.RoomCountBegsComparator</node>
+    <node x="2991.4028115791734" y="2577.0">ru.senla.bialevich.controller.ControllerHotelImpl</node>
+    <node x="6146.789772727273" y="1447.5">ru.senla.bialevich.util.writeAndRaed.AnArrayOfStrings</node>
+    <node x="5458.664772727273" y="2797.5">ru.senla.bialevich.util.InputReader</node>
+    <node x="5745.048644912507" y="3857.0">ru.senla.bialevich.runner.Run</node>
+    <node x="982.170454545455" y="1315.0">ru.senla.bialevich.api.service.RoomService</node>
+    <node x="2455.170454545455" y="949.0">ru.senla.bialevich.api.dao.AbstractDao</node>
+    <node x="4419.420454545455" y="1436.5">ru.senla.bialevich.dao.UsedServiceDaoImpl</node>
+    <node x="769.170454545455" y="1425.0">ru.senla.bialevich.api.service.OrderService</node>
+    <node x="2294.420454545455" y="1137.0">ru.senla.bialevich.dao.AbstractDaoImpl</node>
+    <node x="0.0" y="3953.0">ru.senla.bialevich.constant.Constant</node>
+    <node x="2699.420454545455" y="1447.5">ru.senla.bialevich.util.comparator.guestComparator.GuestSurnameComparator</node>
+    <node x="5866.039772727273" y="2126.5">ru.senla.bialevich.menu.MenuWorker</node>
+    <node x="3436.420454545455" y="1447.5">ru.senla.bialevich.util.CopyAndSortList</node>
+    <node x="2207.420454545455" y="1436.5">ru.senla.bialevich.dao.RoomDaoImpl</node>
+    <node x="4548.295454545454" y="1170.5">ru.senla.bialevich.api.dao.UsedServiceDao</node>
+    <node x="3153.545454545455" y="1170.5">ru.senla.bialevich.api.dao.GuestDao</node>
+    <node x="2926.420454545455" y="1447.5">ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator</node>
+    <node x="3840.420454545455" y="1370.0">ru.senla.bialevich.api.service.GuestService</node>
+    <node x="2053.420454545455" y="1170.5">ru.senla.bialevich.api.dao.RoomDao</node>
+    <node x="3299.420454545455" y="465.0">ru.senla.bialevich.entity.Guest</node>
+    <node x="4743.420454545455" y="1447.5">ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator</node>
+    <node x="2012.2778115791734" y="2016.0">ru.senla.bialevich.service.RoomServiceImpl</node>
+    <node x="3397.878787878788" y="0.0">ru.senla.bialevich.entity.BaseEntity</node>
+    <node x="1656.1704545454547" y="1447.5">ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator</node>
+    <node x="3178.420454545455" y="1436.5">ru.senla.bialevich.dao.GuestDaoImpl</node>
   </nodes>
   <notes />
   <edges>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.api.service.OrderService">
-      <point x="-127.40000000000009" y="-323.0" />
-      <point x="2927.088238295533" y="2973.0" />
-      <point x="123.75" y="2973.0" />
-      <point x="-54.25" y="48.0" />
+      <point x="-262.909090909091" y="-323.0" />
+      <point x="3089.9937206700824" y="2547.0" />
+      <point x="817.420454545455" y="2547.0" />
+      <point x="-48.25" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.dao.OrderDaoImpl" target="ru.senla.bialevich.api.dao.OrderDao">
-      <point x="0.0" y="-36.5" />
-      <point x="467.4375" y="2001.0" />
-      <point x="472.6875" y="2001.0" />
-      <point x="-54.25" y="25.5" />
+      <point x="-59.25" y="-36.5" />
+      <point x="1457.420454545455" y="1295.0" />
+      <point x="1476.795454545455" y="1295.0" />
+      <point x="54.25" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.api.service.RoomService">
-      <point x="88.66666666666652" y="-158.0" />
-      <point x="3143.1549049621995" y="2487.0" />
-      <point x="3535.685023788965" y="2487.0" />
-      <point x="-66.5" y="158.0" />
+      <point x="-183.39285714285734" y="-158.0" />
+      <point x="2026.384954436316" y="1821.0" />
+      <point x="1278.420454545455" y="1821.0" />
+      <point x="98.75" y="158.0" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.service.GuestServiceImpl">
-      <point x="-54.59999999999991" y="-323.0" />
-      <point x="2999.888238295533" y="2933.0" />
-      <point x="1283.7382382955325" y="2933.0" />
+      <point x="0.0" y="-323.0" />
       <point x="0.0" y="114.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.util.CopyAndSortList">
-      <point x="-102.90909090909099" y="-59.0" />
-      <point x="4212.019776830583" y="2387.0" />
-      <point x="2954.185023788965" y="2387.0" />
-      <point x="160.0" y="25.5" />
+      <point x="-110.69999999999982" y="-59.0" />
+      <point x="4675.920454545455" y="1741.0" />
+      <point x="3724.420454545455" y="1741.0" />
+      <point x="96.0" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.MenuRunner" target="ru.senla.bialevich.util.Printer">
-      <point x="12.875" y="-36.5" />
-      <point x="5526.988238295533" y="4110.0" />
-      <point x="5613.906140466946" y="4110.0" />
-      <point x="5613.906140466946" y="2537.0" />
-      <point x="4907.591273788965" y="2537.0" />
-      <point x="37.65625" y="69.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.service.RoomService" target="ru.senla.bialevich.entity.Room">
-      <point x="0.0" y="-158.0" />
-      <point x="3602.185023788965" y="735.0" />
-      <point x="2178.0715716288664" y="735.0" />
-      <point x="97.08333333333348" y="136.0" />
+      <point x="63.875" y="-36.5" />
+      <point x="5893.423644912507" y="3714.0" />
+      <point x="6093.539772727273" y="3714.0" />
+      <point x="6093.539772727273" y="1781.0" />
+      <point x="5356.696022727273" y="1781.0" />
+      <point x="82.15625" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Order" target="ru.senla.bialevich.entity.Guest">
-      <point x="36.59999999999991" y="81.0" />
-      <point x="1247.2225237889647" y="715.0" />
-      <point x="1266.2475237889648" y="715.0" />
-      <point x="-31.875" y="-81.0" />
+      <point x="70.75" y="81.0" />
+      <point x="3474.628787878788" y="445.0" />
+      <point x="3489.170454545455" y="445.0" />
+      <point x="63.25" y="-81.0" />
     </edge>
     <edge source="ru.senla.bialevich.runner.Run" target="ru.senla.bialevich.menu.MenuRunner">
-      <point x="42.25" y="-25.5" />
-      <point x="5556.363238295533" y="4258.0" />
-      <point x="5565.613238295533" y="4258.0" />
-      <point x="51.5" y="36.5" />
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Order" target="ru.senla.bialevich.entity.BaseEntity">
       <point x="0.0" y="-81.0" />
-      <point x="1210.6225237889648" y="93.0" />
-      <point x="1581.7475237889644" y="93.0" />
-      <point x="-61.875" y="36.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator" target="ru.senla.bialevich.entity.Guest">
-      <point x="0.0" y="-25.5" />
-      <point x="1234.4375" y="1097.0" />
-      <point x="1298.1225237889648" y="1097.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.entity.Guest" target="ru.senla.bialevich.entity.BaseEntity">
-      <point x="-6.375" y="-81.0" />
-      <point x="1291.7475237889648" y="725.0" />
-      <point x="1312.6225237889648" y="725.0" />
-      <point x="1312.6225237889648" y="103.0" />
-      <point x="1622.9975237889644" y="103.0" />
-      <point x="-20.625" y="36.5" />
+      <point x="3403.878787878788" y="103.0" />
+      <point x="3459.378787878788" y="103.0" />
+      <point x="-20.5" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator">
-      <point x="0.0" y="-59.0" />
-      <point x="4314.928867739674" y="2457.0" />
-      <point x="4345.185023788965" y="2457.0" />
-      <point x="68.25" y="25.5" />
+      <point x="12.300000000000182" y="-59.0" />
+      <point x="4798.920454545455" y="1751.0" />
+      <point x="4811.670454545455" y="1751.0" />
+      <point x="-68.25" y="25.5" />
     </edge>
-    <edge source="ru.senla.bialevich.api.service.GuestService" target="ru.senla.bialevich.entity.Guest">
-      <point x="0.0" y="-103.0" />
-      <point x="733.4375" y="1057.0" />
-      <point x="1251.0456007120417" y="1057.0" />
-      <point x="-47.076923076923094" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.entity.Guest" target="ru.senla.bialevich.entity.Order">
-      <point x="-70.125" y="-81.0" />
-      <point x="1227.9975237889648" y="745.0" />
-      <point x="1210.6225237889648" y="745.0" />
-      <point x="0.0" y="81.0" />
+    <edge source="ru.senla.bialevich.entity.Guest" target="ru.senla.bialevich.entity.BaseEntity">
+      <point x="105.41666666666652" y="-81.0" />
+      <point x="3531.337121212121" y="445.0" />
+      <point x="3555.878787878788" y="445.0" />
+      <point x="3555.878787878788" y="103.0" />
+      <point x="3500.378787878788" y="103.0" />
+      <point x="20.5" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.dao.GuestDaoImpl" target="ru.senla.bialevich.api.dao.GuestDao">
-      <point x="0.0" y="-36.5" />
-      <point x="1478.4375" y="1981.0" />
-      <point x="1483.6875" y="1981.0" />
-      <point x="-54.25" y="25.5" />
+      <point x="59.25" y="-36.5" />
+      <point x="3356.170454545455" y="1295.0" />
+      <point x="3316.295454545455" y="1295.0" />
+      <point x="54.25" y="25.5" />
+    </edge>
+    <edge source="ru.senla.bialevich.entity.Guest" target="ru.senla.bialevich.entity.Order">
+      <point x="-21.083333333333485" y="-81.0" />
+      <point x="3404.837121212121" y="445.0" />
+      <point x="3380.295454545455" y="445.0" />
+      <point x="-23.583333333333258" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.api.dao.RoomDao" target="ru.senla.bialevich.api.dao.AbstractDao">
-      <point x="-55.25" y="-25.5" />
-      <point x="2143.0416666666665" y="1813.0" />
-      <point x="1797.9625" y="1813.0" />
-      <point x="28.40000000000009" y="48.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="2163.920454545455" y="1107.0" />
+      <point x="2506.170454545455" y="1107.0" />
+      <point x="-34.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.entity.Room">
-      <point x="35.4666666666667" y="-158.0" />
-      <point x="3089.9549049621996" y="2457.0" />
-      <point x="3227.685023788965" y="2457.0" />
-      <point x="3227.685023788965" y="755.0" />
-      <point x="2152.1826827399773" y="755.0" />
-      <point x="71.19444444444434" y="136.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.entity.Room">
-      <point x="36.40000000000009" y="-323.0" />
-      <point x="3090.888238295533" y="2923.0" />
-      <point x="3745.685023788965" y="2923.0" />
-      <point x="3745.685023788965" y="725.0" />
-      <point x="2191.0160160733108" y="725.0" />
-      <point x="110.02777777777783" y="136.0" />
+      <point x="-155.17857142857156" y="-158.0" />
+      <point x="2054.599240150602" y="1811.0" />
+      <point x="1645.6704545454547" y="1811.0" />
+      <point x="1645.6704545454547" y="445.0" />
+      <point x="2028.2593439648567" y="445.0" />
+      <point x="-109.42857142857156" y="136.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.entity.UsedService">
-      <point x="25.727272727272975" y="-59.0" />
-      <point x="4340.656140466947" y="2467.0" />
-      <point x="4423.935023788965" y="2467.0" />
-      <point x="4423.935023788965" y="333.0" />
-      <point x="3211.872523788965" y="333.0" />
-      <point x="33.6875" y="70.0" />
+      <point x="61.5" y="-59.0" />
+      <point x="4848.120454545455" y="1751.0" />
+      <point x="5026.920454545455" y="1751.0" />
+      <point x="29.125" y="70.0" />
     </edge>
     <edge source="ru.senla.bialevich.menu.MenuWorker" target="ru.senla.bialevich.util.Printer">
-      <point x="0.0" y="-47.5" />
-      <point x="5739.406140466946" y="3689.0" />
-      <point x="5772.238238295533" y="3689.0" />
-      <point x="5772.238238295533" y="2527.0" />
-      <point x="4922.653773788965" y="2527.0" />
-      <point x="52.71875" y="69.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.menu.MenuWorker" target="ru.senla.bialevich.constant.Constant">
-      <point x="-76.66666666666697" y="-47.5" />
-      <point x="5662.73947380028" y="3689.0" />
-      <point x="5566.906140466946" y="3689.0" />
-      <point x="36.5" y="25.5" />
+      <point x="-51.5" y="-47.5" />
+      <point x="5917.539772727273" y="1811.0" />
+      <point x="5311.883522727273" y="1811.0" />
+      <point x="37.34375" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.api.dao.GuestDao" target="ru.senla.bialevich.api.dao.AbstractDao">
-      <point x="54.25" y="-25.5" />
-      <point x="1592.1875" y="1823.0" />
-      <point x="1741.1625" y="1823.0" />
-      <point x="-28.40000000000009" y="48.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="3262.045454545455" y="1117.0" />
+      <point x="2574.170454545455" y="1117.0" />
+      <point x="34.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.util.Printer">
-      <point x="105.0" y="-114.0" />
-      <point x="1388.7382382955325" y="2497.0" />
-      <point x="4756.966273788965" y="2497.0" />
-      <point x="-112.96875" y="69.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.dao.RoomDaoImpl" target="ru.senla.bialevich.entity.Room">
-      <point x="73.66666666666652" y="-36.5" />
-      <point x="2269.1978071336134" y="2001.0" />
-      <point x="2375.363238295533" y="2001.0" />
-      <point x="2375.363238295533" y="795.0" />
-      <point x="2100.4049049621995" y="795.0" />
-      <point x="19.416666666666515" y="136.0" />
+      <point x="117.375" y="-114.0" />
+      <point x="3470.2778115791734" y="1781.0" />
+      <point x="5192.383522727273" y="1781.0" />
+      <point x="-82.15625" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.database.DataBase" target="ru.senla.bialevich.entity.Room">
-      <point x="48.541666666666515" y="-70.0" />
-      <point x="2025.6041666666665" y="1067.0" />
-      <point x="2061.571571628866" y="1067.0" />
-      <point x="-19.416666666666515" y="136.0" />
+      <point x="-85.3125" y="-70.0" />
+      <point x="2089.607558250571" y="877.0" />
+      <point x="2159.545058250571" y="877.0" />
+      <point x="2159.545058250571" y="435.0" />
+      <point x="2137.6879153934283" y="435.0" />
+      <point x="0.0" y="136.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.OrderServiceImpl" target="ru.senla.bialevich.api.service.OrderService">
-      <point x="-81.375" y="-48.0" />
-      <point x="358.9375" y="2557.0" />
-      <point x="232.25" y="2557.0" />
-      <point x="54.25" y="48.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.dao.UsedServiceDaoImpl" target="ru.senla.bialevich.entity.UsedService">
-      <point x="94.33333333333303" y="-36.5" />
-      <point x="4073.268357122298" y="2001.0" />
-      <point x="4101.183788284217" y="2001.0" />
-      <point x="4101.183788284217" y="353.0" />
-      <point x="3192.622523788965" y="353.0" />
-      <point x="14.4375" y="70.0" />
+      <point x="-64.33333333333331" y="-48.0" />
+      <point x="1355.6704545454545" y="1831.0" />
+      <point x="913.920454545455" y="1831.0" />
+      <point x="48.25" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.api.dao.RoomDao">
-      <point x="-124.13333333333321" y="-158.0" />
-      <point x="2930.3549049621997" y="2467.0" />
-      <point x="2074.531140466947" y="2467.0" />
-      <point x="2074.531140466947" y="2001.0" />
-      <point x="2143.0416666666665" y="2001.0" />
+      <point x="-14.107142857142662" y="-158.0" />
+      <point x="2195.6706687220308" y="1761.0" />
+      <point x="2108.670454545455" y="1761.0" />
       <point x="-55.25" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.dao.RoomDaoImpl" target="ru.senla.bialevich.api.dao.RoomDao">
-      <point x="0.0" y="-36.5" />
-      <point x="2195.531140466947" y="2001.0" />
-      <point x="2253.5416666666665" y="2001.0" />
+      <point x="-60.25" y="-36.5" />
+      <point x="2267.670454545455" y="1285.0" />
+      <point x="2219.170454545455" y="1285.0" />
       <point x="55.25" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.util.CopyAndSortList">
-      <point x="-17.73333333333312" y="-158.0" />
-      <point x="3036.7549049622" y="2407.0" />
-      <point x="2826.185023788965" y="2407.0" />
-      <point x="32.0" y="25.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.service.OrderService" target="ru.senla.bialevich.entity.Order">
-      <point x="0.0" y="-48.0" />
-      <point x="178.0" y="695.0" />
-      <point x="1137.4225237889648" y="695.0" />
-      <point x="-73.20000000000005" y="81.0" />
+      <point x="98.75" y="-158.0" />
+      <point x="2308.5278115791734" y="1711.0" />
+      <point x="3468.420454545455" y="1711.0" />
+      <point x="-160.0" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.MenuRunner" target="ru.senla.bialevich.menu.MenuWorker">
-      <point x="38.625" y="-36.5" />
-      <point x="5552.738238295533" y="4120.0" />
-      <point x="5681.906140466946" y="4120.0" />
-      <point x="-57.5" y="47.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.entity.Order">
-      <point x="-109.19999999999982" y="-323.0" />
-      <point x="2945.288238295533" y="2963.0" />
-      <point x="297.0" y="2963.0" />
-      <point x="297.0" y="705.0" />
-      <point x="1149.6225237889648" y="705.0" />
-      <point x="-61.0" y="81.0" />
+      <point x="9.125" y="-36.5" />
+      <point x="5838.673644912507" y="3684.0" />
+      <point x="5963.539772727273" y="3684.0" />
+      <point x="5963.539772727273" y="2557.0" />
+      <point x="5917.539772727273" y="2557.0" />
+      <point x="-51.5" y="47.5" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.api.controller.ControllerHotel">
-      <point x="-36.40000000000009" y="-323.0" />
-      <point x="3018.088238295533" y="2923.0" />
-      <point x="1677.0625" y="2923.0" />
-      <point x="1677.0625" y="1793.0" />
-      <point x="614.6875" y="1793.0" />
-      <point x="68.25" y="323.0" />
+      <point x="-328.63636363636374" y="-323.0" />
+      <point x="3024.2664479428095" y="2557.0" />
+      <point x="542.25" y="2557.0" />
+      <point x="180.75" y="323.0" />
     </edge>
     <edge source="ru.senla.bialevich.dao.AbstractDaoImpl" target="ru.senla.bialevich.database.DataBase">
-      <point x="63.33333333333326" y="-59.0" />
-      <point x="2008.7291666666665" y="1823.0" />
-      <point x="2035.3125" y="1823.0" />
-      <point x="58.25" y="70.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.util.comparator.guestComparator.GuestSurnameComparator" target="ru.senla.bialevich.entity.Guest">
-      <point x="0.0" y="-25.5" />
-      <point x="994.4375" y="1077.0" />
-      <point x="1274.5840622505032" y="1077.0" />
-      <point x="-23.53846153846166" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.dao.UsedServiceDao" target="ru.senla.bialevich.entity.UsedService">
-      <point x="70.75" y="-25.5" />
-      <point x="3968.435023788965" y="363.0" />
-      <point x="3182.997523788965" y="363.0" />
-      <point x="4.8125" y="70.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.service.UsedServiceService" target="ru.senla.bialevich.entity.UsedService">
-      <point x="0.0" y="-59.0" />
-      <point x="4586.935023788965" y="313.0" />
-      <point x="3231.122523788965" y="313.0" />
-      <point x="52.9375" y="70.0" />
+      <point x="-62.5" y="-59.0" />
+      <point x="2356.920454545455" y="1087.0" />
+      <point x="2174.920058250571" y="1087.0" />
+      <point x="0.0" y="70.0" />
     </edge>
     <edge source="ru.senla.bialevich.util.InputReader" target="ru.senla.bialevich.util.Format">
-      <point x="-110.83333333333337" y="-102.5" />
-      <point x="5193.572807133613" y="2973.0" />
-      <point x="5069.435023788965" y="2973.0" />
-      <point x="-58.0" y="25.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator" target="ru.senla.bialevich.entity.UsedService">
-      <point x="0.0" y="-25.5" />
-      <point x="4276.935023788965" y="343.0" />
-      <point x="3202.247523788965" y="343.0" />
-      <point x="24.0625" y="70.0" />
+      <point x="32.91666666666697" y="-102.5" />
+      <point x="5689.08143939394" y="2537.0" />
+      <point x="5776.039772727273" y="2537.0" />
+      <point x="58.0" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.dao.RoomDaoImpl">
-      <point x="-106.40000000000009" y="-158.0" />
-      <point x="2948.088238295533" y="2457.0" />
-      <point x="2195.531140466947" y="2457.0" />
+      <point x="14.107142857143117" y="-158.0" />
+      <point x="2223.8849544363165" y="1681.0" />
+      <point x="2327.920454545455" y="1681.0" />
       <point x="0.0" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.util.comparator.roomComparator.RoomPriceComparator">
-      <point x="-70.9333333333334" y="-158.0" />
-      <point x="2983.5549049621995" y="2437.0" />
-      <point x="2528.435023788965" y="2437.0" />
+      <point x="70.53571428571422" y="-158.0" />
+      <point x="2280.3135258648877" y="1701.0" />
+      <point x="2626.670454545455" y="1701.0" />
       <point x="52.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.api.service.UsedServiceService">
-      <point x="77.18181818181802" y="-59.0" />
-      <point x="4392.110685921492" y="2487.0" />
-      <point x="4516.185023788965" y="2487.0" />
-      <point x="-70.75" y="59.0" />
+      <point x="-61.5" y="-59.0" />
+      <point x="4725.120454545455" y="1721.0" />
+      <point x="4337.920454545455" y="1721.0" />
+      <point x="61.5" y="59.0" />
     </edge>
     <edge source="ru.senla.bialevich.database.DataBase" target="ru.senla.bialevich.entity.UsedService">
-      <point x="9.708333333333485" y="-70.0" />
-      <point x="1986.7708333333335" y="1007.0" />
-      <point x="1953.9882382955327" y="1007.0" />
-      <point x="1953.9882382955327" y="323.0" />
-      <point x="3134.872523788965" y="323.0" />
-      <point x="-43.3125" y="70.0" />
+      <point x="119.4375" y="-70.0" />
+      <point x="2294.357558250571" y="907.0" />
+      <point x="4968.670454545455" y="907.0" />
+      <point x="-29.125" y="70.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.util.comparator.guestComparator.GuestSurnameComparator">
-      <point x="-84.0" y="-114.0" />
-      <point x="1199.7382382955325" y="2537.0" />
-      <point x="942.6875" y="2537.0" />
+      <point x="-143.45833333333326" y="-114.0" />
+      <point x="3209.4444782458404" y="1701.0" />
+      <point x="2751.170454545455" y="1701.0" />
       <point x="-51.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.api.dao.UsedServiceDao" target="ru.senla.bialevich.api.dao.AbstractDao">
-      <point x="-70.75" y="-25.5" />
-      <point x="3826.935023788965" y="1803.0" />
-      <point x="1826.3625" y="1803.0" />
-      <point x="56.799999999999955" y="48.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.entity.UsedService">
-      <point x="91.0" y="-323.0" />
-      <point x="3145.488238295533" y="2953.0" />
-      <point x="4738.935023788965" y="2953.0" />
-      <point x="4738.935023788965" y="303.0" />
-      <point x="3240.747523788965" y="303.0" />
-      <point x="62.5625" y="70.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="4689.795454545454" y="1107.0" />
+      <point x="2608.170454545455" y="1107.0" />
+      <point x="68.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.util.InputReader" target="ru.senla.bialevich.util.Printer">
-      <point x="66.5" y="-102.5" />
-      <point x="5370.906140466946" y="2963.0" />
-      <point x="5480.64212161755" y="2963.0" />
-      <point x="5480.64212161755" y="2557.0" />
-      <point x="4877.466273788965" y="2557.0" />
-      <point x="7.53125" y="69.5" />
+      <point x="98.74999999999977" y="-102.5" />
+      <point x="5754.914772727273" y="2547.0" />
+      <point x="5844.539772727273" y="2547.0" />
+      <point x="5844.539772727273" y="1831.0" />
+      <point x="5282.008522727273" y="1831.0" />
+      <point x="7.46875" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Room" target="ru.senla.bialevich.entity.UsedService">
-      <point x="0.0" y="-136.0" />
-      <point x="2080.988238295533" y="333.0" />
-      <point x="3144.497523788965" y="333.0" />
-      <point x="-33.6875" y="70.0" />
+      <point x="54.714285714285325" y="136.0" />
+      <point x="2192.4022011077136" y="425.0" />
+      <point x="2170.545058250571" y="425.0" />
+      <point x="2170.545058250571" y="667.0" />
+      <point x="4920.128787878788" y="667.0" />
+      <point x="-77.66666666666652" y="-70.0" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.util.Printer">
-      <point x="127.40000000000009" y="-323.0" />
-      <point x="3181.888238295533" y="2973.0" />
-      <point x="4862.403773788965" y="2973.0" />
-      <point x="-7.53125" y="69.5" />
+      <point x="262.909090909091" y="-323.0" />
+      <point x="3615.8119024882644" y="2547.0" />
+      <point x="4933.670058250571" y="2547.0" />
+      <point x="4933.670058250571" y="1821.0" />
+      <point x="5252.133522727273" y="1821.0" />
+      <point x="-22.40625" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.service.RoomServiceImpl">
-      <point x="0.0" y="-323.0" />
+      <point x="-65.72727272727275" y="-323.0" />
+      <point x="3287.1755388519005" y="2517.0" />
+      <point x="2209.7778115791734" y="2517.0" />
       <point x="0.0" y="158.0" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.api.service.GuestService">
-      <point x="-72.79999999999973" y="-323.0" />
-      <point x="2981.688238295533" y="2943.0" />
-      <point x="665.1875" y="2943.0" />
-      <point x="-68.25" y="103.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.dao.UsedServiceDaoImpl">
-      <point x="-51.45454545454504" y="-59.0" />
-      <point x="4263.474322285129" y="2367.0" />
-      <point x="3978.935023788965" y="2367.0" />
-      <point x="0.0" y="36.5" />
+      <point x="65.72727272727275" y="-323.0" />
+      <point x="3418.6300843064464" y="2517.0" />
+      <point x="4060.170454545455" y="2517.0" />
+      <point x="73.25" y="103.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.dao.GuestDaoImpl">
-      <point x="21.0" y="-114.0" />
-      <point x="1304.7382382955325" y="2457.0" />
-      <point x="1478.4375" y="2457.0" />
+      <point x="-13.041666666666629" y="-114.0" />
+      <point x="3339.861144912507" y="1651.0" />
+      <point x="3296.920454545455" y="1651.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.dao.UsedServiceDaoImpl">
+      <point x="-36.90000000000009" y="-59.0" />
+      <point x="4749.720454545455" y="1711.0" />
+      <point x="4570.920454545455" y="1711.0" />
       <point x="0.0" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.api.dao.UsedServiceDao">
-      <point x="-77.18181818181802" y="-59.0" />
-      <point x="4237.747049557856" y="2377.0" />
-      <point x="3826.935023788965" y="2377.0" />
-      <point x="-70.75" y="25.5" />
+      <point x="-12.300000000000182" y="-59.0" />
+      <point x="4774.320454545455" y="1701.0" />
+      <point x="4732.920454545455" y="1701.0" />
+      <point x="4732.920454545455" y="1295.0" />
+      <point x="4760.545454545454" y="1295.0" />
+      <point x="70.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.MenuRunner" target="ru.senla.bialevich.menu.action.ActionRunner">
-      <point x="-90.125" y="-36.5" />
-      <point x="5423.988238295533" y="4140.0" />
-      <point x="2971.988238295533" y="4140.0" />
-      <point x="-82.5" y="190.5" />
+      <point x="-63.875" y="-36.5" />
+      <point x="5765.673644912507" y="3714.0" />
+      <point x="4912.465311579173" y="3714.0" />
+      <point x="-136.75" y="190.5" />
     </edge>
     <edge source="ru.senla.bialevich.util.writeAndRaed.WriteAndRead" target="ru.senla.bialevich.util.Printer">
-      <point x="-22.375" y="-36.5" />
-      <point x="5942.531140466946" y="2487.0" />
-      <point x="4982.903773788965" y="2487.0" />
-      <point x="112.96875" y="69.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.dao.OrderDao" target="ru.senla.bialevich.entity.Order">
-      <point x="-54.25" y="-25.5" />
-      <point x="472.6875" y="1783.0" />
-      <point x="399.4375" y="1783.0" />
-      <point x="399.4375" y="735.0" />
-      <point x="1186.2225237889647" y="735.0" />
-      <point x="-24.40000000000009" y="81.0" />
+      <point x="-24.875" y="-36.5" />
+      <point x="6178.664772727273" y="1761.0" />
+      <point x="5386.571022727273" y="1761.0" />
+      <point x="112.03124999999994" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.entity.Guest">
-      <point x="-36.666666666666515" y="-190.5" />
-      <point x="3017.8215716288664" y="3659.0" />
-      <point x="59.0" y="3659.0" />
-      <point x="59.0" y="1803.0" />
-      <point x="693.4375" y="1803.0" />
-      <point x="693.4375" y="1047.0" />
-      <point x="1239.276369942811" y="1047.0" />
-      <point x="-58.84615384615381" y="81.0" />
+      <point x="34.1875" y="-190.5" />
+      <point x="5083.402811579173" y="3263.0" />
+      <point x="5144.539772727273" y="3263.0" />
+      <point x="5144.539772727273" y="647.0" />
+      <point x="3527.120454545455" y="647.0" />
+      <point x="101.19999999999982" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.util.InputReader" target="ru.senla.bialevich.util.DateUtil">
-      <point x="22.166666666666657" y="-102.5" />
-      <point x="5326.572807133613" y="2953.0" />
-      <point x="5388.685023788965" y="2953.0" />
+      <point x="-98.75" y="-102.5" />
+      <point x="5557.414772727273" y="2557.0" />
+      <point x="5540.289772727273" y="2557.0" />
       <point x="41.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.dao.AbstractDaoImpl" target="ru.senla.bialevich.api.dao.AbstractDao">
-      <point x="-63.333333333333485" y="-59.0" />
-      <point x="1882.0625" y="1823.0" />
-      <point x="1769.5625" y="1823.0" />
+      <point x="62.5" y="-59.0" />
+      <point x="2481.920454545455" y="1117.0" />
+      <point x="2540.170454545455" y="1117.0" />
       <point x="0.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.api.service.UsedServiceService">
-      <point x="72.80000000000018" y="-323.0" />
-      <point x="3127.288238295533" y="2943.0" />
-      <point x="4657.685023788965" y="2943.0" />
-      <point x="70.75000000000023" y="59.0" />
+      <point x="131.4545454545455" y="-323.0" />
+      <point x="3484.357357033719" y="2527.0" />
+      <point x="4214.920454545455" y="2527.0" />
+      <point x="-61.5" y="59.0" />
     </edge>
     <edge source="ru.senla.bialevich.database.DataBase" target="ru.senla.bialevich.entity.Guest">
-      <point x="-67.95833333333348" y="-70.0" />
-      <point x="1909.1041666666665" y="1047.0" />
-      <point x="1368.7379084043494" y="1047.0" />
-      <point x="70.61538461538453" y="81.0" />
+      <point x="51.1875" y="-70.0" />
+      <point x="2226.107558250571" y="887.0" />
+      <point x="2297.545454545455" y="887.0" />
+      <point x="2297.545454545455" y="687.0" />
+      <point x="3375.3204545454546" y="687.0" />
+      <point x="-50.59999999999991" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.api.dao.OrderDao" target="ru.senla.bialevich.api.dao.AbstractDao">
-      <point x="54.25" y="-25.5" />
-      <point x="581.1875" y="1813.0" />
-      <point x="1712.7625" y="1813.0" />
-      <point x="-56.799999999999955" y="48.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="1422.545454545455" y="1097.0" />
+      <point x="2472.170454545455" y="1097.0" />
+      <point x="-68.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.UsedServiceServiceImpl" target="ru.senla.bialevich.util.Printer">
-      <point x="128.63636363636397" y="-59.0" />
-      <point x="4443.565231376038" y="2547.0" />
-      <point x="4832.278773788965" y="2547.0" />
-      <point x="-37.65625" y="69.5" />
+      <point x="86.09999999999991" y="-59.0" />
+      <point x="4872.720454545455" y="1801.0" />
+      <point x="5222.258522727273" y="1801.0" />
+      <point x="-52.28125" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Room" target="ru.senla.bialevich.entity.BaseEntity">
-      <point x="-77.66666666666652" y="-136.0" />
-      <point x="2003.3215716288664" y="283.0" />
-      <point x="2008.4558571222976" y="283.0" />
-      <point x="2008.4558571222976" y="103.0" />
-      <point x="1664.2475237889644" y="103.0" />
-      <point x="20.625" y="36.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.entity.UsedService">
-      <point x="36.666666666666515" y="-190.5" />
-      <point x="3091.1549049621995" y="3659.0" />
-      <point x="5000.935023788965" y="3659.0" />
-      <point x="5000.935023788965" y="293.0" />
-      <point x="3250.372523788965" y="293.0" />
-      <point x="72.1875" y="70.0" />
+      <point x="0.0" y="-136.0" />
+      <point x="2137.6879153934283" y="93.0" />
+      <point x="3418.378787878788" y="93.0" />
+      <point x="-61.5" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.dao.RoomDaoImpl" target="ru.senla.bialevich.dao.AbstractDaoImpl">
-      <point x="-73.66666666666652" y="-36.5" />
-      <point x="2121.8644738002804" y="1991.0" />
-      <point x="1969.145833333333" y="1991.0" />
-      <point x="23.749999999999773" y="59.0" />
+      <point x="60.25" y="-36.5" />
+      <point x="-31.25" y="59.0" />
+    </edge>
+    <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.entity.UsedService">
+      <point x="-34.1875" y="-190.5" />
+      <point x="5015.027811579173" y="3253.0" />
+      <point x="5095.602272727273" y="3253.0" />
+      <point x="5095.602272727273" y="907.0" />
+      <point x="5085.170454545455" y="907.0" />
+      <point x="87.375" y="70.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.api.dao.GuestDao">
-      <point x="42.0" y="-114.0" />
-      <point x="1325.7382382955325" y="2467.0" />
-      <point x="1597.4375" y="2467.0" />
-      <point x="1597.4375" y="1981.0" />
-      <point x="1592.1875" y="1981.0" />
-      <point x="54.25" y="25.5" />
+      <point x="-39.125" y="-114.0" />
+      <point x="3313.7778115791734" y="1661.0" />
+      <point x="3167.920454545455" y="1661.0" />
+      <point x="3167.920454545455" y="1295.0" />
+      <point x="3207.795454545455" y="1295.0" />
+      <point x="-54.25" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Room" target="ru.senla.bialevich.entity.Guest">
-      <point x="-45.30555555555566" y="136.0" />
-      <point x="2035.6826827399773" y="805.0" />
-      <point x="1368.2475237889648" y="805.0" />
-      <point x="70.125" y="-81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator" target="ru.senla.bialevich.entity.Room">
-      <point x="0.0" y="-25.5" />
-      <point x="3111.685023788965" y="765.0" />
-      <point x="2139.238238295533" y="765.0" />
-      <point x="58.25" y="136.0" />
+      <point x="164.14285714285688" y="136.0" />
+      <point x="2301.830772536285" y="415.0" />
+      <point x="3362.670454545455" y="415.0" />
+      <point x="-63.25" y="-81.0" />
     </edge>
     <edge source="ru.senla.bialevich.database.DataBase" target="ru.senla.bialevich.entity.Order">
-      <point x="-48.54166666666674" y="-70.0" />
-      <point x="1928.5208333333333" y="1037.0" />
-      <point x="1783.7311404669463" y="1037.0" />
-      <point x="1783.7311404669463" y="695.0" />
-      <point x="1271.6225237889648" y="695.0" />
-      <point x="61.0" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.dao.GuestDao" target="ru.senla.bialevich.entity.Guest">
-      <point x="-54.25" y="-25.5" />
-      <point x="1483.6875" y="1087.0" />
-      <point x="1321.6609853274265" y="1087.0" />
-      <point x="23.53846153846166" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.controller.ControllerHotel" target="ru.senla.bialevich.entity.Guest">
-      <point x="102.375" y="-323.0" />
-      <point x="648.8125" y="1037.0" />
-      <point x="1227.5071391735803" y="1037.0" />
-      <point x="-70.61538461538453" y="81.0" />
+      <point x="-51.1875" y="-70.0" />
+      <point x="2123.732558250571" y="887.0" />
+      <point x="2181.545058250571" y="887.0" />
+      <point x="2181.545058250571" y="435.0" />
+      <point x="3285.962121212121" y="435.0" />
+      <point x="-117.91666666666674" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator">
-      <point x="0.0" y="-114.0" />
-      <point x="1283.7382382955325" y="2557.0" />
-      <point x="1292.1875" y="2557.0" />
+      <point x="-65.20833333333326" y="-114.0" />
+      <point x="3287.6944782458404" y="1671.0" />
+      <point x="3099.670454545455" y="1671.0" />
       <point x="57.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.api.service.GuestService">
-      <point x="-126.0" y="-114.0" />
-      <point x="1157.7382382955325" y="2557.0" />
-      <point x="801.6875" y="2557.0" />
-      <point x="68.25" y="103.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.entity.Guest">
-      <point x="-18.199999999999818" y="-323.0" />
-      <point x="3036.288238295533" y="2913.0" />
-      <point x="1688.0625" y="2913.0" />
-      <point x="1688.0625" y="1077.0" />
-      <point x="1333.4302160966572" y="1077.0" />
-      <point x="35.30769230769238" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.dao.RoomDao" target="ru.senla.bialevich.entity.Room">
-      <point x="55.25" y="-25.5" />
-      <point x="2253.5416666666665" y="805.0" />
-      <point x="2087.460460517755" y="805.0" />
-      <point x="6.472222222222172" y="136.0" />
+      <point x="91.29166666666663" y="-114.0" />
+      <point x="3444.19447824584" y="1751.0" />
+      <point x="3913.670454545455" y="1751.0" />
+      <point x="-73.25" y="103.0" />
     </edge>
     <edge source="ru.senla.bialevich.entity.Guest" target="ru.senla.bialevich.entity.Room">
-      <point x="31.875" y="-81.0" />
-      <point x="1329.9975237889648" y="775.0" />
-      <point x="1996.8493494066443" y="775.0" />
-      <point x="-84.13888888888869" y="136.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.controller.ControllerHotel" target="ru.senla.bialevich.entity.Order">
-      <point x="-34.125" y="-323.0" />
-      <point x="512.3125" y="1087.0" />
-      <point x="514.8436404669465" y="1087.0" />
-      <point x="514.8436404669465" y="745.0" />
-      <point x="1198.4225237889648" y="745.0" />
-      <point x="-12.200000000000045" y="81.0" />
+      <point x="-105.41666666666652" y="-81.0" />
+      <point x="3320.503787878788" y="425.0" />
+      <point x="2247.116486822" y="425.0" />
+      <point x="109.42857142857156" y="136.0" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.api.service.RoomService">
-      <point x="18.199999999999818" y="-323.0" />
-      <point x="3072.6882382955328" y="2913.0" />
-      <point x="3668.685023788965" y="2913.0" />
-      <point x="66.5" y="158.0" />
+      <point x="-197.18181818181824" y="-323.0" />
+      <point x="3155.7209933973554" y="2537.0" />
+      <point x="1080.920454545455" y="2537.0" />
+      <point x="-98.75" y="158.0" />
     </edge>
     <edge source="ru.senla.bialevich.entity.UsedService" target="ru.senla.bialevich.entity.BaseEntity">
-      <point x="0.0" y="-70.0" />
-      <point x="3178.185023788965" y="93.0" />
-      <point x="1705.4975237889644" y="93.0" />
-      <point x="61.875" y="36.5" />
+      <point x="77.66666666666652" y="-70.0" />
+      <point x="5075.462121212122" y="93.0" />
+      <point x="3541.378787878788" y="93.0" />
+      <point x="61.5" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.service.OrderServiceImpl">
-      <point x="-91.0" y="-323.0" />
-      <point x="2963.488238295533" y="2953.0" />
-      <point x="440.3125" y="2953.0" />
+      <point x="-131.4545454545455" y="-323.0" />
+      <point x="3221.448266124628" y="2527.0" />
+      <point x="1420.003787878788" y="2527.0" />
       <point x="0.0" y="48.0" />
     </edge>
     <edge source="ru.senla.bialevich.dao.OrderDaoImpl" target="ru.senla.bialevich.dao.AbstractDaoImpl">
-      <point x="72.33333333333337" y="-36.5" />
-      <point x="539.7708333333335" y="1991.0" />
-      <point x="1874.1458333333335" y="1991.0" />
-      <point x="-71.25" y="59.0" />
+      <point x="59.25" y="-36.5" />
+      <point x="1575.920454545455" y="1295.0" />
+      <point x="2325.670454545455" y="1295.0" />
+      <point x="-93.75" y="59.0" />
     </edge>
     <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.entity.Room">
-      <point x="-110.0" y="-190.5" />
-      <point x="2944.488238295533" y="3679.0" />
-      <point x="37.0" y="3679.0" />
-      <point x="37.0" y="1097.0" />
-      <point x="525.8436404669465" y="1097.0" />
-      <point x="525.8436404669465" y="755.0" />
-      <point x="1970.960460517755" y="755.0" />
-      <point x="-110.02777777777783" y="136.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.constant.Constant">
-      <point x="146.66666666666652" y="-190.5" />
-      <point x="3201.1549049621995" y="3689.0" />
-      <point x="5493.906140466946" y="3689.0" />
-      <point x="-36.5" y="25.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.api.controller.ControllerHotel" target="ru.senla.bialevich.entity.Room">
-      <point x="34.125" y="-323.0" />
-      <point x="580.5625" y="765.0" />
-      <point x="1983.9049049621995" y="765.0" />
-      <point x="-97.08333333333348" y="136.0" />
+      <point x="-170.9375" y="-190.5" />
+      <point x="4878.277811579173" y="3253.0" />
+      <point x="733.5" y="3253.0" />
+      <point x="733.5" y="435.0" />
+      <point x="1973.545058250571" y="435.0" />
+      <point x="-164.14285714285734" y="136.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.util.comparator.roomComparator.RoomCountBegsComparator">
-      <point x="70.9333333333334" y="-158.0" />
-      <point x="3125.4215716288663" y="2477.0" />
-      <point x="3396.435023788965" y="2477.0" />
-      <point x="52.75" y="25.5" />
+      <point x="-70.53571428571422" y="-158.0" />
+      <point x="2139.242097293459" y="1781.0" />
+      <point x="1939.9204545454547" y="1781.0" />
+      <point x="-52.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.controller.ControllerHotelImpl" target="ru.senla.bialevich.service.UsedServiceServiceImpl">
-      <point x="54.59999999999991" y="-323.0" />
-      <point x="3109.088238295533" y="2933.0" />
-      <point x="4314.928867739674" y="2933.0" />
+      <point x="197.18181818181824" y="-323.0" />
+      <point x="3550.0846297609914" y="2537.0" />
+      <point x="4786.620454545455" y="2537.0" />
       <point x="0.0" y="59.0" />
     </edge>
-    <edge source="ru.senla.bialevich.api.controller.ControllerHotel" target="ru.senla.bialevich.entity.UsedService">
-      <point x="-102.375" y="-323.0" />
-      <point x="444.0625" y="1087.0" />
-      <point x="12.199999999999818" y="1087.0" />
-      <point x="12.199999999999818" y="293.0" />
-      <point x="3105.997523788965" y="293.0" />
-      <point x="-72.1875" y="70.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.util.comparator.roomComparator.RoomCountBegsComparator" target="ru.senla.bialevich.entity.Room">
-      <point x="0.0" y="-25.5" />
-      <point x="3343.685023788965" y="745.0" />
-      <point x="2165.1271271844216" y="745.0" />
-      <point x="84.13888888888869" y="136.0" />
-    </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.entity.Guest">
-      <point x="-105.0" y="-114.0" />
-      <point x="1178.7382382955325" y="2547.0" />
-      <point x="880.4375" y="2547.0" />
-      <point x="880.4375" y="1067.0" />
-      <point x="1262.8148314812724" y="1067.0" />
-      <point x="-35.30769230769238" y="81.0" />
+      <point x="13.041666666666742" y="-114.0" />
+      <point x="3365.9444782458404" y="1701.0" />
+      <point x="3425.920454545455" y="1701.0" />
+      <point x="0.0" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.dao.UsedServiceDaoImpl" target="ru.senla.bialevich.api.dao.UsedServiceDao">
-      <point x="0.0" y="-36.5" />
-      <point x="3978.935023788965" y="2001.0" />
-      <point x="3968.435023788965" y="2001.0" />
-      <point x="70.75" y="25.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.dao.OrderDaoImpl" target="ru.senla.bialevich.entity.Order">
-      <point x="-72.33333333333348" y="-36.5" />
-      <point x="395.1041666666665" y="2001.0" />
-      <point x="377.8632382955325" y="2001.0" />
-      <point x="377.8632382955325" y="725.0" />
-      <point x="1174.022523788965" y="725.0" />
-      <point x="-36.59999999999991" y="81.0" />
+      <point x="75.74999999999977" y="-36.5" />
+      <point x="4646.670454545455" y="1295.0" />
+      <point x="4619.045454545454" y="1295.0" />
+      <point x="-70.75" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.service.OrderServiceImpl" target="ru.senla.bialevich.api.dao.OrderDao">
-      <point x="81.375" y="-48.0" />
-      <point x="521.6875" y="2557.0" />
-      <point x="586.4375" y="2557.0" />
-      <point x="586.4375" y="1981.0" />
-      <point x="581.1875" y="1981.0" />
-      <point x="54.25" y="25.5" />
+      <point x="0.0" y="-48.0" />
+      <point x="1420.003787878788" y="1831.0" />
+      <point x="1387.670454545455" y="1831.0" />
+      <point x="1387.670454545455" y="1295.0" />
+      <point x="1368.295454545455" y="1295.0" />
+      <point x="-54.25" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.api.controller.ControllerHotel">
-      <point x="-73.33333333333348" y="-190.5" />
-      <point x="2981.1549049621995" y="3669.0" />
-      <point x="48.0" y="3669.0" />
-      <point x="48.0" y="1793.0" />
-      <point x="478.1875" y="1793.0" />
-      <point x="-68.25" y="323.0" />
+      <point x="-239.3125" y="-190.5" />
+      <point x="4809.902811579173" y="3263.0" />
+      <point x="180.75" y="3263.0" />
+      <point x="-180.75" y="323.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.GuestServiceImpl" target="ru.senla.bialevich.util.CopyAndSortList">
-      <point x="63.0" y="-114.0" />
-      <point x="1346.7382382955325" y="2477.0" />
-      <point x="2634.185023788965" y="2477.0" />
-      <point x="-160.0" y="25.5" />
+      <point x="39.125" y="-114.0" />
+      <point x="3392.0278115791734" y="1731.0" />
+      <point x="3596.420454545455" y="1731.0" />
+      <point x="-32.0" y="25.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.entity.Order">
-      <point x="-146.66666666666652" y="-190.5" />
-      <point x="2907.8215716288664" y="3689.0" />
-      <point x="26.0" y="3689.0" />
-      <point x="26.0" y="685.0" />
-      <point x="1125.2225237889647" y="685.0" />
-      <point x="-85.40000000000009" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.dao.UsedServiceDaoImpl" target="ru.senla.bialevich.dao.AbstractDaoImpl">
-      <point x="-94.33333333333348" y="-36.5" />
-      <point x="3884.601690455631" y="1981.0" />
-      <point x="2016.645833333333" y="1981.0" />
-      <point x="71.24999999999977" y="59.0" />
+      <point x="102.5625" y="-190.5" />
+      <point x="5151.777811579173" y="3243.0" />
+      <point x="5404.539772727273" y="3243.0" />
+      <point x="5404.539772727273" y="435.0" />
+      <point x="3521.7954545454545" y="435.0" />
+      <point x="117.91666666666652" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.dao.GuestDaoImpl" target="ru.senla.bialevich.dao.AbstractDaoImpl">
-      <point x="72.33333333333326" y="-36.5" />
-      <point x="1550.7708333333333" y="2001.0" />
-      <point x="1921.6458333333335" y="2001.0" />
-      <point x="-23.75" y="59.0" />
+      <point x="-59.25" y="-36.5" />
+      <point x="3237.670454545455" y="1285.0" />
+      <point x="2450.670454545455" y="1285.0" />
+      <point x="31.25" y="59.0" />
+    </edge>
+    <edge source="ru.senla.bialevich.dao.UsedServiceDaoImpl" target="ru.senla.bialevich.dao.AbstractDaoImpl">
+      <point x="-75.75000000000023" y="-36.5" />
+      <point x="4495.170454545455" y="1275.0" />
+      <point x="2513.170454545455" y="1275.0" />
+      <point x="93.75" y="59.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.OrderServiceImpl" target="ru.senla.bialevich.dao.OrderDaoImpl">
-      <point x="27.125" y="-48.0" />
+      <point x="64.33333333333331" y="-48.0" />
+      <point x="1484.3371212121215" y="1831.0" />
+      <point x="1516.670454545455" y="1831.0" />
       <point x="0.0" y="36.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.MenuRunner" target="ru.senla.bialevich.util.InputReader">
-      <point x="-38.625" y="-36.5" />
-      <point x="5475.488238295533" y="4120.0" />
-      <point x="5398.238238295533" y="4120.0" />
-      <point x="5398.238238295533" y="3679.0" />
-      <point x="5337.656140466946" y="3679.0" />
-      <point x="33.25" y="102.5" />
+      <point x="-9.125" y="-36.5" />
+      <point x="5820.423644912507" y="3714.0" />
+      <point x="5813.028207874058" y="3714.0" />
+      <point x="5813.028207874058" y="3263.0" />
+      <point x="5804.289772727273" y="3263.0" />
+      <point x="148.12499999999977" y="102.5" />
     </edge>
     <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.controller.ControllerHotelImpl">
-      <point x="0.0" y="-190.5" />
+      <point x="-102.5625" y="-190.5" />
+      <point x="4946.652811579173" y="3243.0" />
+      <point x="3352.9028115791734" y="3243.0" />
       <point x="0.0" y="323.0" />
     </edge>
-    <edge source="ru.senla.bialevich.dao.GuestDaoImpl" target="ru.senla.bialevich.entity.Guest">
-      <point x="-72.33333333333326" y="-36.5" />
-      <point x="1406.1041666666667" y="1981.0" />
-      <point x="1342.42697380028" y="1981.0" />
-      <point x="1342.42697380028" y="1097.0" />
-      <point x="1309.8917545581955" y="1097.0" />
-      <point x="11.769230769230717" y="81.0" />
-    </edge>
-    <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.util.InputReader">
-      <point x="110.0" y="-190.5" />
-      <point x="3164.488238295533" y="3679.0" />
-      <point x="5271.156140466946" y="3679.0" />
-      <point x="-33.25" y="102.5" />
-    </edge>
-    <edge source="ru.senla.bialevich.entity.UsedService" target="ru.senla.bialevich.entity.Guest">
-      <point x="-52.9375" y="70.0" />
-      <point x="3125.247523788965" y="313.0" />
-      <point x="1334.6225237889648" y="313.0" />
-      <point x="1334.6225237889648" y="745.0" />
-      <point x="1317.2475237889648" y="745.0" />
-      <point x="19.125" y="-81.0" />
-    </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator">
-      <point x="0.0" y="-158.0" />
-      <point x="3054.488238295533" y="2487.0" />
-      <point x="3058.935023788965" y="2487.0" />
+      <point x="-126.96428571428578" y="-158.0" />
+      <point x="2082.8135258648877" y="1801.0" />
+      <point x="1708.9204545454547" y="1801.0" />
       <point x="-52.75" y="25.5" />
     </edge>
-    <edge source="ru.senla.bialevich.service.OrderServiceImpl" target="ru.senla.bialevich.entity.Order">
-      <point x="-27.125" y="-48.0" />
-      <point x="413.1875" y="2547.0" />
-      <point x="348.4375" y="2547.0" />
-      <point x="348.4375" y="715.0" />
-      <point x="1161.8225237889649" y="715.0" />
-      <point x="-48.799999999999955" y="81.0" />
+    <edge source="ru.senla.bialevich.menu.action.ActionRunner" target="ru.senla.bialevich.util.InputReader">
+      <point x="170.9375" y="-190.5" />
+      <point x="5220.152811579173" y="3253.0" />
+      <point x="5508.039772727273" y="3253.0" />
+      <point x="-148.125" y="102.5" />
+    </edge>
+    <edge source="ru.senla.bialevich.entity.UsedService" target="ru.senla.bialevich.entity.Guest">
+      <point x="0.0" y="-70.0" />
+      <point x="4997.795454545455" y="657.0" />
+      <point x="3476.5204545454544" y="657.0" />
+      <point x="50.59999999999991" y="81.0" />
     </edge>
     <edge source="ru.senla.bialevich.service.RoomServiceImpl" target="ru.senla.bialevich.util.Printer">
-      <point x="124.13333333333321" y="-158.0" />
-      <point x="3178.621571628866" y="2527.0" />
-      <point x="4802.153773788965" y="2527.0" />
-      <point x="-67.78125" y="69.5" />
+      <point x="183.39285714285734" y="-158.0" />
+      <point x="2393.1706687220308" y="1771.0" />
+      <point x="5177.446022727273" y="1771.0" />
+      <point x="-97.09375" y="69.5" />
     </edge>
     <edge source="ru.senla.bialevich.util.writeAndRaed.WriteAndRead" target="ru.senla.bialevich.util.writeAndRaed.AnArrayOfStrings">
-      <point x="67.125" y="-36.5" />
-      <point x="6032.031140466946" y="2557.0" />
-      <point x="6062.906140466946" y="2557.0" />
+      <point x="74.625" y="-36.5" />
+      <point x="6278.164772727273" y="1831.0" />
+      <point x="6306.539772727273" y="1831.0" />
       <point x="53.25" y="25.5" />
     </edge>
-    <edge source="ru.senla.bialevich.util.comparator.roomComparator.RoomPriceComparator" target="ru.senla.bialevich.entity.Room">
-      <point x="0.0" y="-25.5" />
-      <point x="2475.685023788965" y="785.0" />
-      <point x="2113.3493494066443" y="785.0" />
-      <point x="32.36111111111131" y="136.0" />
-    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.14784876140808345" x="2386.543209876543" y="1707.4999999999998" />
-  <SelectedNodes>
-    <node>ru.senla.bialevich.entity.BaseEntity</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="0.1974921630094044" x="3180.0" y="1722.6825396825398" />
+  <SelectedNodes />
   <Categories>
     <Category>Properties</Category>
     <Category>Methods</Category>

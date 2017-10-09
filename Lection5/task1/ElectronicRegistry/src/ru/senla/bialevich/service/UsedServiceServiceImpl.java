@@ -4,6 +4,7 @@ import ru.senla.bialevich.api.dao.UsedServiceDao;
 import ru.senla.bialevich.api.service.UsedServiceService;
 import ru.senla.bialevich.dao.UsedServiceDaoImpl;
 import ru.senla.bialevich.entity.UsedService;
+import ru.senla.bialevich.enums.ServiceConstEnum;
 import ru.senla.bialevich.util.CopyAndSortList;
 import ru.senla.bialevich.util.Printer;
 import ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator;
@@ -14,11 +15,10 @@ public class UsedServiceServiceImpl implements UsedServiceService {
     private static final UsedServicePriceComparator PRICE_COMPARATOR = new UsedServicePriceComparator();
 
     private CopyAndSortList<UsedService> copy = new CopyAndSortList<UsedService>();
+
     private UsedServiceDao serviceDao = new UsedServiceDaoImpl();
 
     private Printer printer = new Printer();
-
-    private static final String MESSAGE1 = "Sorted used services by price";
 
     @Override
     public void add(UsedService service) {
@@ -32,7 +32,7 @@ public class UsedServiceServiceImpl implements UsedServiceService {
 
     @Override
     public void sortUsedServicesByPrice() {
-        printer.print(MESSAGE1);
+        printer.print(ServiceConstEnum.SORTED_SERVICE_BY_PRICE.getDescription());
         printer.print(copy.getCopiedAndSortedList(serviceDao.getAll(), PRICE_COMPARATOR));
     }
 

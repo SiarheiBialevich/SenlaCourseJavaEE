@@ -1,7 +1,7 @@
 package ru.senla.bialevich.menu.action;
 
 import ru.senla.bialevich.api.controller.ControllerHotel;
-import ru.senla.bialevich.constant.Constant;
+import ru.senla.bialevich.enums.MenuConstEnum;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
@@ -13,16 +13,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class ActionRunner {
-    private static final String ID_THE_GUEST = Constant.ID_THE_GUEST.getDescription();
-    private static final String ID_THE_ROOM = Constant.ID_THE_ROOM.getDescription();
-    private static final String ID_THE_ORDER = Constant.ID_THE_ORDER.getDescription();
-    private static final String ID_THE_SERVICE = Constant.ID_THE_SERVICE.getDescription();
 
     private ControllerHotel hotel = new ControllerHotelImpl();
     private InputReader reader = new InputReader();
 
     public void runAddANewGuest(Scanner scanner) {
-        Integer id = reader.getInputInt(scanner, ID_THE_GUEST);
+        Integer id = reader.getInputInt(scanner, MenuConstEnum.ID_THE_GUEST.getDescription());
         String name = reader.getInputString(scanner, "Enter the name of the guest.");
         String surname = reader.getInputString(scanner, "Enter the surname of the guest.");
 
@@ -30,7 +26,7 @@ public class ActionRunner {
     }
 
     public void runAddANewRoom(Scanner scanner) {
-        Integer id = reader.getInputInt(scanner, ID_THE_ROOM);
+        Integer id = reader.getInputInt(scanner, MenuConstEnum.ID_THE_ROOM.getDescription());
         Integer roomNumber = reader.getInputInt(scanner, "Enter the number of the room.");
         Integer countStars = reader.getInputInt(scanner, "Enter the count stars of the room.");
         Integer countOfBeds = reader.getInputInt(scanner, "Enter the count of beds of the room.");
@@ -40,7 +36,7 @@ public class ActionRunner {
     }
 
     public void runAddNewOrder(Scanner scanner) {
-        Integer id = reader.getInputInt(scanner, ID_THE_ORDER);
+        Integer id = reader.getInputInt(scanner, MenuConstEnum.ID_THE_ORDER.getDescription());
         Integer orderNumber = reader.getInputInt(scanner, "Enter the number of the order.");
         Date dateOfArrival = reader.getInputDate(scanner, "Enter the date of arrival (format dd/MM/yyyy).");
         Date dateOfDeparture = reader.getInputDate(scanner, "Enter the date of departure (format dd/MM/yyyy).");
@@ -50,7 +46,7 @@ public class ActionRunner {
     }
 
     public void runAddNewService(Scanner scanner) {
-        Integer id = reader.getInputInt(scanner, ID_THE_SERVICE);
+        Integer id = reader.getInputInt(scanner, MenuConstEnum.ID_THE_SERVICE.getDescription());
         String nameService = reader.getInputString(scanner, "Enter the name of the service.");
         Float price = reader.getInputFloat(scanner, "Enter the price of the service.");
 
@@ -96,23 +92,23 @@ public class ActionRunner {
     }
 
     public void runAddRoomFromAGuest(Scanner scanner) {
-        Integer idGuest = reader.getInputInt(scanner, ID_THE_GUEST);
-        Integer idRoom = reader.getInputInt(scanner, ID_THE_ROOM);
+        Integer idGuest = reader.getInputInt(scanner, MenuConstEnum.ID_THE_GUEST.getDescription());
+        Integer idRoom = reader.getInputInt(scanner, MenuConstEnum.ID_THE_ROOM.getDescription());
 
         hotel.getGuestById(idGuest).setRoom(hotel.getRoomById(idRoom));
         hotel.getRoomById(idRoom).addGuest(hotel.getGuestById(idGuest));
     }
 
     public void runAddOrderFromAGuest(Scanner scanner) {
-        Integer idGuest = reader.getInputInt(scanner, ID_THE_GUEST);
-        Integer idOrder = reader.getInputInt(scanner, ID_THE_ORDER);
+        Integer idGuest = reader.getInputInt(scanner, MenuConstEnum.ID_THE_GUEST.getDescription());
+        Integer idOrder = reader.getInputInt(scanner, MenuConstEnum.ID_THE_ORDER.getDescription());
 
         hotel.getGuestById(idGuest).setOrder(hotel.getOrderById(idOrder));
     }
 
     public void runAddServiceFromARoom(Scanner scanner) {
-        Integer idService = reader.getInputInt(scanner, ID_THE_SERVICE);
-        Integer idRoom = reader.getInputInt(scanner, ID_THE_ROOM);
+        Integer idService = reader.getInputInt(scanner, MenuConstEnum.ID_THE_SERVICE.getDescription());
+        Integer idRoom = reader.getInputInt(scanner, MenuConstEnum.ID_THE_ROOM.getDescription());
 
         hotel.getRoomById(idRoom).addService(hotel.getServiceById(idService));
     }

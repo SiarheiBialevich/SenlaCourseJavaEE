@@ -4,6 +4,7 @@ import ru.senla.bialevich.api.dao.GuestDao;
 import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.dao.GuestDaoImpl;
 import ru.senla.bialevich.entity.Guest;
+import ru.senla.bialevich.enums.ServiceConstEnum;
 import ru.senla.bialevich.util.CopyAndSortList;
 import ru.senla.bialevich.util.Printer;
 import ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator;
@@ -18,10 +19,6 @@ public class GuestServiceImpl implements GuestService {
     private GuestDao guestDao = new GuestDaoImpl();
     private Printer printer = new Printer();
     private CopyAndSortList<Guest> copy = new CopyAndSortList<Guest>();
-
-    private static final String MESSAGE1 = "Total number of guests";
-    private static final String MESSAGE2 = "Sorted guest by surname";
-    private static final String MESSAGE3 = "Sorted guest by date of departure";
 
     public void add(Guest guest) {
         guestDao.add(guest);
@@ -46,19 +43,19 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public void getTotalNumberOfGuests() {
-        printer.print(MESSAGE1);
+        printer.print(ServiceConstEnum.TOTAL_GUEST.getDescription());
         printer.print(guestDao.getAll().size());
     }
 
     @Override
     public void sortedGuestsBySurname() {
-        printer.print(MESSAGE2);
+        printer.print(ServiceConstEnum.SORTED_GUEST_BY_SYRNAME);
         printer.print(copy.getCopiedAndSortedList(guestDao.getAll(), SURNAME_COMPARATOR));
     }
 
     @Override
     public void sortedGuestsByDateOfDeparture() {
-        printer.print(MESSAGE3);
+        printer.print(ServiceConstEnum.SORTED_GUEST_BY_DATE_OF_DEPARTURE);
         printer.print(copy.getCopiedAndSortedList(guestDao.getAll(), DATE_OF_DEPARTURE_COMPARATOR));
     }
 
