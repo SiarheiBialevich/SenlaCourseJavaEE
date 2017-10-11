@@ -1,6 +1,7 @@
 package ru.senla.bialevich.api.service;
 
 import ru.senla.bialevich.entity.Guest;
+import ru.senla.bialevich.entity.UsedService;
 
 import java.util.List;
 
@@ -10,15 +11,15 @@ public interface GuestService {
 
     Guest getGuestById(Integer id);
 
-    void getAll();
+    List<Guest> getAll();
 
-    void getTotalNumberOfGuests();
+    Integer getTotalNumberOfGuests();
 
-    void sortedGuestsBySurname();
+    List<Guest> sortedGuestsBySurname();
 
-    void sortedGuestsByDateOfDeparture();
+    List<Guest> sortedGuestsByDateOfDeparture();
 
-    void getServiceByGuest(Guest guest);
+    List<UsedService> getServiceByGuest(Guest guest);
 
     List<Guest> getListGuests();
 }

@@ -8,15 +8,15 @@ public interface ControllerHotel {
 
     void addGuest(Guest guest);
 
-    void getAllGuest();
+    List<Guest> getAllGuest();
 
-    void getTotalNumberOfGuests();
+    Integer getTotalNumberOfGuests();
 
-    void sortedGuestsBySurname();
+    List<Guest> sortedGuestsBySurname();
 
-    void sortedGuestsByDateOfDeparture();
+    List<Guest> sortedGuestsByDateOfDeparture();
 
-    void getServiceByGuest(Guest guest);
+    List<UsedService> getServiceByGuest(Guest guest);
 
     List<Guest> getListGuests();
 
@@ -26,31 +26,31 @@ public interface ControllerHotel {
 
     void addRoom(Room room);
 
-    void getFreeRooms();
+    List<Room> getFreeRooms();
 
-    void sortedRoomsByPrice();
+    List<Room> sortedRoomsByPrice();
 
-    void sortedRoomsByCountBegs();
+    List<Room> sortedRoomsByCountBegs();
 
-    void sortedRoomsByCategory();
+    List<Room> sortedRoomsByCategory();
 
-    void sortedFreeRoomsByPrice();
+    List<Room> sortedFreeRoomsByPrice();
 
-    void sortedFreeRoomsByCountBegs();
+    List<Room> sortedFreeRoomsByCountBegs();
 
-    void sortedFreeRoomsByCategory();
+    List<Room> sortedFreeRoomsByCategory();
 
-    void getTotalFreeNumberOfRooms();
+    List<Room> getTotalFreeNumberOfRooms();
 
-    void getRoomTotalPrice(Room room);
+    Float getRoomTotalPrice(Room room);
 
-    void getAllRooms();
+    List<Room> getAllRooms();
 
     List<Room> getListRooms();
 
     void addUsedService(UsedService service);
 
-    void sortUsedServicesByPrice();
+    List<UsedService> sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
 

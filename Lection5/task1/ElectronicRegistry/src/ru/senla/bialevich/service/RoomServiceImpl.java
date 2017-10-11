@@ -4,22 +4,13 @@ import ru.senla.bialevich.api.dao.RoomDao;
 import ru.senla.bialevich.api.service.RoomService;
 import ru.senla.bialevich.dao.RoomDaoImpl;
 import ru.senla.bialevich.entity.Room;
-import ru.senla.bialevich.enums.ServiceConstEnum;
+import ru.senla.bialevich.enums.RoomSortComparators;
 import ru.senla.bialevich.util.CopyAndSortList;
-import ru.senla.bialevich.util.Printer;
-import ru.senla.bialevich.util.comparator.roomComparator.RoomCategoryComparator;
-import ru.senla.bialevich.util.comparator.roomComparator.RoomCountBegsComparator;
-import ru.senla.bialevich.util.comparator.roomComparator.RoomPriceComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RoomServiceImpl implements RoomService {
-    private static final RoomPriceComparator PRICE_COMPARATOR = new RoomPriceComparator();
-    private static final RoomCountBegsComparator COUNT_BEGS_COMPARATOR = new RoomCountBegsComparator();
-    private static final RoomCategoryComparator CATEGORY_COMPARATOR = new RoomCategoryComparator();
-
-    private Printer printer = new Printer();
     private CopyAndSortList<Room> copy = new CopyAndSortList<Room>();
 
     private RoomDao roomDao = new RoomDaoImpl();
@@ -36,7 +27,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> getFreeRooms() {
-        printer.print(ServiceConstEnum.GET_FREE_ROOMS.getDescription());
+
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < roomDao.getAll().size(); i++) {
             if (roomDao.getAll().get(i).isFree()) {
@@ -48,60 +39,55 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void sortedRoomsByPrice() {
-        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_PRICE.getDescription());
-        printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), PRICE_COMPARATOR));
+    public List<Room> sortedRoomsByPrice() {
+
+        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
     }
 
     @Override
-    public void sortedRoomsByCountBegs() {
-        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_COUNT_BEGS.getDescription());
-        printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), COUNT_BEGS_COMPARATOR));
+    public List<Room> sortedRoomsByCountBegs() {
+
+        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
     }
 
     @Override
-    public void sortedRoomsByCategory() {
-        printer.print(ServiceConstEnum.SORTED_ROOMS_BY_CATEGORY.getDescription());
-        printer.print(copy.getCopiedAndSortedList(roomDao.getAll(), CATEGORY_COMPARATOR));
+    public List<Room> sortedRoomsByCategory() {
+        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
     }
 
     @Override
-    public void sortedFreeRoomsByPrice() {
-        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_PRICE.getDescription());
-        printer.print(copy.getCopiedAndSortedList(getFreeRooms(), PRICE_COMPARATOR));
+    public List<Room> sortedFreeRoomsByPrice() {
+
+        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
     }
 
     @Override
-    public void sortedFreeRoomsByCountBegs() {
-        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_COUNT_BEGS.getDescription());
-        printer.print(copy.getCopiedAndSortedList(getFreeRooms(), COUNT_BEGS_COMPARATOR));
+    public List<Room> sortedFreeRoomsByCountBegs() {
+
+        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
     }
 
     @Override
-    public void sortedFreeRoomsByCategory() {
-        printer.print(ServiceConstEnum.SORTED_FREE_ROOMS_BY_COUNT_CATEGORY.getDescription());
-        printer.print(copy.getCopiedAndSortedList(getFreeRooms(), CATEGORY_COMPARATOR));
+    public List<Room> sortedFreeRoomsByCategory() {
+
+        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
     }
 
     @Override
-    public void getTotalFreeNumberOfRooms() {
-        printer.print(ServiceConstEnum.GET_TOTAL_FREE_ROOMS.getDescription());
-        printer.print(getFreeRooms().size());
+    public Integer getTotalFreeNumberOfRooms() {
+
+        return getFreeRooms().size();
     }
 
     @Override
-    public void getTotalPrice(Room room) {
-        printer.print(ServiceConstEnum.GET_TOTAL_PRICE_ROOMS.getDescription(), room.getRoomNumber(), room.getPrice());
+    public Float getTotalPrice(Room room) {
+        return room.getPrice();
     }
 
     @Override
-    public void getAll() {
-        printer.print(ServiceConstEnum.GET_ALL_ROOMS.getDescription());
+    public List<Room> getAll() {
 
-        for (int i = 0; i < roomDao.getAll().size(); i++) {
-            printer.print(roomDao.getAll().get(i));
-        }
-
+        return roomDao.getAll();
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface UsedServiceService {
 
     UsedService getUsedServiceById(Integer id);
 
-    void sortUsedServicesByPrice();
+    List<UsedService> sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
 }

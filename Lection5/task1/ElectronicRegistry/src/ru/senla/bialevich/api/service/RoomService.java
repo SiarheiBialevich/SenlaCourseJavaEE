@@ -12,23 +12,23 @@ public interface RoomService {
 
     List<Room> getFreeRooms();
 
-    void sortedRoomsByPrice();
+    List<Room> sortedRoomsByPrice();
 
-    void sortedRoomsByCountBegs();
+    List<Room> sortedRoomsByCountBegs();
 
-    void sortedRoomsByCategory();
+    List<Room> sortedRoomsByCategory();
 
-    void sortedFreeRoomsByPrice();
+    List<Room> sortedFreeRoomsByPrice();
 
-    void sortedFreeRoomsByCountBegs();
+    List<Room> sortedFreeRoomsByCountBegs();
 
-    void sortedFreeRoomsByCategory();
+    List<Room> sortedFreeRoomsByCategory();
 
-    void getTotalFreeNumberOfRooms();
+    Integer getTotalFreeNumberOfRooms();
 
-    void getTotalPrice(Room room);
+    Float getTotalPrice(Room room);
 
-    void getAll();
+    List<Room> getAll();
 
     List<Room> getListRooms();
 }
