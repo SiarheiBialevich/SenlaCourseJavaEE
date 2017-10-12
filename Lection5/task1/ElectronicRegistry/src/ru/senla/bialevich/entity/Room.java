@@ -123,7 +123,7 @@ public class Room extends BaseEntity implements Serializable {
         sb.append(", countOfBeds=").append(countOfBeds);
         sb.append(", isFree=").append(isFree);
         sb.append(", price=").append(price);
-        sb.append(", usedServiceList=").append(usedServiceList);
+//        sb.append(", usedServiceList=").append(usedServiceList);
         sb.append('}');
         return sb.toString();
     }

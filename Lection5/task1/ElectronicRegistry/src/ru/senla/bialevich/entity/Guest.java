@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Guest extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -8798790623190134533L;
 
-    private Integer id = 0;
+    private Integer id;
     private String name;
     private String surname;
     private Room room;
@@ -25,6 +25,10 @@ public class Guest extends BaseEntity implements Serializable {
     public Guest(Integer id, Room room) {
         this.id = id;
         this.room = room;
+    }
+
+    public Guest(Integer id) {
+        this.id = id;
     }
 
     @Override
@@ -75,8 +79,8 @@ public class Guest extends BaseEntity implements Serializable {
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
         sb.append(", surname='").append(surname).append('\'');
-        sb.append(", room=").append(room);
-        sb.append(", order=").append(order);
+//        sb.append(", room=").append(room);
+//        sb.append(", order=").append(order);
         sb.append('}');
         return sb.toString();
     }

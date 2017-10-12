@@ -8,10 +8,11 @@ public class GuestSurnameComparator implements Comparator<Guest> {
     @Override
     public int compare(Guest o1, Guest o2) {
         if (o1.getSurname() == null) {
-            return (o2.getSurname() == null) ? 0 : -1;
-        }
-        if (o2.getSurname() == null) {
+            return -1;
+        } else if (o2.getSurname() == null) {
             return 1;
+        } else if (o1.getSurname() == null && o2.getSurname() == null) {
+            return 0;
         }
         return o1.getSurname().compareTo(o2.getSurname());
     }
