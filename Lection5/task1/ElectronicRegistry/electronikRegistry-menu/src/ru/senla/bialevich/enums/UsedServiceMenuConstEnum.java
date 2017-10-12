@@ -1,7 +1,7 @@
 package ru.senla.bialevich.enums;
 
 public enum UsedServiceMenuConstEnum {
-    ADD_NEW_SERVICE("To add a new service"),
+    ADD_NEW_SERVICE("Add a new service"),
     GET_ALL_SERVICE("Get all used service"),
     SORT("Sort"),
     WRITE_SERVICE_TO_FILE("Write list used services to file"),

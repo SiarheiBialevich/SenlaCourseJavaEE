@@ -20,6 +20,7 @@ public class MainMenu {
     public void start() {
 
         printer.print("Hello.");
+        printer.print("Please make your choice.");
 
         boolean exit = false;
 
@@ -45,10 +46,10 @@ public class MainMenu {
 
     private void MakeChoice(Integer choice) {
         switch (choice) {
-            case 1: menuController.showGuests(); break;
-            case 2: menuController.showRooms(); break;
-            case 3: menuController.showOrders(); break;
-            case 4: menuController.showUsedService(); break;
+            case 1: menuController.guestsMenu(); break;
+            case 2: menuController.roomsMenu(); break;
+            case 3: menuController.ordersMenu(); break;
+            case 4: menuController.usedServiceMenu(); break;
             default: printer.print("Incorrect choice");
         }
     }

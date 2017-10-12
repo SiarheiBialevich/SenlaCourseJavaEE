@@ -4,11 +4,15 @@ import ru.senla.bialevich.api.RoomMenuController;
 import ru.senla.bialevich.api.controller.ControllerHotel;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
+import ru.senla.bialevich.util.ReadRoomFromFile;
+import ru.senla.bialevich.util.WriteToFile;
 
 import java.util.List;
 
 public class RoomMenuControllerImpl implements RoomMenuController {
     private ControllerHotel hotel = new ControllerHotelImpl();
+    private WriteToFile writeToFile = new WriteToFile();
+    private ReadRoomFromFile readRoomFromFile = new ReadRoomFromFile();
 
     @Override
     public void addRoom(Room room) {
@@ -68,5 +72,20 @@ public class RoomMenuControllerImpl implements RoomMenuController {
     @Override
     public void addServiceToTheRoom(Room room, UsedService service) {
         room.addService(service);
+    }
+
+    @Override
+    public Room getRoomById(Integer id) {
+        return hotel.getRoomById(id);
+    }
+
+    @Override
+    public void writeToFile(String filePath, List<Room> rooms) {
+        writeToFile.write(filePath, rooms);
+    }
+
+    @Override
+    public List<Room> readFromFile(String filePath) {
+        return readFromFile(filePath);
     }
 }

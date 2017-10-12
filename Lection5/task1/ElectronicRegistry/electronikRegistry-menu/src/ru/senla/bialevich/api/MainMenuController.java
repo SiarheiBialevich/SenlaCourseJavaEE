@@ -2,11 +2,11 @@ package ru.senla.bialevich.api;
 
 public interface MainMenuController {
 
-    void showGuests();
+    void guestsMenu();
 
-    void showRooms();
+    void roomsMenu();
 
-    void showOrders();
+    void ordersMenu();
 
-    void showUsedService();
+    void usedServiceMenu();
 }

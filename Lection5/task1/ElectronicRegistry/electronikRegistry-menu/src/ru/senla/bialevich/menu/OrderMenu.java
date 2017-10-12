@@ -21,6 +21,7 @@ public class OrderMenu {
 
     public void start() {
 
+        printer.print("Order menu.");
         printer.print("Select the required action");
 
         boolean exit = false;
@@ -54,7 +55,12 @@ public class OrderMenu {
             case 2:
                 printer.print(orderMenu.getListOrders());
                 break;
-            default: printer.print("Incorrect choice");
+            case 3:
+//                    String filePath = reader.getInputString(scanner, "Enter the path to save the file");
+                orderMenu.writeToFife("./text/Order.csv", orderMenu.getListOrders());
+                break;
+            default:
+                printer.print("Incorrect choice");
         }
     }
 }

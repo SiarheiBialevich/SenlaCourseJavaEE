@@ -19,6 +19,7 @@ public class GuestSortedMenu {
 
     public void start() {
 
+        printer.print("Guest sorted menu.");
         printer.print("Select the required action");
 
         boolean exit = false;

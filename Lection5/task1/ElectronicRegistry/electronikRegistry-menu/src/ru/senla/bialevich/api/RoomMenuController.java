@@ -30,4 +30,10 @@ public interface RoomMenuController {
     List<Room> sortedFreeRoomsByCategory();
 
     void addServiceToTheRoom(Room room, UsedService service);
+
+    Room getRoomById(Integer id);
+
+    void writeToFile(String filePath, List<Room> rooms);
+
+    List<Room> readFromFile(String filePath);
 }

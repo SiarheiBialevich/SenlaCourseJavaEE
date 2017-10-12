@@ -11,4 +11,10 @@ public interface UsedServiceMenuController {
     List<UsedService> sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
+
+    UsedService getServiceById(Integer id);
+
+    void writeToFile(String filePath, List<UsedService> services);
+
+    List<UsedService> readFromFile(String filePath);
 }
