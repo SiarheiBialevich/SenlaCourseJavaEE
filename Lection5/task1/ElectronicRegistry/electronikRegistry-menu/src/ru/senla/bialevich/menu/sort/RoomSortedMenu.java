@@ -19,6 +19,7 @@ public class RoomSortedMenu {
 
     public void start() {
 
+        printer.print("Room sorted menu.");
         printer.print("Select the required action");
 
         boolean exit = false;

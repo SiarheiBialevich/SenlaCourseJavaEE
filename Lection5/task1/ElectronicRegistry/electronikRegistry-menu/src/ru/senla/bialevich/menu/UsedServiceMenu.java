@@ -21,6 +21,7 @@ public class UsedServiceMenu {
 
     public void start() {
 
+        printer.print("Used service menu.");
         printer.print("Select the required action");
 
         boolean exit = false;
@@ -40,7 +41,6 @@ public class UsedServiceMenu {
 
             MakeChoice(choice);
         }
-
     }
 
     private void MakeChoice(Integer choice) {
@@ -57,6 +57,14 @@ public class UsedServiceMenu {
             case 3:
                 UsedServiceSortedMenu serviceMenu = new UsedServiceSortedMenu(this.serviceMenu);
                 serviceMenu.start();
+            case 4:
+//                String filePath = reader.getInputString(scanner, "Enter the path to save the file");
+                this.serviceMenu.writeToFile("./text/Service.csv", this.serviceMenu.getListUsedServices());
+                break;
+            case 5:
+//                String filePath = reader.getInputString(scanner, "Enter the path to save the file");
+                printer.print(this.serviceMenu.readFromFile("./text/Service.csv"));
+                break;
             default: printer.print("Incorrect choice");
         }
     }

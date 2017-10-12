@@ -25,4 +25,10 @@ public interface GuestMenuController {
 
     void addOrderToTheGuest(Guest guest, Order order);
 
+    Guest getGuestById(Integer id);
+
+    void writeToFile(String filePath, List<Guest> guests);
+
+    List<Guest> readFromFile(String filePath);
+
 }

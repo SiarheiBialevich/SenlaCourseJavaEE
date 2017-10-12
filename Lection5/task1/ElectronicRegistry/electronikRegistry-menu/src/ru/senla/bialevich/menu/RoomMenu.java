@@ -1,8 +1,7 @@
 package ru.senla.bialevich.menu;
 
 import ru.senla.bialevich.api.RoomMenuController;
-import ru.senla.bialevich.api.controller.ControllerHotel;
-import ru.senla.bialevich.controller.ControllerHotelImpl;
+import ru.senla.bialevich.api.UsedServiceMenuController;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.enums.RoomMenuConstEnum;
 import ru.senla.bialevich.menu.sort.RoomSortedMenu;
@@ -15,8 +14,8 @@ public class RoomMenu {
     private Scanner scanner = new Scanner(System.in);
     private Printer printer = new Printer();
     private InputReader reader = new InputReader();
-    private ControllerHotel hotel = new ControllerHotelImpl();
     private RoomMenuController roomMenu;
+    private UsedServiceMenuController serviceMenu;
 
     public RoomMenu(RoomMenuController roomMenu) {
         this.roomMenu = roomMenu;
@@ -24,6 +23,7 @@ public class RoomMenu {
 
     public void start() {
 
+        printer.print("Room menu.");
         printer.print("Select the required action");
 
         boolean exit = false;
@@ -43,7 +43,6 @@ public class RoomMenu {
 
             MakeChoice(choice);
         }
-
     }
 
     private void MakeChoice(Integer choice) {
@@ -64,7 +63,7 @@ public class RoomMenu {
                 break;
             case 4:
                 Integer idRoom = reader.getInputInt(scanner, "Enter id the room.");
-                printer.print(roomMenu.getRoomTotalPrice(hotel.getRoomById(idRoom)));
+                printer.print(roomMenu.getRoomTotalPrice(roomMenu.getRoomById(idRoom)));
                 break;
             case 5:
                 printer.print(roomMenu.getAllRooms());
@@ -72,10 +71,18 @@ public class RoomMenu {
             case 6:
                 Integer idRoomS = reader.getInputInt(scanner, "Enter id the room.");
                 Integer idService = reader.getInputInt(scanner, "Enter id the used service.");
-                roomMenu.addServiceToTheRoom(hotel.getRoomById(idRoomS), hotel.getServiceById(idService));
+                roomMenu.addServiceToTheRoom(this.roomMenu.getRoomById(idRoomS), serviceMenu.getServiceById(idService));
             case 7:
                 RoomSortedMenu roomMenu = new RoomSortedMenu(this.roomMenu);
                 roomMenu.start();
+            case 8:
+//                String filePath = reader.getInputString(scanner, "Enter the path to save the file");
+                this.roomMenu.writeToFile("./text/Room.csv", this.roomMenu.getAllRooms());
+                break;
+            case 9:
+//                String filePath = reader.getInputString(scanner, "Enter the path to read from file");
+                printer.print(this.roomMenu.readFromFile("./text/Room.csv"));
+                break;
             default: printer.print("Incorrect choice");
         }
     }

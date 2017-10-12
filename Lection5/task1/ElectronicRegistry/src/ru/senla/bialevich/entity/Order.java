@@ -68,7 +68,8 @@ public class Order extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
-        sb.append(" orderNumber = ").append(orderNumber);
+        sb.append("id = ").append(id);
+        sb.append(", orderNumber = ").append(orderNumber);
         sb.append(", dateOfArrival = ").append(dateOfArrival);
         sb.append(", dateOfDeparture = ").append(dateOfDeparture);
         sb.append('}');

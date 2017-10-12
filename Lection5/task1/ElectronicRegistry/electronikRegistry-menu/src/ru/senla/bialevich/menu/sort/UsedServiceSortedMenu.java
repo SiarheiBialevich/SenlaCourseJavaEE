@@ -19,6 +19,7 @@ public class UsedServiceSortedMenu {
 
     public void start() {
 
+        printer.print("Used service sorted menu.");
         printer.print("Select the required action");
 
         boolean exit = false;

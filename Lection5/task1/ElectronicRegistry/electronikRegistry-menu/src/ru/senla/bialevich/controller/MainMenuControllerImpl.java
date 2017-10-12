@@ -14,25 +14,25 @@ public class MainMenuControllerImpl implements MainMenuController {
     private UsedServiceMenuController serviceMenu = new UsedServiceMenuControllerImpl();
 
     @Override
-    public void showGuests() {
+    public void guestsMenu() {
         GuestMenu guestMenu = new GuestMenu(this.guestMenu);
         guestMenu.start();
     }
 
     @Override
-    public void showRooms() {
+    public void roomsMenu() {
         RoomMenu roomMenu = new RoomMenu(this.roomMenu);
         roomMenu.start();
     }
 
     @Override
-    public void showOrders() {
+    public void ordersMenu() {
         OrderMenu orderMenu = new OrderMenu(this.orderMenu);
         orderMenu.start();
     }
 
     @Override
-    public void showUsedService() {
+    public void usedServiceMenu() {
         UsedServiceMenu serviceMenu = new UsedServiceMenu(this.serviceMenu);
         serviceMenu.start();
     }
