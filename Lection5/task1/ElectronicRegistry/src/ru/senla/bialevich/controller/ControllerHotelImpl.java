@@ -32,28 +32,28 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
-    public void getAllGuest() {
-        guestService.getAll();
+    public List<Guest> getAllGuest() {
+        return guestService.getAll();
     }
 
     @Override
-    public void getTotalNumberOfGuests() {
-        guestService.getTotalNumberOfGuests();
+    public Integer getTotalNumberOfGuests() {
+        return guestService.getTotalNumberOfGuests();
     }
 
     @Override
-    public void sortedGuestsBySurname() {
-        guestService.sortedGuestsBySurname();
+    public List<Guest> sortedGuestsBySurname() {
+        return guestService.sortedGuestsBySurname();
     }
 
     @Override
-    public void sortedGuestsByDateOfDeparture() {
-        guestService.sortedGuestsByDateOfDeparture();
+    public List<Guest> sortedGuestsByDateOfDeparture() {
+        return guestService.sortedGuestsByDateOfDeparture();
     }
 
     @Override
-    public void getServiceByGuest(Guest guest) {
-        guestService.getServiceByGuest(guest);
+    public List<UsedService> getServiceByGuest(Guest guest) {
+        return guestService.getServiceByGuest(guest);
     }
 
     @Override
@@ -77,53 +77,53 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
-    public void getFreeRooms() {
-        printer.print(roomService.getFreeRooms());
+    public List<Room> getFreeRooms() {
+        return roomService.getFreeRooms();
     }
 
     @Override
-    public void sortedRoomsByPrice() {
-        roomService.sortedRoomsByPrice();
+    public List<Room> sortedRoomsByPrice() {
+        return roomService.sortedRoomsByPrice();
     }
 
     @Override
-    public void sortedRoomsByCountBegs() {
-        roomService.sortedRoomsByCountBegs();
+    public List<Room> sortedRoomsByCountBegs() {
+        return roomService.sortedRoomsByCountBegs();
     }
 
     @Override
-    public void sortedRoomsByCategory() {
-        roomService.sortedRoomsByCategory();
+    public List<Room> sortedRoomsByCategory() {
+        return roomService.sortedRoomsByCategory();
     }
 
     @Override
-    public void sortedFreeRoomsByPrice() {
-        roomService.sortedFreeRoomsByPrice();
+    public List<Room> sortedFreeRoomsByPrice() {
+        return roomService.sortedFreeRoomsByPrice();
     }
 
     @Override
-    public void sortedFreeRoomsByCountBegs() {
-        roomService.sortedFreeRoomsByCountBegs();
+    public List<Room> sortedFreeRoomsByCountBegs() {
+        return roomService.sortedFreeRoomsByCountBegs();
     }
 
     @Override
-    public void sortedFreeRoomsByCategory() {
-        roomService.sortedFreeRoomsByCategory();
+    public List<Room> sortedFreeRoomsByCategory() {
+        return roomService.sortedFreeRoomsByCategory();
     }
 
     @Override
-    public void getTotalFreeNumberOfRooms() {
-        roomService.getFreeRooms();
+    public List<Room> getTotalFreeNumberOfRooms() {
+        return roomService.getFreeRooms();
     }
 
     @Override
-    public void getRoomTotalPrice(Room room) {
-        roomService.getTotalPrice(room);
+    public Float getRoomTotalPrice(Room room) {
+        return roomService.getTotalPrice(room);
     }
 
     @Override
-    public void getAllRooms() {
-        roomService.getAll();
+    public List<Room> getAllRooms() {
+        return roomService.getAll();
     }
 
     @Override
@@ -137,8 +137,8 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
-    public void sortUsedServicesByPrice() {
-        usedService.sortUsedServicesByPrice();
+    public List<UsedService> sortUsedServicesByPrice() {
+        return usedService.sortUsedServicesByPrice();
     }
 
     @Override

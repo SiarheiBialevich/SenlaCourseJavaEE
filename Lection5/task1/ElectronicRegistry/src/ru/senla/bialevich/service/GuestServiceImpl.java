@@ -4,20 +4,14 @@ import ru.senla.bialevich.api.dao.GuestDao;
 import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.dao.GuestDaoImpl;
 import ru.senla.bialevich.entity.Guest;
-import ru.senla.bialevich.enums.ServiceConstEnum;
+import ru.senla.bialevich.entity.UsedService;
+import ru.senla.bialevich.enums.GuestSortComparators;
 import ru.senla.bialevich.util.CopyAndSortList;
-import ru.senla.bialevich.util.Printer;
-import ru.senla.bialevich.util.comparator.guestComparator.GuestDateOfDepartureComparator;
-import ru.senla.bialevich.util.comparator.guestComparator.GuestSurnameComparator;
 
 import java.util.List;
 
 public class GuestServiceImpl implements GuestService {
-    private static final GuestSurnameComparator SURNAME_COMPARATOR = new GuestSurnameComparator();
-    private static final GuestDateOfDepartureComparator DATE_OF_DEPARTURE_COMPARATOR = new GuestDateOfDepartureComparator();
-
     private GuestDao guestDao = new GuestDaoImpl();
-    private Printer printer = new Printer();
     private CopyAndSortList<Guest> copy = new CopyAndSortList<Guest>();
 
     public void add(Guest guest) {
@@ -29,12 +23,9 @@ public class GuestServiceImpl implements GuestService {
         return guestDao.getGuestById(id);
     }
 
-    public void getAll() {
+    public List<Guest> getAll() {
 
-        for (int i = 0; i < guestDao.getAll().size(); i++) {
-            printer.print(guestDao.getAll().get(i));
-        }
-
+        return guestDao.getAll();
     }
 
     public void delete(Guest guest) {
@@ -42,26 +33,27 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public void getTotalNumberOfGuests() {
-        printer.print(ServiceConstEnum.TOTAL_GUEST.getDescription());
-        printer.print(guestDao.getAll().size());
+    public Integer getTotalNumberOfGuests() {
+
+        return guestDao.getAll().size();
     }
 
     @Override
-    public void sortedGuestsBySurname() {
-        printer.print(ServiceConstEnum.SORTED_GUEST_BY_SURNAME);
-        printer.print(copy.getCopiedAndSortedList(guestDao.getAll(), SURNAME_COMPARATOR));
+    public List<Guest> sortedGuestsBySurname() {
+
+        return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.SURNAME.getGuestComparator());
+    }
+
+
+    @Override
+    public List<Guest> sortedGuestsByDateOfDeparture() {
+
+        return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.DATE_OF_DEPARTURE.getGuestComparator());
     }
 
     @Override
-    public void sortedGuestsByDateOfDeparture() {
-        printer.print(ServiceConstEnum.SORTED_GUEST_BY_DATE_OF_DEPARTURE);
-        printer.print(copy.getCopiedAndSortedList(guestDao.getAll(), DATE_OF_DEPARTURE_COMPARATOR));
-    }
-
-    @Override
-    public void getServiceByGuest(Guest guest) {
-        printer.print(guest.getRoom().getUsedServiceList());
+    public List<UsedService> getServiceByGuest(Guest guest) {
+        return guest.getRoom().getUsedServiceList();
     }
 
     @Override

@@ -1,16 +1,21 @@
-package ru.senla.bialevich.api.service;
+package ru.senla.bialevich.api;
 
 import ru.senla.bialevich.entity.Room;
+import ru.senla.bialevich.entity.UsedService;
 
 import java.util.List;
 
-public interface RoomService {
+public interface RoomMenuController {
 
-    void add(Room room);
-
-    Room getRoomById(Integer id);
+    void addRoom(Room room);
 
     List<Room> getFreeRooms();
+
+    List<Room> getTotalFreeNumberOfRooms();
+
+    Float getRoomTotalPrice(Room room);
+
+    List<Room> getAllRooms();
 
     List<Room> sortedRoomsByPrice();
 
@@ -24,11 +29,5 @@ public interface RoomService {
 
     List<Room> sortedFreeRoomsByCategory();
 
-    Integer getTotalFreeNumberOfRooms();
-
-    Float getTotalPrice(Room room);
-
-    List<Room> getAll();
-
-    List<Room> getListRooms();
+    void addServiceToTheRoom(Room room, UsedService service);
 }

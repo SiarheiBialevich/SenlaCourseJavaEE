@@ -1,14 +1,12 @@
-package ru.senla.bialevich.api.service;
+package ru.senla.bialevich.api;
 
 import ru.senla.bialevich.entity.UsedService;
 
 import java.util.List;
 
-public interface UsedServiceService {
+public interface UsedServiceMenuController {
 
-    void add(UsedService service);
-
-    UsedService getUsedServiceById(Integer id);
+    void addUsedService(UsedService service);
 
     List<UsedService> sortUsedServicesByPrice();
 
