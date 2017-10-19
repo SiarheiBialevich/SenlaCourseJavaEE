@@ -23,7 +23,7 @@ public class MenuController {
 
             Integer choice = reader.getInputInt(scanner) - 1;
 
-            if (choice >= navigator.getCurrentMenu().getMenuItems().size()) {
+            if (choice >= navigator.getCurrentMenu().getMenuItems().size() || choice <= 0) {
                 printer.print("Incorrect choice. Try again");
                 continue;
             } else {

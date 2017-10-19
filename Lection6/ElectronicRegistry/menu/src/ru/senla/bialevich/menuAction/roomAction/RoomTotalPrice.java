@@ -18,7 +18,12 @@ public class RoomTotalPrice implements IAction {
 
         try {
             Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
-            printer.print(ControllerHotelImpl.getInstance().getRoomTotalPrice(ControllerHotelImpl.getInstance().getRoomById(idRoom)));
+
+            if (ControllerHotelImpl.getInstance().getRoomById(idRoom) == null) {
+                printer.print("Room not found.");
+            } else {
+                printer.print(ControllerHotelImpl.getInstance().getRoomTotalPrice(ControllerHotelImpl.getInstance().getRoomById(idRoom)));
+            }
         } catch (Exception e) {
             log.error(e.getMessage());
         }

@@ -13,10 +13,8 @@ import java.util.Properties;
 
 public class ClassSetting {
     private static final Logger log = Logger.getLogger(ClassSetting.class);
-    private final String PATH_TO_CONFIG = "config.properties";
+    private final String PATH_TO_CONFIG = "property/resources/config.properties";
     private Map<String, String> propsHolder = null;
-
-    private Printer printer = new Printer();
 
     public ClassSetting() {
         this.propsHolder = new HashMap<>();
