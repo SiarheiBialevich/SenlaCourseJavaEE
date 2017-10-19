@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Guest extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -8798790623190134533L;
 
-    private Integer id;
+    private Integer id = 1;
     private String name;
     private String surname;
     private Room room;

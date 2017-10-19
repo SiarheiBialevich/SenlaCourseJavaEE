@@ -9,9 +9,8 @@ public class GetAllService implements IAction {
 
     @Override
     public void execute() {
-        ControllerHotel hotel = new ControllerHotelImpl();
         Printer printer = new Printer();
 
-        printer.print(hotel.getListUsedServices());
+        printer.print(ControllerHotelImpl.getInstance().getListUsedServices());
     }
 }

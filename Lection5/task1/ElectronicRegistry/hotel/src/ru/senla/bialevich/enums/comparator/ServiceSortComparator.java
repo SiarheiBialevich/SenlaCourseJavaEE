@@ -1,4 +1,4 @@
-package ru.senla.bialevich.enums;
+package ru.senla.bialevich.enums.comparator;
 
 import ru.senla.bialevich.entity.UsedService;
 import ru.senla.bialevich.util.comparator.usedServiceComparator.UsedServicePriceComparator;

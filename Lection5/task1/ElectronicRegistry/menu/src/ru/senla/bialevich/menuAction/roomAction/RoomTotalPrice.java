@@ -1,7 +1,7 @@
 package ru.senla.bialevich.menuAction.roomAction;
 
+import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.IAction;
-import ru.senla.bialevich.api.controller.ControllerHotel;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.util.InputReader;
 import ru.senla.bialevich.util.Printer;
@@ -9,15 +9,18 @@ import ru.senla.bialevich.util.Printer;
 import java.util.Scanner;
 
 public class RoomTotalPrice implements IAction {
+    private static final Logger log = Logger.getLogger(RoomTotalPrice.class);
 
     @Override
     public void execute() {
-        ControllerHotel hotel = new ControllerHotelImpl();
         Printer printer = new Printer();
-        InputReader reader = new InputReader();
         Scanner scanner = new Scanner(System.in);
 
-        Integer idRoom = reader.getInputInt(scanner, "Enter ID the room.");
-        printer.print(hotel.getRoomTotalPrice(hotel.getRoomById(idRoom)));
+        try {
+            Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
+            printer.print(ControllerHotelImpl.getInstance().getRoomTotalPrice(ControllerHotelImpl.getInstance().getRoomById(idRoom)));
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 }

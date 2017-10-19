@@ -7,36 +7,36 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class InputReader {
-    private Printer printer = new Printer();
-    private FormatString format = new FormatString();
-    private DateUtil dateUtil = new DateUtil();
+    private static Printer printer = new Printer();
+    private static FormatString format = new FormatString();
+    private static DateUtil dateUtil = new DateUtil();
     private static final Logger log = Logger.getLogger(Integer.class);
 
-    public Integer getInputInt(Scanner scanner, String message) {
+    public static Integer getInputInt(Scanner scanner, String message) {
         printer.print(message);
 
         return getInputInt(scanner);
     }
 
-    public String getInputString(Scanner scanner, String message) {
+    public static String getInputString(Scanner scanner, String message) {
         printer.print(message);
 
         return getInputString(scanner);
     }
 
-    public Float getInputFloat(Scanner scanner, String message) {
+    public static Float getInputFloat(Scanner scanner, String message) {
         printer.print(message);
 
         return getInputFloat(scanner);
     }
 
-    public Date getInputDate(Scanner scanner, String message) {
+    public static Date getInputDate(Scanner scanner, String message) {
         printer.print(message);
 
         return getInputDate(scanner);
     }
 
-    public Integer getInputInt(Scanner scanner) {
+    public static Integer getInputInt(Scanner scanner) {
         boolean isValid = false;
         Integer input = null;
 
@@ -54,7 +54,7 @@ public class InputReader {
         return input;
     }
 
-    private String getInputString(Scanner scanner) {
+    private static String getInputString(Scanner scanner) {
         boolean isValid = false;
         String formatString = null;
 
@@ -75,7 +75,7 @@ public class InputReader {
         return formatString;
     }
 
-    private Float getInputFloat(Scanner scanner) {
+    private static Float getInputFloat(Scanner scanner) {
         boolean isValid = false;
         Float input = -1.0f;
 
@@ -93,7 +93,7 @@ public class InputReader {
         return input;
     }
 
-    private Date getInputDate(Scanner scanner) {
+    private static Date getInputDate(Scanner scanner) {
         boolean isValid = false;
         String userDataString;
         Date date = null;

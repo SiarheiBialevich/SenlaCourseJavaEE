@@ -10,9 +10,24 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao = new OrderDaoImpl();
 
+    private Integer currentId = 1;
+
+    private void calcId() {
+        Integer maxId = 0;
+
+        for (Order order :orderDao.getAll()) {
+            if (order.getId() > maxId) {
+                maxId = order.getId();
+            }
+        }
+        currentId = maxId + 1;
+    }
+
     @Override
     public void add(Order order) {
+        order.setId(currentId++);
         orderDao.add(order);
+        calcId();
     }
 
     @Override

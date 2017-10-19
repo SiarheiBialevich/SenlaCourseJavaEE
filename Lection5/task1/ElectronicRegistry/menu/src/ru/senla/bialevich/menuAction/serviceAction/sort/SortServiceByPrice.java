@@ -9,9 +9,8 @@ public class SortServiceByPrice implements IAction {
 
     @Override
     public void execute() {
-        ControllerHotel hotel = new ControllerHotelImpl();
         Printer printer = new Printer();
 
-        printer.print(hotel.sortUsedServicesByPrice());
+        printer.print(ControllerHotelImpl.getInstance().sortUsedServicesByPrice());
     }
 }

@@ -1,7 +1,7 @@
 package ru.senla.bialevich.menuAction.orderAction;
 
+import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.IAction;
-import ru.senla.bialevich.api.controller.ControllerHotel;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.util.InputReader;
@@ -10,18 +10,20 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class AddOrder implements IAction {
+    private static final Logger log = Logger.getLogger(AddOrder.class);
 
     @Override
     public void execute() {
-        ControllerHotel hotel = new ControllerHotelImpl();
-        InputReader reader = new InputReader();
         Scanner scanner = new Scanner(System.in);
 
-        Integer id = reader.getInputInt(scanner, "Enter ID of the order");
-        Integer orderNumber = reader.getInputInt(scanner, "Enter the number of the order.");
-        Date dateOfArrival = reader.getInputDate(scanner, "Enter the date of arrival (format dd/MM/yyyy).");
-        Date dateOfDeparture = reader.getInputDate(scanner, "Enter the date of departure (format dd/MM/yyyy).");
+        try {
+            Integer orderNumber = InputReader.getInputInt(scanner, "Enter the number of the order.");
+            Date dateOfArrival = InputReader.getInputDate(scanner, "Enter the date of arrival (format dd/MM/yyyy).");
+            Date dateOfDeparture = InputReader.getInputDate(scanner, "Enter the date of departure (format dd/MM/yyyy).");
 
-        hotel.addOrder(new Order(id, orderNumber, dateOfArrival, dateOfDeparture));
+            ControllerHotelImpl.getInstance().addOrder(new Order(orderNumber, dateOfArrival, dateOfDeparture));
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 }

@@ -24,7 +24,15 @@ public class ControllerHotelImpl implements ControllerHotel {
     private RoomService roomService = new RoomServiceImpl();
     private UsedServiceService usedService = new UsedServiceServiceImpl();
 
-    private Printer printer = new Printer();
+    private static ControllerHotel hotel;
+
+    public static ControllerHotel getInstance() {
+        if (hotel == null) {
+            hotel = new ControllerHotelImpl();
+        }
+
+        return hotel;
+    }
 
     @Override
     public void addGuest(Guest guest) {
