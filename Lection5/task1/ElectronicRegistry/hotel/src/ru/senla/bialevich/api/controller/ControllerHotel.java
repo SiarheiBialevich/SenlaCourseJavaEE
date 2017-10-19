@@ -1,6 +1,7 @@
 package ru.senla.bialevich.api.controller;
 
 import ru.senla.bialevich.entity.*;
+import ru.senla.bialevich.enums.entity.RoomStatus;
 
 import java.util.List;
 

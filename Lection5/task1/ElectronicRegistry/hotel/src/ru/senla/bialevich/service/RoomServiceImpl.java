@@ -5,7 +5,8 @@ import ru.senla.bialevich.api.service.RoomService;
 import ru.senla.bialevich.dao.RoomDaoImpl;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
-import ru.senla.bialevich.enums.RoomSortComparators;
+import ru.senla.bialevich.enums.comparator.RoomSortComparators;
+import ru.senla.bialevich.enums.entity.RoomStatus;
 import ru.senla.bialevich.util.CopyAndSortList;
 
 import java.util.ArrayList;
@@ -16,9 +17,23 @@ public class RoomServiceImpl implements RoomService {
 
     private RoomDao roomDao = new RoomDaoImpl();
 
+    private Integer currentId = 1;
+
+    private void calcId() {
+        Integer maxId = 0;
+        for (Room room :roomDao.getAll()) {
+            if (room.getId() > maxId) {
+                maxId = room.getId();
+            }
+        }
+        currentId = maxId + 1;
+    }
+
 
     public void add(Room room) {
+        room.setId(currentId++);
         roomDao.add(room);
+        calcId();
     }
 
     @Override

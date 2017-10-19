@@ -1,51 +1,35 @@
 package ru.senla.bialevich.menuItems;
 
 
-import ru.senla.bialevich.util.InputReader;
 import ru.senla.bialevich.util.Printer;
-
-import java.util.Scanner;
 
 public class Navigator {
 
-
     private Menu currentMenu;
 
-    public void printMenu(Menu currentMenu) {
-        Printer printer = new Printer();
-        InputReader reader = new InputReader();
-        Scanner scanner = new Scanner(System.in);
+    public Menu getCurrentMenu() {
+        return currentMenu;
+    }
 
+    public void setCurrentMenu(Menu currentMenu) {
         this.currentMenu = currentMenu;
-        boolean exit = false;
+    }
+
+    public void printMenu() {
+        Printer printer = new Printer();
+
         printer.print(currentMenu.getName());
 
-        while (!exit) {
-            for (int i = 0; i < currentMenu.getMenuItems().size(); i++) {
-                printer.print((i + 1) + ". " + currentMenu.getMenuItems().get(i).getTitle());
-            }
-
-            Integer choice = reader.getInputInt(scanner);
-
-            if (choice > currentMenu.getMenuItems().size()) {
-                printer.print("Incorrect choice. Try again");
-                continue;
-            }
-
-            if (choice == currentMenu.getMenuItems().size()) {
-                exit = true;
-                continue;
-            }
-
-            navigate((choice - 1));
+        for (int i = 0; i < currentMenu.getMenuItems().size(); i++) {
+            printer.print((i + 1) + ". " + currentMenu.getMenuItems().get(i).getTitle());
         }
-
-//        scanner.close();
-//        printer.print("Bye.");
     }
 
     public void navigate(Integer index) {
-
-        currentMenu.getMenuItems().get(index).doAction();
+        if (currentMenu.getMenuItems().get(index).getAction() != null) {
+            currentMenu.getMenuItems().get(index).doAction();
+        } else {
+            currentMenu.getMenuItems().get(index).getNextMenu();
+        }
     }
 }

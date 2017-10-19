@@ -12,13 +12,11 @@ public class AddService implements IAction {
 
     @Override
     public void execute() {
-        ControllerHotel hotel = new ControllerHotelImpl();
-        InputReader reader = new InputReader();
         Scanner scanner = new Scanner(System.in);
 
-        Integer id = reader.getInputInt(scanner, "Enter ID of the used service");
-        String nameService = reader.getInputString(scanner, "Enter the name of the service.");
-        Float price = reader.getInputFloat(scanner, "Enter the price of the service.");
-        hotel.addUsedService(new UsedService(id, nameService, price));
+        Integer id = InputReader.getInputInt(scanner, "Enter ID of the used service");
+        String nameService = InputReader.getInputString(scanner, "Enter the name of the service.");
+        Float price = InputReader.getInputFloat(scanner, "Enter the price of the service.");
+        ControllerHotelImpl.getInstance().addUsedService(new UsedService(id, nameService, price));
     }
 }

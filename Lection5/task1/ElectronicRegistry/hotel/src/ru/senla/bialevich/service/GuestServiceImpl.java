@@ -7,7 +7,7 @@ import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
-import ru.senla.bialevich.enums.GuestSortComparators;
+import ru.senla.bialevich.enums.comparator.GuestSortComparators;
 import ru.senla.bialevich.util.CopyAndSortList;
 
 import java.util.List;
@@ -16,8 +16,23 @@ public class GuestServiceImpl implements GuestService {
     private GuestDao guestDao = new GuestDaoImpl();
     private CopyAndSortList<Guest> copy = new CopyAndSortList<Guest>();
 
+    private Integer currentId = 1;
+
+    private void calcId() {
+        Integer maxId = 0;
+
+        for (Guest guest :guestDao.getAll()) {
+            if (guest.getId() > maxId) {
+                maxId = guest.getId();
+            }
+        }
+        currentId = maxId + 1;
+    }
+
     public void add(Guest guest) {
+        guest.setId(currentId++);
         guestDao.add(guest);
+        calcId();
     }
 
     @Override
