@@ -11,6 +11,10 @@ public class UsedServiceDaoImpl extends AbstractDaoImpl<UsedService> implements 
         super(UsedService.class);
     }
 
+    public UsedServiceDaoImpl(List<UsedService> services) {
+        super(UsedService.class);
+    }
+
     @Override
     public UsedService getUsedServiceById(Integer id) {
         UsedService usedService = null;
@@ -26,5 +30,21 @@ public class UsedServiceDaoImpl extends AbstractDaoImpl<UsedService> implements 
     @Override
     List<UsedService> getTargetList() {
         return dataBase.getUsedServiceList();
+    }
+
+    @Override
+    public void update(UsedService service) {
+        getTargetList().set(getServiceIndexById(service.getId()), service);
+    }
+
+    @Override
+    public Integer getServiceIndexById(Integer id) {
+        for (int i = 0; i < getTargetList().size(); i++) {
+            if (getTargetList().get(i).getId() == id) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 }

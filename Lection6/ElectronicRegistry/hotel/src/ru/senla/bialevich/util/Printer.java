@@ -3,6 +3,7 @@ package ru.senla.bialevich.util;
 import java.util.List;
 
 public class Printer {
+
     public void print(String message) {
         System.out.println(message);
     }

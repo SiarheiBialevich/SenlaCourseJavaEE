@@ -13,6 +13,7 @@ public class Order extends BaseEntity implements Serializable {
     private Date dateOfArrival;
     private Date dateOfDeparture;
     private List<Guest> guestList = new ArrayList<Guest>();
+    public static final String ENTITY_TOKEN = "Order";
 
     @Override
     public Integer getId() {
@@ -30,11 +31,7 @@ public class Order extends BaseEntity implements Serializable {
         this.dateOfDeparture = dateOfDeparture;
     }
 
-    public Order(Integer id, Integer orderNumber, Date dateOfArrival, Date dateOfDeparture) {
-        this.id = id;
-        this.orderNumber = orderNumber;
-        this.dateOfArrival = dateOfArrival;
-        this.dateOfDeparture = dateOfDeparture;
+    public Order() {
     }
 
     public Integer getOrderNumber() {

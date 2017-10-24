@@ -1,7 +1,10 @@
 package ru.senla.bialevich.menuItems;
 
+import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.util.InputReader;
 import ru.senla.bialevich.util.Printer;
+import ru.senla.bialevich.util.service.WriteModel;
+import ru.senla.bialevich.util.service.WriteObject;
 
 import java.util.Scanner;
 
@@ -10,6 +13,7 @@ public class MenuController {
     private Navigator navigator = new Navigator();
     private InputReader reader = new InputReader();
     private Printer printer = new Printer();
+    private WriteModel model = new WriteModel();
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +27,7 @@ public class MenuController {
 
             Integer choice = reader.getInputInt(scanner) - 1;
 
-            if (choice >= navigator.getCurrentMenu().getMenuItems().size() || choice <= 0) {
+            if (choice >= navigator.getCurrentMenu().getMenuItems().size() || choice < 0) {
                 printer.print("Incorrect choice. Try again");
                 continue;
             } else {
@@ -38,6 +42,8 @@ public class MenuController {
             navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu());
             navigator.printMenu();
         }
+
+        ControllerHotelImpl.getInstance().exportAll();
 
         scanner.close();
         printer.print("Bye.");

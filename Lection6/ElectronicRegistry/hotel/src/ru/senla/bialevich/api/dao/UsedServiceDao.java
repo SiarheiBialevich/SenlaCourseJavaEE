@@ -5,4 +5,8 @@ import ru.senla.bialevich.entity.UsedService;
 public interface UsedServiceDao extends AbstractDao<UsedService> {
 
     UsedService getUsedServiceById(Integer id);
+
+    void update(UsedService service);
+
+    Integer getServiceIndexById(Integer id);
 }

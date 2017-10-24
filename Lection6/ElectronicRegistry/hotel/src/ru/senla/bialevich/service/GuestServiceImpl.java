@@ -1,6 +1,7 @@
 package ru.senla.bialevich.service;
 
 import ru.senla.bialevich.api.dao.GuestDao;
+import ru.senla.bialevich.api.dao.OrderDao;
 import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.dao.GuestDaoImpl;
 import ru.senla.bialevich.entity.Guest;
@@ -14,7 +15,16 @@ import java.util.List;
 
 public class GuestServiceImpl implements GuestService {
     private GuestDao guestDao = new GuestDaoImpl();
+    private OrderDao orderDao;
     private CopyAndSortList<Guest> copy = new CopyAndSortList<Guest>();
+
+    public GuestServiceImpl(GuestDao guestDao, OrderDao orderDao) {
+        this.guestDao = guestDao;
+        this.orderDao = orderDao;
+    }
+
+    public GuestServiceImpl() {
+    }
 
     private Integer currentId = 1;
 

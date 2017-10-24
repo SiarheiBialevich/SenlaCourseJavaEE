@@ -33,11 +33,17 @@ public interface ControllerHotel {
 
     List<Order> getListOrders();
 
+    void updateOrder(Order order);
+
     void addRoom(Room room);
+
+    void registerGuestInRoom(Guest guest, Room room);
 
     void updateRoom(Room room);
 
     boolean changeRoomStatus(Room room);
+
+    void changeRoomPrice(Room room, Float value);
 
     Room cloneRoom(Integer id);
 
@@ -67,6 +73,8 @@ public interface ControllerHotel {
 
     void addUsedService(UsedService service);
 
+    void updateService(UsedService service);
+
     List<UsedService> sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
@@ -78,4 +86,23 @@ public interface ControllerHotel {
     Order getOrderById(Integer id);
 
     UsedService getServiceById(Integer id);
+
+    void importGuests();
+
+    void importOrder();
+
+    void importRooms();
+
+    //exports
+    void exportGuests();
+
+    void exportOrders();
+
+    void exportRooms();
+
+    void exportServices();
+
+    void exportAll();
+
+    void exportModel();
 }

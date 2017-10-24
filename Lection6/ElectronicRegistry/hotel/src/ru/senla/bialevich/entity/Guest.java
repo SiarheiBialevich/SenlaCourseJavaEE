@@ -10,21 +10,14 @@ public class Guest extends BaseEntity implements Serializable {
     private String surname;
     private Room room;
     private Order order;
+    public static final String ENTITY_TOKEN = "Guest";
 
     public Guest(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public Guest(Integer id, String name, String surname) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public Guest(Integer id, Room room) {
-        this.id = id;
-        this.room = room;
+    public Guest() {
     }
 
     public Guest(Integer id) {

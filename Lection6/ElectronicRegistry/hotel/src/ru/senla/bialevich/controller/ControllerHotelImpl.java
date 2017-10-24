@@ -14,17 +14,26 @@ import ru.senla.bialevich.service.GuestServiceImpl;
 import ru.senla.bialevich.service.OrderServiceImpl;
 import ru.senla.bialevich.service.RoomServiceImpl;
 import ru.senla.bialevich.service.UsedServiceServiceImpl;
-import ru.senla.bialevich.util.Printer;
+import ru.senla.bialevich.util.exporter.Exporter;
+import ru.senla.bialevich.util.importer.Importer;
+import ru.senla.bialevich.util.initializer.Initializer;
+import ru.senla.bialevich.util.service.WriteObject;
 
 import java.util.List;
-import java.util.Map;
 
 public class ControllerHotelImpl implements ControllerHotel {
 
-    private GuestService guestService = new GuestServiceImpl();
-    private OrderService orderService = new OrderServiceImpl();
-    private RoomService roomService = new RoomServiceImpl();
-    private UsedServiceService usedService = new UsedServiceServiceImpl();
+    private GuestService guestService;
+    private OrderService orderService;
+    private RoomService roomService;
+    private UsedServiceService usedService;
+
+    private Initializer initializer;
+
+    private Importer importer;
+    private Exporter exporter;
+
+    private WriteObject writeObject;
     private ClassSetting setting;
 
     private static ControllerHotel hotel;
@@ -40,12 +49,24 @@ public class ControllerHotelImpl implements ControllerHotel {
     @Override
     public void init() {
         this.setting = new ClassSetting();
+        this.writeObject = new WriteObject();
+        this.initializer = new Initializer();
+        this.fillServicesFromInitializer();
+        this.importer = new Importer(this.orderService.getAll(), this.roomService.getAll());
+        this.exporter = new Exporter(writeObject);
     }
 
     @Override
-    public String getProperty(String string) {
-        Map<String, String> props = this.setting.getPropsHolder();
-        return props.get(string);
+    public String getProperty(String key) {
+
+        return setting.getProperty(key);
+    }
+
+    private void fillServicesFromInitializer() {
+        this.guestService = this.initializer.getGuestService();
+        this.roomService = this.initializer.getRoomService();
+        this.orderService = this.initializer.getOrderService();
+        this.usedService = this.initializer.getServiceService();
     }
 
     @Override
@@ -103,8 +124,18 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
+    public void updateOrder(Order order) {
+        orderService.update(order);
+    }
+
+    @Override
     public void addRoom(Room room) {
         roomService.add(room);
+    }
+
+    @Override
+    public void registerGuestInRoom(Guest guest, Room room) {
+        roomService.registerGuestInRoom(guest, room);
     }
 
     @Override
@@ -117,6 +148,12 @@ public class ControllerHotelImpl implements ControllerHotel {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void changeRoomPrice(Room room, Float value) {
+        room.setPrice(value);
+        roomService.update(room);
     }
 
     @Override
@@ -194,6 +231,11 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
+    public void updateService(UsedService service) {
+        usedService.update(service);
+    }
+
+    @Override
     public List<UsedService> sortUsedServicesByPrice() {
         return usedService.sortUsedServicesByPrice();
     }
@@ -221,5 +263,48 @@ public class ControllerHotelImpl implements ControllerHotel {
     @Override
     public UsedService getServiceById(Integer id) {
         return usedService.getUsedServiceById(id);
+    }
+
+    public void importGuests() {
+        importer.importGuests(this.guestService.getAll());
+    }
+
+    public void importOrder() {
+        importer.importOrders(this.orderService.getAll());
+    }
+
+    @Override
+    public void importRooms() {
+        importer.importRooms(this.roomService.getAll());
+    }
+
+    @Override
+    public void exportGuests() {
+        exporter.exportGuests(guestService.getAll());
+    }
+
+    @Override
+    public void exportOrders() {
+        exporter.exportOrders(this.orderService.getAll());
+    }
+
+    @Override
+    public void exportRooms() {
+        exporter.exportRooms(this.roomService.getAll());
+    }
+
+    @Override
+    public void exportServices() {
+        exporter.exportServices(this.usedService.getAll());
+    }
+
+    @Override
+    public void exportAll() {
+        exporter.exportAll(this.getAllGuest(), this.getListOrders(), this.getAllRooms(), this.getListUsedServices());
+    }
+
+    @Override
+    public void exportModel() {
+        exporter.exportModel();
     }
 }

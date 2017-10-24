@@ -8,7 +8,11 @@ public interface OrderService {
 
     void add(Order order);
 
+    List<Order> getAll();
+
     Order getOrderById(Integer id);
 
     List<Order> getListOrders();
+
+    void update(Order order);
 }

@@ -2,13 +2,13 @@ package ru.senla.bialevich.menuAction.roomAction;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.IAction;
-import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.entity.Room;
+import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.InputReader;
 
 import java.util.Scanner;
 
-public class AddRoom implements IAction {
+public class AddRoom extends AbstractAction implements IAction {
     private static final Logger log = Logger.getLogger(AddRoom.class);
 
     @Override
@@ -21,7 +21,7 @@ public class AddRoom implements IAction {
             Integer capacity = InputReader.getInputInt(scanner, "Enter the count of beds of the room.");
             Float price = InputReader.getInputFloat(scanner, "Enter the price of the room.");
 
-            ControllerHotelImpl.getInstance().addRoom(new Room(roomNumber, countStars, capacity, price));
+            hotel.addRoom(new Room(roomNumber, countStars, capacity, price));
         } catch (Exception e) {
             log.error(e.getMessage());
         }

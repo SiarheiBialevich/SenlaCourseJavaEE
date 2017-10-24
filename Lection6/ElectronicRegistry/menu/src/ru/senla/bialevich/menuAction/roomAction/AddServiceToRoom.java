@@ -2,12 +2,12 @@ package ru.senla.bialevich.menuAction.roomAction;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.IAction;
-import ru.senla.bialevich.controller.ControllerHotelImpl;
+import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.InputReader;
 
 import java.util.Scanner;
 
-public class AddServiceToRoom implements IAction {
+public class AddServiceToRoom extends AbstractAction implements IAction {
     private static final Logger log = Logger.getLogger(AddServiceToRoom.class);
 
     @Override
@@ -17,8 +17,7 @@ public class AddServiceToRoom implements IAction {
         try {
             Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
             Integer idService = InputReader.getInputInt(scanner, "Enter ID the used service.");
-            ControllerHotelImpl.getInstance().setServiceToRoom(ControllerHotelImpl.getInstance().getRoomById(idRoom),
-                    ControllerHotelImpl.getInstance().getServiceById(idService));
+            hotel.setServiceToRoom(hotel.getRoomById(idRoom), hotel.getServiceById(idService));
         } catch (Exception e) {
             log.error(e.getMessage());
         }

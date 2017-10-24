@@ -19,20 +19,16 @@ public class Room extends BaseEntity implements Cloneable, Serializable {
     private Float price;
     private List<Guest> guestList = new ArrayList<>();
     private List<UsedService> usedServiceList = new ArrayList<>();
-
-    public Room(Integer roomNumber, Integer countStars, Integer capacity, boolean isFree, Float price) {
-        this.roomNumber = roomNumber;
-        this.countStars = countStars;
-        this.capacity = capacity;
-        this.isFree = isFree;
-        this.price = price;
-    }
+    public static final String ENTITY_TOKEN = "Room";
 
     public Room(Integer roomNumber, Integer countStars, Integer capacity, Float price) {
         this.roomNumber = roomNumber;
         this.countStars = countStars;
         this.capacity = capacity;
         this.price = price;
+    }
+
+    public Room() {
     }
 
     @Override
