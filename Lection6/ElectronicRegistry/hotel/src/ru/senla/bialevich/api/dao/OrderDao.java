@@ -5,4 +5,8 @@ import ru.senla.bialevich.entity.Order;
 public interface OrderDao extends AbstractDao<Order> {
 
     Order getOrderById(Integer id);
+
+    Integer getOrderIndexById(Integer id);
+
+    void update(Order order);
 }

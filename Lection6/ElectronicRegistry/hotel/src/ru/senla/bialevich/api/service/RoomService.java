@@ -1,5 +1,6 @@
 package ru.senla.bialevich.api.service;
 
+import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 
@@ -8,6 +9,8 @@ import java.util.List;
 public interface RoomService {
 
     void add(Room room);
+
+    void registerGuestInRoom(Guest guest, Room room);
 
     void update(Room room);
 

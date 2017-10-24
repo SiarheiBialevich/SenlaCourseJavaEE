@@ -1,6 +1,7 @@
 package ru.senla.bialevich.dao;
 
 import ru.senla.bialevich.api.dao.RoomDao;
+import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 
@@ -11,6 +12,15 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
     public RoomDaoImpl() {
         super(Room.class);
+    }
+
+    public RoomDaoImpl(List<Room> rooms) {
+        super(Room.class);
+    }
+
+    @Override
+    public void registerGuestInRoom(Guest guest, Room room) {
+        room.addGuest(guest);
     }
 
     @Override

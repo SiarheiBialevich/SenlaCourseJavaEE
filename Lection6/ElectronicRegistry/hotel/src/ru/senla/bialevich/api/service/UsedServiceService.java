@@ -8,9 +8,13 @@ public interface UsedServiceService {
 
     void add(UsedService service);
 
+    List<UsedService> getAll();
+
     UsedService getUsedServiceById(Integer id);
 
     List<UsedService> sortUsedServicesByPrice();
 
     List<UsedService> getListUsedServices();
+
+    void update(UsedService service);
 }

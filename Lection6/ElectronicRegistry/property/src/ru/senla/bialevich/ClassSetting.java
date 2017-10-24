@@ -13,36 +13,39 @@ import java.util.Properties;
 
 public class ClassSetting {
     private static final Logger log = Logger.getLogger(ClassSetting.class);
-    private final String PATH_TO_CONFIG = "property/resources/config.properties";
-    private Map<String, String> propsHolder = null;
+    private final String PATH_TO_CONFIG = "property\\resources\\config.properties";
+    private Properties properties;
+
+    private static ClassSetting setting;
+
+    private static ClassSetting getInstance() {
+        if (setting == null) {
+            setting = new ClassSetting();
+        }
+
+        return setting;
+    }
 
     public ClassSetting() {
-        this.propsHolder = new HashMap<>();
+
         this.init();
     }
 
-    private void init() {
-        Properties properties = new Properties();
+        private void init() {
+        properties = new Properties();
 
         try (FileInputStream stream = new FileInputStream(this.PATH_TO_CONFIG)) {
             properties.load(stream);
 
-            for (Object object : properties.keySet()) {
-                String key = String.valueOf(object);
-                this.propsHolder.put(key, properties.getProperty(key));
-            }
         } catch (FileNotFoundException e) {
             log.error("File not Found", e);
         } catch (IOException e) {
-            log.error(e.getMessage());
+            log.error(e.getMessage(), e);
         }
     }
 
-    public Map<String, String> getPropsHolder() {
-        return propsHolder;
+    public String getProperty(String key) {
+        return properties.getProperty(key);
     }
 
-    public void setPropsHolder(Map<String, String> propsHolder) {
-        this.propsHolder = propsHolder;
-    }
 }

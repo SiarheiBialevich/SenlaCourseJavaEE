@@ -9,7 +9,13 @@ import java.util.List;
 
 public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
+    private List<Guest> guests;
+
     public GuestDaoImpl() {
+        super(Guest.class);
+    }
+
+    public GuestDaoImpl(List<Guest> guests) {
         super(Guest.class);
     }
 

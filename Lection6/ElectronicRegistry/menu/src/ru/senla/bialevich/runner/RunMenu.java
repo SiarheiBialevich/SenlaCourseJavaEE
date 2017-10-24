@@ -2,8 +2,7 @@ package ru.senla.bialevich.runner;
 
 import ru.senla.bialevich.menuItems.MenuController;
 
-public class Run {
-
+public class RunMenu {
 
     public static void main(String[] args) {
 

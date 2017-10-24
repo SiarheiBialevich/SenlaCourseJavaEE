@@ -1,8 +1,13 @@
 package ru.senla.bialevich.menuItems;
 
+import ru.senla.bialevich.controller.ControllerHotelImpl;
 import ru.senla.bialevich.menuAction.guestAction.*;
 import ru.senla.bialevich.menuAction.guestAction.sort.SortedGuestByDateOfDeparture;
 import ru.senla.bialevich.menuAction.guestAction.sort.SortedGuestBySurname;
+import ru.senla.bialevich.menuAction.importExportAction.exporter.*;
+import ru.senla.bialevich.menuAction.importExportAction.importer.ImportGuests;
+import ru.senla.bialevich.menuAction.importExportAction.importer.ImportOrders;
+import ru.senla.bialevich.menuAction.importExportAction.importer.ImportRooms;
 import ru.senla.bialevich.menuAction.orderAction.AddOrder;
 import ru.senla.bialevich.menuAction.orderAction.GetOrderList;
 import ru.senla.bialevich.menuAction.roomAction.*;
@@ -15,6 +20,9 @@ public class Builder {
     private static final String REQUIRED_ACTION = "Select the required menuAction:";
     private static final String SORTING = "Select sorting:";
     private static final String MAIN_MENU = "Main menu";
+    private static final String EXPORT_MODEL = "Export model";
+    private static final String IMPORT_EXPORT = "Import/Export";
+    private static final String IMPORT_MODEL = "Import model";
 
     private Menu rootMenu = new Menu(MAIN_MENU);
     private Menu guestMenu = new Menu(REQUIRED_ACTION);
@@ -24,6 +32,13 @@ public class Builder {
     private Menu guestSortMenu = new Menu(SORTING);
     private Menu roomSortMenu = new Menu(SORTING);
     private Menu serviceSortMenu = new Menu(SORTING);
+    private Menu importExportMenu = new Menu(IMPORT_EXPORT);
+    private Menu importMenu = new Menu(IMPORT_MODEL);
+    private Menu exportMenu = new Menu(EXPORT_MODEL);
+
+    public Builder() {
+        ControllerHotelImpl.getInstance().init();
+    }
 
     public Menu buildMenu() {
 
@@ -31,6 +46,7 @@ public class Builder {
         rootMenu.addMenuItem(new MenuItem("Rooms", roomMenu));
         rootMenu.addMenuItem(new MenuItem("Orders", orderMenu));
         rootMenu.addMenuItem(new MenuItem("Used service", serviceMenu));
+        rootMenu.addMenuItem(new MenuItem("Import / Export", importExportMenu));
         rootMenu.addMenuItem(new MenuItem("Exit"));
 
         guestMenu.addMenuItem(new MenuItem("Add guest", new AddGuest(), guestMenu));
@@ -44,6 +60,9 @@ public class Builder {
 
         roomMenu.addMenuItem(new MenuItem("Add room", new AddRoom(), roomMenu));
         roomMenu.addMenuItem(new MenuItem("Clone room", new CloneRoom(), roomMenu));
+        roomMenu.addMenuItem(new MenuItem("Register guest in room", new RegisterGuestInRoom(), roomMenu));
+        roomMenu.addMenuItem(new MenuItem("Change room status", new ChangeRoomStatus(), roomMenu));
+        roomMenu.addMenuItem(new MenuItem("Change price in room", new ChangeRoomPrice(), roomMenu));
         roomMenu.addMenuItem(new MenuItem("Get free rooms", new GetFreeRooms(), roomMenu));
         roomMenu.addMenuItem(new MenuItem("Get total free number of room", new TotalFreeRooms(), roomMenu));
         roomMenu.addMenuItem(new MenuItem("Get room total price", new RoomTotalPrice(), roomMenu));
@@ -75,6 +94,22 @@ public class Builder {
 
         serviceSortMenu.addMenuItem(new MenuItem("Sorted used services by price", new SortServiceByPrice(), serviceSortMenu));
         serviceSortMenu.addMenuItem(new MenuItem("Back", serviceMenu));
+
+        importExportMenu.addMenuItem(new MenuItem("Import", importMenu));
+        importExportMenu.addMenuItem(new MenuItem("Export", exportMenu));
+        importExportMenu.addMenuItem(new MenuItem("Back", rootMenu));
+
+        importMenu.addMenuItem(new MenuItem("Import guests", new ImportGuests(), importMenu));
+        importMenu.addMenuItem(new MenuItem("Import rooms", new ImportRooms(), importMenu));
+        importMenu.addMenuItem(new MenuItem("Import orders", new ImportOrders(), importMenu));
+        importMenu.addMenuItem(new MenuItem("Back", importExportMenu));
+
+        exportMenu.addMenuItem(new MenuItem("Export guests", new ExportGuests(), exportMenu));
+        exportMenu.addMenuItem(new MenuItem("Export rooms", new ExportRooms(), exportMenu));
+        exportMenu.addMenuItem(new MenuItem("Export services", new ExportServices(), exportMenu));
+        exportMenu.addMenuItem(new MenuItem("Export orders", new ExportOrders(), exportMenu));
+        exportMenu.addMenuItem(new MenuItem("Export all", new ExportAll(), exportMenu));
+        exportMenu.addMenuItem(new MenuItem("Back", importExportMenu));
 
         return rootMenu;
     }

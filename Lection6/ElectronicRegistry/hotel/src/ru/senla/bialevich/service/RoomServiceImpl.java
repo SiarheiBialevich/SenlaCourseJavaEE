@@ -1,8 +1,11 @@
 package ru.senla.bialevich.service;
 
+import ru.senla.bialevich.api.dao.GuestDao;
+import ru.senla.bialevich.api.dao.OrderDao;
 import ru.senla.bialevich.api.dao.RoomDao;
 import ru.senla.bialevich.api.service.RoomService;
 import ru.senla.bialevich.dao.RoomDaoImpl;
+import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 import ru.senla.bialevich.enums.comparator.RoomSortComparators;
@@ -16,6 +19,17 @@ public class RoomServiceImpl implements RoomService {
     private CopyAndSortList<Room> copy = new CopyAndSortList<Room>();
 
     private RoomDao roomDao = new RoomDaoImpl();
+    private GuestDao guestDao;
+    private OrderDao orderDao;
+
+    public RoomServiceImpl(RoomDao roomDao, GuestDao guestDao, OrderDao orderDao) {
+        this.roomDao = roomDao;
+        this.guestDao = guestDao;
+        this.orderDao = orderDao;
+    }
+
+    public RoomServiceImpl() {
+    }
 
     private Integer currentId = 1;
 
@@ -34,6 +48,11 @@ public class RoomServiceImpl implements RoomService {
         room.setId(currentId++);
         roomDao.add(room);
         calcId();
+    }
+
+    @Override
+    public void registerGuestInRoom(Guest guest, Room room) {
+        roomDao.registerGuestInRoom(guest, room);
     }
 
     public Room cloneRoom(Integer id) {

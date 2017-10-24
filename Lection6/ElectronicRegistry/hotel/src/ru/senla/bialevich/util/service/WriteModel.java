@@ -1,4 +1,4 @@
-package ru.senla.bialevich.util;
+package ru.senla.bialevich.util.service;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public class WriteModel {
+
     private static final Logger log = Logger.getLogger(WriteModel.class);
 
     public void saveModel(Object object) {
@@ -35,6 +36,7 @@ public class WriteModel {
             Object object;
 
             while ((object = ois.readObject()) != null) {
+
                 data = (List<Object>) object;
             }
         } catch (IOException | ClassNotFoundException e) {

@@ -1,5 +1,6 @@
 package ru.senla.bialevich.service;
 
+import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.dao.OrderDao;
 import ru.senla.bialevich.api.service.OrderService;
 import ru.senla.bialevich.dao.OrderDaoImpl;
@@ -8,7 +9,15 @@ import ru.senla.bialevich.entity.Order;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
+    private static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
     private OrderDao orderDao = new OrderDaoImpl();
+
+    public OrderServiceImpl(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
+
+    public OrderServiceImpl() {
+    }
 
     private Integer currentId = 1;
 
@@ -31,6 +40,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getAll() {
+        List<Order> orders = null;
+        try {
+            orders = orderDao.getAll();
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
     public Order getOrderById(Integer id) {
         return orderDao.getOrderById(id);
     }
@@ -38,5 +58,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getListOrders() {
         return orderDao.getAll();
+    }
+
+    @Override
+    public void update(Order order) {
+        orderDao.update(order);
     }
 }

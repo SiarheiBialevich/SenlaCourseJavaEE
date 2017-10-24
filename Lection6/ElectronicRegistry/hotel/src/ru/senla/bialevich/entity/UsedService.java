@@ -9,23 +9,14 @@ public class UsedService extends BaseEntity implements Serializable {
     private String nameService;
     private Guest guest;
     private Float price;
+    public static final String ENTITY_TOKEN = "Service";
 
     public UsedService(String nameService, Float price) {
         this.nameService = nameService;
         this.price = price;
     }
 
-    public UsedService(Integer id, String nameService, Float price) {
-        this.id = id;
-        this.nameService = nameService;
-        this.price = price;
-    }
-
-    public UsedService(Integer id, String nameService, Guest guest, Float price) {
-        this.id = id;
-        this.nameService = nameService;
-        this.guest = guest;
-        this.price = price;
+    public UsedService() {
     }
 
     @Override

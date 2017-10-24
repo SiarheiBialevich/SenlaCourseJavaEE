@@ -1,5 +1,6 @@
 package ru.senla.bialevich.service;
 
+import org.apache.log4j.Logger;
 import ru.senla.bialevich.api.dao.UsedServiceDao;
 import ru.senla.bialevich.api.service.UsedServiceService;
 import ru.senla.bialevich.dao.UsedServiceDaoImpl;
@@ -10,9 +11,17 @@ import ru.senla.bialevich.util.CopyAndSortList;
 import java.util.List;
 
 public class UsedServiceServiceImpl implements UsedServiceService {
+    private static final Logger LOG = Logger.getLogger(UsedServiceServiceImpl.class);
     private CopyAndSortList<UsedService> copy = new CopyAndSortList<UsedService>();
 
     private UsedServiceDao serviceDao = new UsedServiceDaoImpl();
+
+    public UsedServiceServiceImpl(UsedServiceDao serviceDao) {
+        this.serviceDao = serviceDao;
+    }
+
+    public UsedServiceServiceImpl() {
+    }
 
     private Integer currentId = 1;
 
@@ -34,6 +43,18 @@ public class UsedServiceServiceImpl implements UsedServiceService {
     }
 
     @Override
+    public List<UsedService> getAll() {
+        List<UsedService> services = null;
+
+        try {
+            services = serviceDao.getAll();
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        }
+        return services;
+    }
+
+    @Override
     public UsedService getUsedServiceById(Integer id) {
         return serviceDao.getUsedServiceById(id);
     }
@@ -47,5 +68,10 @@ public class UsedServiceServiceImpl implements UsedServiceService {
     @Override
     public List<UsedService> getListUsedServices() {
         return serviceDao.getAll();
+    }
+
+    @Override
+    public void update(UsedService service) {
+        serviceDao.update(service);
     }
 }
