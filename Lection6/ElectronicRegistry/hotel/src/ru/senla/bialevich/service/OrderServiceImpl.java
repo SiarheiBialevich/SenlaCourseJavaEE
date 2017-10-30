@@ -9,6 +9,7 @@ import ru.senla.bialevich.entity.Order;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
+
     private static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
     private OrderDao orderDao = new OrderDaoImpl();
 
@@ -63,5 +64,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void update(Order order) {
         orderDao.update(order);
+    }
+
+    @Override
+    public void setOrdersList(List<Order> orders) {
+        orderDao.setOrdersList(orders);
     }
 }

@@ -15,6 +15,8 @@ public interface GuestService {
 
     List<Guest> getAll();
 
+    void update(Guest guest);
+
     Integer getTotalNumberOfGuests();
 
     List<Guest> sortedGuestsBySurname();
@@ -28,4 +30,6 @@ public interface GuestService {
     void setRoomToGuest(Guest guest, Room room);
 
     void setOrderToGuest(Guest guest, Order order);
+
+    void setGuestList(List<Guest> guests);
 }

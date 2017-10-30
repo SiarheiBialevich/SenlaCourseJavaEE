@@ -4,6 +4,8 @@ import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 
+import java.util.List;
+
 public interface RoomDao extends AbstractDao<Room> {
 
     Room getRoomById(Integer id);
@@ -15,5 +17,7 @@ public interface RoomDao extends AbstractDao<Room> {
     void update(Room room);
 
     void setServiceToRoom(Room room, UsedService service);
+
+    void setRoomList(List<Room> rooms);
 
 }

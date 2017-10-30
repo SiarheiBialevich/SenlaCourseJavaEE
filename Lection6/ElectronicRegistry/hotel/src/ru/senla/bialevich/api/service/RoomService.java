@@ -41,4 +41,6 @@ public interface RoomService {
     List<Room> getListRooms();
 
     void setServiceToRoom(Room room, UsedService service);
+
+    void setRoomList(List<Room> rooms);
 }

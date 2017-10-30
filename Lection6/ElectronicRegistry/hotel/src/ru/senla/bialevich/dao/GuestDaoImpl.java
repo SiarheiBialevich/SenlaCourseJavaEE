@@ -9,8 +9,6 @@ import java.util.List;
 
 public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
-    private List<Guest> guests;
-
     public GuestDaoImpl() {
         super(Guest.class);
     }
@@ -30,6 +28,22 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
         return guest;
     }
 
+    @Override
+    public Integer getGuestIndexById(Integer id) {
+        for (int i = 0; i < getTargetList().size(); i++) {
+            if (getTargetList().get(i).getId() == id) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    @Override
+    public void update(Guest guest) {
+        getTargetList().set(getGuestIndexById(guest.getId()), guest);
+    }
+
     public void setRoomToGuest(Guest guest, Room room) {
         guest.setRoom(room);
     }
@@ -42,5 +56,10 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
     @Override
     List<Guest> getTargetList() {
         return dataBase.getGuestList();
+    }
+
+    @Override
+    public void setGuestList(List<Guest> guests) {
+        dataBase.setGuestList(guests);
     }
 }

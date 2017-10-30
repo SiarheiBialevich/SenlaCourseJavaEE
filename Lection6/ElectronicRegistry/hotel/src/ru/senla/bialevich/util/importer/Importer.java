@@ -1,28 +1,25 @@
 package ru.senla.bialevich.util.importer;
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.api.dao.GuestDao;
-import ru.senla.bialevich.api.dao.OrderDao;
-import ru.senla.bialevich.api.dao.RoomDao;
+import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
-import ru.senla.bialevich.dao.GuestDaoImpl;
-import ru.senla.bialevich.dao.OrderDaoImpl;
-import ru.senla.bialevich.dao.RoomDaoImpl;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
+import ru.senla.bialevich.service.GuestServiceImpl;
 import ru.senla.bialevich.util.converter.Converter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Importer {
     private static final Logger LOG = Logger.getLogger(Importer.class);
-    private static final String path = ControllerHotelImpl.getInstance().getProperty("path.to.entity.file");
+    private static final String PATH = ControllerHotelImpl.getInstance().getProperty("path.to.entity.file");
 
     private Converter converter;
 
@@ -34,27 +31,27 @@ public class Importer {
         initMaps(orders, rooms);
     }
 
-    public void importGuests(List<Guest> guests) {
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    public void importGuests() {
+        List<Guest> guests = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
             String line = "";
             while ((line = br.readLine()) != null) {
                 if (isModel(line, Guest.ENTITY_TOKEN)) {
                     Guest guest = converter.convertStringToGuest(line, roomsMap, ordersMap);
                     if (guests.contains(guest)) {
-                        guests.set(guest.getId(), guest);
+                        ControllerHotelImpl.getInstance().updateGuest(guest);
                     } else {
-                        guests.add(guest);
+                        ControllerHotelImpl.getInstance().addGuest(guest);
                     }
                 }
             }
-            GuestDao guestDao = new GuestDaoImpl(guests);
         } catch (IOException e) {
             LOG.error(e.getMessage());
         }
     }
 
-    public void importRooms(List<Room> rooms) {
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    public void importRooms() {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
             String line = "";
             while ((line = br.readLine()) != null) {
                 if (isModel(line, Room.ENTITY_TOKEN)) {
@@ -62,32 +59,30 @@ public class Importer {
                     if (room.getId() == ControllerHotelImpl.getInstance().getRoomById(room.getId()).getId()) {
                         ControllerHotelImpl.getInstance().updateRoom(room);
                     } else {
-                        rooms.add(room);
+                        ControllerHotelImpl.getInstance().addRoom(room);
                         roomsMap.put(room.getId(), room);
                     }
                 }
             }
-            RoomDao roomDao = new RoomDaoImpl(rooms);
         } catch (IOException e) {
             LOG.error(e.getMessage());
         }
     }
 
-    public void importOrders(List<Order> orders) {
+    public void importOrders() {
 
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
             String line = "";
             while ((line = br.readLine()) != null) {
                 if (isModel(line, Order.ENTITY_TOKEN)) {
-                    Order order = converter.convertStringToRegistration(line);
+                    Order order = converter.convertStringToOrder(line);
                     if (order.getId() == ControllerHotelImpl.getInstance().getOrderById(order.getId()).getId()) {
                         ControllerHotelImpl.getInstance().updateOrder(order);
                     } else {
-                        orders.add(order);
+                        ControllerHotelImpl.getInstance().addOrder(order);
                     }
                 }
             }
-            OrderDao orderDao = new OrderDaoImpl(orders);
         } catch (IOException e) {
             LOG.error(e.getMessage());
         }

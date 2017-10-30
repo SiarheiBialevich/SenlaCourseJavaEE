@@ -7,6 +7,8 @@ import java.util.List;
 
 public class OrderDaoImpl extends AbstractDaoImpl<Order> implements OrderDao {
 
+    private List<Order> orderModel;
+
     public OrderDaoImpl() {
         super(Order.class);
     }
@@ -40,6 +42,11 @@ public class OrderDaoImpl extends AbstractDaoImpl<Order> implements OrderDao {
     @Override
     List<Order> getTargetList() {
         return dataBase.getOrderList();
+    }
+
+    @Override
+    public void setOrdersList(List<Order> orders) {
+        dataBase.setOrderList(orders);
     }
 
     @Override

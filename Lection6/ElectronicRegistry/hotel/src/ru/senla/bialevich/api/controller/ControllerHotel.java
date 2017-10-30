@@ -15,6 +15,8 @@ public interface ControllerHotel {
 
     List<Guest> getAllGuest();
 
+    void updateGuest(Guest guest);
+
     Integer getTotalNumberOfGuests();
 
     List<Guest> sortedGuestsBySurname();

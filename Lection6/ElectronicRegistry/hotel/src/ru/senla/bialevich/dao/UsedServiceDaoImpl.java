@@ -7,6 +7,8 @@ import java.util.List;
 
 public class UsedServiceDaoImpl extends AbstractDaoImpl<UsedService> implements UsedServiceDao {
 
+    private List<UsedService> serviceModel;
+
     public UsedServiceDaoImpl() {
         super(UsedService.class);
     }
@@ -46,5 +48,10 @@ public class UsedServiceDaoImpl extends AbstractDaoImpl<UsedService> implements 
         }
 
         return -1;
+    }
+
+    @Override
+    public void setServicesList(List<UsedService> services) {
+        dataBase.setUsedServiceList(services);
     }
 }
