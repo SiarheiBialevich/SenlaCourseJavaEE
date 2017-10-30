@@ -44,4 +44,20 @@ public class DataBase {
     public List<UsedService> getUsedServiceList() {
         return usedServiceList;
     }
+
+    public void setGuestList(List<Guest> guestList) {
+        this.guestList = guestList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+    public void setUsedServiceList(List<UsedService> usedServiceList) {
+        this.usedServiceList = usedServiceList;
+    }
 }

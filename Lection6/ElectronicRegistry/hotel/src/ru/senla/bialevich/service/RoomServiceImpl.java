@@ -152,4 +152,9 @@ public class RoomServiceImpl implements RoomService {
     public void setServiceToRoom(Room room, UsedService service) {
         roomDao.setServiceToRoom(room, service);
     }
+
+    @Override
+    public void setRoomList(List<Room> rooms) {
+        roomDao.setRoomList(rooms);
+    }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
-
     public RoomDaoImpl() {
         super(Room.class);
     }
@@ -61,5 +60,8 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
         return dataBase.getRoomList();
     }
 
-
+    @Override
+    public void setRoomList(List<Room> rooms) {
+        dataBase.setRoomList(rooms);
+    }
 }

@@ -55,6 +55,11 @@ public class GuestServiceImpl implements GuestService {
         return guestDao.getAll();
     }
 
+    @Override
+    public void update(Guest guest) {
+        guestDao.update(guest);
+    }
+
     public void delete(Guest guest) {
         guestDao.delete(guest);
     }
@@ -94,5 +99,9 @@ public class GuestServiceImpl implements GuestService {
     @Override
     public void setOrderToGuest(Guest guest, Order order) {
         guestDao.setOrderToGuest(guest, order);
+    }
+
+    public void setGuestList(List<Guest> guests) {
+        guestDao.setGuestList(guests);
     }
 }

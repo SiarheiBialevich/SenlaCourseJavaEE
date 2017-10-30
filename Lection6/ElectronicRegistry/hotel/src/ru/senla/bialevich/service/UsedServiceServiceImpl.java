@@ -74,4 +74,9 @@ public class UsedServiceServiceImpl implements UsedServiceService {
     public void update(UsedService service) {
         serviceDao.update(service);
     }
+
+    @Override
+    public void setServicesList(List<UsedService> services) {
+        serviceDao.setServicesList(services);
+    }
 }

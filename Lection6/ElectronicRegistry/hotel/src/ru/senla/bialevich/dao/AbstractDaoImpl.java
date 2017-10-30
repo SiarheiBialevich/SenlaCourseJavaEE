@@ -26,7 +26,6 @@ public abstract class AbstractDaoImpl<T extends BaseEntity> implements AbstractD
 
     @Override
     public List<T> getAll() {
-
         return getTargetList();
     }
 

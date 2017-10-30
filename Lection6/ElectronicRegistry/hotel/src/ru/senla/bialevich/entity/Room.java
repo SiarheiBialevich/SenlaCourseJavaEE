@@ -9,7 +9,7 @@ import java.util.List;
 public class Room extends BaseEntity implements Cloneable, Serializable {
     private static final long serialVersionUID = -4085288967304236682L;
 
-    private Printer printer = new Printer();
+    transient private Printer printer = new Printer();
 
     private Integer id;
     private Integer roomNumber;

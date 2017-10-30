@@ -139,11 +139,11 @@ public class Converter {
     }
 
     @SuppressWarnings("deprecation")
-    public Order convertStringToRegistration(String string) {
+    public Order convertStringToOrder(String string) {
         Order registrationModel = new Order();
         String[] params = string.split(SEPARATOR);
         registrationModel.setId(Integer.parseInt(params[0].replace("[", "").replace("]", "")
-                .replace(", ", "").replace("T", "")));
+                .replace(", ", "").replace("Order", "")));
 
         String[] startDates = params[3].split("/");
         registrationModel.setDateOfArrival(new Date(Integer.parseInt(startDates[0]), Integer.parseInt(startDates[1]), Integer.parseInt(startDates[2])));

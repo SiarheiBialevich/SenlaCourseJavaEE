@@ -80,6 +80,11 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     @Override
+    public void updateGuest(Guest guest) {
+        guestService.update(guest);
+    }
+
+    @Override
     public Integer getTotalNumberOfGuests() {
         return guestService.getTotalNumberOfGuests();
     }
@@ -266,16 +271,16 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     public void importGuests() {
-        importer.importGuests(this.guestService.getAll());
+        importer.importGuests();
     }
 
     public void importOrder() {
-        importer.importOrders(this.orderService.getAll());
+        importer.importOrders();
     }
 
     @Override
     public void importRooms() {
-        importer.importRooms(this.roomService.getAll());
+        importer.importRooms();
     }
 
     @Override

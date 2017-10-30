@@ -17,4 +17,6 @@ public interface UsedServiceService {
     List<UsedService> getListUsedServices();
 
     void update(UsedService service);
+
+    void setServicesList(List<UsedService> services);
 }

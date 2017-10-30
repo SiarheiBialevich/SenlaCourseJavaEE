@@ -30,13 +30,12 @@ import java.util.List;
 public class Initializer {
     private static final Logger LOG = Logger.getLogger(Initializer.class);
 
-    private GuestService guestService;
-    private RoomService roomService;
-    private OrderService orderService;
-    private UsedServiceService usedServiceService;
+    private GuestService guestService = new GuestServiceImpl();
+    private RoomService roomService = new RoomServiceImpl();
+    private OrderService orderService = new OrderServiceImpl();
+    private UsedServiceService usedServiceService = new UsedServiceServiceImpl();
 
-    private List<Guest> guests = new ArrayList<>();
-    private List<Room> rooms = new ArrayList<>();
+    private List<Room> rooms;
     private List<Order> orders = new ArrayList<>();
     private List<UsedService> services = new ArrayList<>();
 
@@ -51,10 +50,10 @@ public class Initializer {
     }
 
     private void fillServices() {
-        GuestDao guestDao = new GuestDaoImpl(this.guests);
-        RoomDao roomDao = new RoomDaoImpl(this.rooms);
-        OrderDao orderDao = new OrderDaoImpl(this.orders);
-        UsedServiceDao serviceDao = new UsedServiceDaoImpl(this.services);
+        GuestDao guestDao = new GuestDaoImpl();
+        RoomDao roomDao = new RoomDaoImpl();
+        OrderDao orderDao = new OrderDaoImpl();
+        UsedServiceDao serviceDao = new UsedServiceDaoImpl();
         guestService = new GuestServiceImpl(guestDao, orderDao);
         roomService = new RoomServiceImpl(roomDao, guestDao, orderDao);
         orderService = new OrderServiceImpl(orderDao);
@@ -62,19 +61,15 @@ public class Initializer {
     }
 
     private void fillDataObjects() {
-        List<Object> data = writeModel.loadModel();
-        convertDataToModel(data);
+        List<Object> objects = writeModel.loadModel();
+        ConvertObjectsToModel(objects);
     }
 
-    private void convertDataToModel(List<Object> data) {
-        try {
-            this.guests = (List<Guest>) data.get(0);
-            this.rooms = (List<Room>) data.get(1);
-            this.services = (List<UsedService>) data.get(2);
-            this.orders = (List<Order>) data.get(3);
-        }catch (Exception e) {
-            LOG.error(e.getMessage());
-        }
+    private void ConvertObjectsToModel(List<Object> objects) {
+        guestService.setGuestList((List<Guest>) objects.get(0));
+        roomService.setRoomList((List<Room>) objects.get(1));
+        usedServiceService.setServicesList((List<UsedService>) objects.get(2));
+        orderService.setOrdersList((List<Order>) objects.get(3));
     }
 
     public GuestService getGuestService() {
