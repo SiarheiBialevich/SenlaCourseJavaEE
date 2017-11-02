@@ -13,8 +13,8 @@ public class AddService extends AbstractAction implements IAction {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
 
-        String nameService = InputReader.getInputString(scanner, "Enter the name of the service.");
-        Float price = InputReader.getInputFloat(scanner, "Enter the price of the service.");
+        String nameService = InputReader.getInputString(scanner, "Enter the name of the services.");
+        Float price = InputReader.getInputFloat(scanner, "Enter the price of the services.");
         hotel.addUsedService(new UsedService(nameService, price));
     }
 }

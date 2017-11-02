@@ -31,7 +31,7 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
     @Override
     public Integer getGuestIndexById(Integer id) {
         for (int i = 0; i < getTargetList().size(); i++) {
-            if (getTargetList().get(i).getId() == id) {
+            if (getTargetList().get(i).getId().equals(id)) {
                 return i;
             }
         }

@@ -75,8 +75,8 @@ public class Builder {
         orderMenu.addMenuItem(new MenuItem("Get order list", new GetOrderList(), orderMenu));
         orderMenu.addMenuItem(new MenuItem("Back", rootMenu));
 
-        serviceMenu.addMenuItem(new MenuItem("Add a new service", new AddService(), serviceMenu));
-        serviceMenu.addMenuItem(new MenuItem("Get all used service", new GetAllService(), serviceMenu));
+        serviceMenu.addMenuItem(new MenuItem("Add a new services", new AddService(), serviceMenu));
+        serviceMenu.addMenuItem(new MenuItem("Get all used services", new GetAllService(), serviceMenu));
         serviceMenu.addMenuItem(new MenuItem("Sort", serviceSortMenu));
         serviceMenu.addMenuItem(new MenuItem("Back", rootMenu));
 

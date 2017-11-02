@@ -35,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void add(Order order) {
+        currentId = order.getId();
         order.setId(currentId++);
         orderDao.add(order);
         calcId();

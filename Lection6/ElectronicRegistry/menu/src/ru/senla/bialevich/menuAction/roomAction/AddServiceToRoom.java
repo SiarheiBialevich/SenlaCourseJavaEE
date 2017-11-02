@@ -16,7 +16,7 @@ public class AddServiceToRoom extends AbstractAction implements IAction {
 
         try {
             Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
-            Integer idService = InputReader.getInputInt(scanner, "Enter ID the used service.");
+            Integer idService = InputReader.getInputInt(scanner, "Enter ID the used serialization.");
             hotel.setServiceToRoom(hotel.getRoomById(idRoom), hotel.getServiceById(idService));
         } catch (Exception e) {
             log.error(e.getMessage());

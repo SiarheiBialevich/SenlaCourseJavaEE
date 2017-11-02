@@ -106,5 +106,5 @@ public interface ControllerHotel {
 
     void exportAll();
 
-    void exportModel();
+//    void exportModel();
 }

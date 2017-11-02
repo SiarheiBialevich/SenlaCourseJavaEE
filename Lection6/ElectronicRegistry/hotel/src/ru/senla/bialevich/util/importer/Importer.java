@@ -1,110 +1,58 @@
 package ru.senla.bialevich.util.importer;
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.api.service.GuestService;
-import ru.senla.bialevich.controller.ControllerHotelImpl;
+import ru.senla.bialevich.ClassSetting;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
-import ru.senla.bialevich.service.GuestServiceImpl;
+import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.converter.Converter;
+import ru.senla.bialevich.util.serialization.WriteObject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Importer {
+public class Importer extends AbstractAction {
     private static final Logger LOG = Logger.getLogger(Importer.class);
-    private static final String PATH = ControllerHotelImpl.getInstance().getProperty("path.to.entity.file");
+    private static final String PATH = ClassSetting.getInstance().getProperty("path.to.entity.file");
 
     private Converter converter;
+    private WriteObject wObject = new WriteObject();
 
-    private Map<Integer, Room> roomsMap;
-    private Map<Integer, Order> ordersMap;
-
-    public Importer(List<Order> orders, List<Room> rooms) {
+    public Importer() {
         this.converter = new Converter();
-        initMaps(orders, rooms);
     }
 
-    public void importGuests() {
+    public List<Guest> importGuests() {
+        List<String> strings = wObject.readFile(PATH);
+
         List<Guest> guests = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                if (isModel(line, Guest.ENTITY_TOKEN)) {
-                    Guest guest = converter.convertStringToGuest(line, roomsMap, ordersMap);
-                    if (guests.contains(guest)) {
-                        ControllerHotelImpl.getInstance().updateGuest(guest);
-                    } else {
-                        ControllerHotelImpl.getInstance().addGuest(guest);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
+        for (String string : strings) {
+            guests.add(converter.convertStringToGuest(string));
         }
+
+        return guests;
     }
 
-    public void importRooms() {
-        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                if (isModel(line, Room.ENTITY_TOKEN)) {
-                    Room room = converter.convertStringToRoom(line);
-                    if (room.getId() == ControllerHotelImpl.getInstance().getRoomById(room.getId()).getId()) {
-                        ControllerHotelImpl.getInstance().updateRoom(room);
-                    } else {
-                        ControllerHotelImpl.getInstance().addRoom(room);
-                        roomsMap.put(room.getId(), room);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
+    public List<Room> importRooms() {
+        List<String> strings = wObject.readFile(PATH);
+
+        List<Room> rooms = new ArrayList<>();
+        for (String string : strings) {
+            rooms.add(converter.convertStringToRoom(string));
         }
+
+        return rooms;
     }
 
-    public void importOrders() {
+    public List<Order> importOrders() {
+        List<String> strings = wObject.readFile(PATH);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                if (isModel(line, Order.ENTITY_TOKEN)) {
-                    Order order = converter.convertStringToOrder(line);
-                    if (order.getId() == ControllerHotelImpl.getInstance().getOrderById(order.getId()).getId()) {
-                        ControllerHotelImpl.getInstance().updateOrder(order);
-                    } else {
-                        ControllerHotelImpl.getInstance().addOrder(order);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
+        List<Order> orders = new ArrayList<>();
+        for (String string : strings) {
+            orders.add(converter.convertStringToOrder(string));
         }
-    }
 
-    private void initMaps(List<Order> orders, List<Room> rooms) {
-        ordersMap = new HashMap<>();
-        roomsMap = new HashMap<>();
-        if (orders != null) {
-            for (Order order : orders) {
-                ordersMap.put(order.getId(), order);
-            }
-        }
-        if (rooms != null) {
-            for (Room room : rooms) {
-                roomsMap.put(room.getId(), room);
-            }
-        }
-    }
-
-    private boolean isModel(String string, String token) {
-        String[] values = string.split(";");
-        return values[0].contains(token);
+        return orders;
     }
 }

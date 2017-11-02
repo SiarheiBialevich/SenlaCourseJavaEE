@@ -37,7 +37,7 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
     @Override
     public Integer getRoomIndexById(Integer id) {
         for (int i = 0; i < getTargetList().size(); i++) {
-            if (getTargetList().get(i).getId() == id) {
+            if (getTargetList().get(i).getId().equals(id)) {
                 return i;
             }
         }
