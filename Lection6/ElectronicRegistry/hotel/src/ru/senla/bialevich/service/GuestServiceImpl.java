@@ -40,6 +40,7 @@ public class GuestServiceImpl implements GuestService {
     }
 
     public void add(Guest guest) {
+        currentId = guest.getId();
         guest.setId(currentId++);
         guestDao.add(guest);
         calcId();

@@ -10,14 +10,10 @@ import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
-import ru.senla.bialevich.service.GuestServiceImpl;
-import ru.senla.bialevich.service.OrderServiceImpl;
-import ru.senla.bialevich.service.RoomServiceImpl;
-import ru.senla.bialevich.service.UsedServiceServiceImpl;
 import ru.senla.bialevich.util.exporter.Exporter;
 import ru.senla.bialevich.util.importer.Importer;
 import ru.senla.bialevich.util.initializer.Initializer;
-import ru.senla.bialevich.util.service.WriteObject;
+import ru.senla.bialevich.util.serialization.WriteObject;
 
 import java.util.List;
 
@@ -52,7 +48,7 @@ public class ControllerHotelImpl implements ControllerHotel {
         this.writeObject = new WriteObject();
         this.initializer = new Initializer();
         this.fillServicesFromInitializer();
-        this.importer = new Importer(this.orderService.getAll(), this.roomService.getAll());
+        this.importer = new Importer();
         this.exporter = new Exporter(writeObject);
     }
 
@@ -271,16 +267,55 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     public void importGuests() {
-        importer.importGuests();
+        Integer id = 1;
+
+        List<Guest> guests = importer.importGuests();
+
+        for (Guest guest : guests) {
+            if (hotel.getGuestById(id) != null) {
+                if (hotel.getGuestById(id).getId().equals(guest.getId())) {
+                    hotel.updateGuest(guest);
+                }
+            } else {
+                hotel.addGuest(guest);
+            }
+            id++;
+        }
     }
 
     public void importOrder() {
-        importer.importOrders();
+        List<Order> orders = importer.importOrders();
+
+        Integer id = 1;
+
+        for (Order order : orders) {
+            if (hotel.getGuestById(id) != null) {
+                if (hotel.getOrderById(id).getId().equals(order.getId())) {
+                    hotel.updateOrder(order);
+                }
+            } else {
+                hotel.addOrder(order);
+            }
+            id++;
+        }
     }
 
     @Override
     public void importRooms() {
-        importer.importRooms();
+        List<Room> rooms = importer.importRooms();
+
+        Integer id = 1;
+
+        for (Room room : rooms) {
+            if (hotel.getGuestById(id) != null) {
+                if (hotel.getRoomById(id).getId().equals(room.getId())) {
+                    hotel.updateRoom(room);
+                }
+            } else {
+                hotel.addRoom(room);
+            }
+            id++;
+        }
     }
 
     @Override
@@ -306,10 +341,5 @@ public class ControllerHotelImpl implements ControllerHotel {
     @Override
     public void exportAll() {
         exporter.exportAll(this.getAllGuest(), this.getListOrders(), this.getAllRooms(), this.getListUsedServices());
-    }
-
-    @Override
-    public void exportModel() {
-        exporter.exportModel();
     }
 }

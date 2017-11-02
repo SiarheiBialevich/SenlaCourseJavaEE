@@ -1,10 +1,13 @@
-package ru.senla.bialevich.util.service;
+package ru.senla.bialevich.util.serialization;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.controller.ControllerHotelImpl;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WriteObject {
@@ -33,6 +36,20 @@ public class WriteObject {
             } catch (IOException e) {
                 LOG.error(e.getMessage());
             }
+        }
+    }
+
+    public List<String> readFile(String path) {
+        List<String> result = new ArrayList<>();
+        String line;
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+            return result;
+        } catch (IOException e) {
+            LOG.error(e.getMessage(), e);
+            return null;
         }
     }
 }

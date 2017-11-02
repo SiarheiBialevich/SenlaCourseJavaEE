@@ -37,6 +37,7 @@ public class UsedServiceServiceImpl implements UsedServiceService {
 
     @Override
     public void add(UsedService service) {
+        currentId = service.getId();
         service.setId(currentId++);
         serviceDao.add(service);
         calcId();

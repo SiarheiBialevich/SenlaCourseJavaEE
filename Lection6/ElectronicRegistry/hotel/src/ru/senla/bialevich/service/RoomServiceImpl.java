@@ -45,6 +45,7 @@ public class RoomServiceImpl implements RoomService {
 
 
     public void add(Room room) {
+        currentId = room.getId();
         room.setId(currentId++);
         roomDao.add(room);
         calcId();

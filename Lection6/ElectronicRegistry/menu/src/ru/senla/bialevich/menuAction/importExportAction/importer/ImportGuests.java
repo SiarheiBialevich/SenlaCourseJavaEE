@@ -15,7 +15,7 @@ public class ImportGuests extends AbstractAction implements IAction {
             hotel.importGuests();
             printer.print("Guests have successfully imported.");
         } catch (Exception e) {
-            LOG.error(e.getMessage());
+            LOG.error(e.getMessage(), e);
         }
     }
 }

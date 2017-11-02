@@ -5,10 +5,7 @@ import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 public class Converter {
     private final String SEPARATOR = ";";
@@ -88,7 +85,7 @@ public class Converter {
     }
 
     //Converters string to object
-    public Guest convertStringToGuest(String string, Map<Integer, Room> roomsMap, Map<Integer, Order> ordersMap) {
+    public Guest convertStringToGuest(String string) {
         Guest guest = new Guest();
         String[] params = string.split(SEPARATOR);
         Integer id = Integer.parseInt(params[0].replace("[", "").replace("]", "")
@@ -98,18 +95,6 @@ public class Converter {
         guest.setName(params[1]);
         guest.setSurname(params[2]);
 
-        if(" ".equals(params[3])) {
-            guest.setRoom(null);
-        } else {
-            guest.setRoom(roomsMap.get(Integer.parseInt(params[3])));
-            guest.getRoom().addGuest(guest);
-        }
-        if(" ".equals(params[4])) {
-            guest.setOrder(null);
-        } else {
-            guest.setOrder(ordersMap.get(Integer.parseInt(params[4])));
-            guest.getOrder().addGuest(guest);
-        }
         return guest;
     }
 
