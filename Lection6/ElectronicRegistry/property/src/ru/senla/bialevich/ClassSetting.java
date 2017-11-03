@@ -2,13 +2,10 @@ package ru.senla.bialevich;
 
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.util.Printer;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 public class ClassSetting {
@@ -18,7 +15,7 @@ public class ClassSetting {
 
     private static ClassSetting setting;
 
-    private static ClassSetting getInstance() {
+    public static ClassSetting getInstance() {
         if (setting == null) {
             setting = new ClassSetting();
         }
@@ -31,7 +28,7 @@ public class ClassSetting {
         this.init();
     }
 
-        private void init() {
+    private void init() {
         properties = new Properties();
 
         try (FileInputStream stream = new FileInputStream(this.PATH_TO_CONFIG)) {

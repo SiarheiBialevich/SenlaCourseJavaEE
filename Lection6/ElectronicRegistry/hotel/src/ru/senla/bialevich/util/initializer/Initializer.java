@@ -1,6 +1,7 @@
 package ru.senla.bialevich.util.initializer;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.ClassSetting;
 import ru.senla.bialevich.api.dao.GuestDao;
 import ru.senla.bialevich.api.dao.OrderDao;
 import ru.senla.bialevich.api.dao.RoomDao;
@@ -13,31 +14,22 @@ import ru.senla.bialevich.dao.GuestDaoImpl;
 import ru.senla.bialevich.dao.OrderDaoImpl;
 import ru.senla.bialevich.dao.RoomDaoImpl;
 import ru.senla.bialevich.dao.UsedServiceDaoImpl;
-import ru.senla.bialevich.entity.Guest;
-import ru.senla.bialevich.entity.Order;
-import ru.senla.bialevich.entity.Room;
-import ru.senla.bialevich.entity.UsedService;
 import ru.senla.bialevich.service.GuestServiceImpl;
 import ru.senla.bialevich.service.OrderServiceImpl;
 import ru.senla.bialevich.service.RoomServiceImpl;
 import ru.senla.bialevich.service.UsedServiceServiceImpl;
 import ru.senla.bialevich.util.converter.Converter;
-import ru.senla.bialevich.util.service.WriteModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import ru.senla.bialevich.util.serialization.WriteModel;
+import ru.senla.bialevich.util.wrapper.Wrapper;
 
 public class Initializer {
     private static final Logger LOG = Logger.getLogger(Initializer.class);
+    private static final String PATH = ClassSetting.getInstance().getProperty("main.file");
 
     private GuestService guestService = new GuestServiceImpl();
     private RoomService roomService = new RoomServiceImpl();
     private OrderService orderService = new OrderServiceImpl();
     private UsedServiceService usedServiceService = new UsedServiceServiceImpl();
-
-    private List<Room> rooms;
-    private List<Order> orders = new ArrayList<>();
-    private List<UsedService> services = new ArrayList<>();
 
     private Converter converter;
     private WriteModel writeModel;
@@ -61,15 +53,19 @@ public class Initializer {
     }
 
     private void fillDataObjects() {
-        List<Object> objects = writeModel.loadModel();
-        ConvertObjectsToModel(objects);
+
+        Wrapper wrapper = (Wrapper) writeModel.loadModel(PATH);
+
+        if (wrapper != null) {
+            convertWrapperToModel(wrapper);
+        }
     }
 
-    private void ConvertObjectsToModel(List<Object> objects) {
-        guestService.setGuestList((List<Guest>) objects.get(0));
-        roomService.setRoomList((List<Room>) objects.get(1));
-        usedServiceService.setServicesList((List<UsedService>) objects.get(2));
-        orderService.setOrdersList((List<Order>) objects.get(3));
+    private void convertWrapperToModel(Wrapper wrapper) {
+        guestService.setGuestList(wrapper.getGuests());
+        roomService.setRoomList(wrapper.getRooms());
+        usedServiceService.setServicesList(wrapper.getServices());
+        orderService.setOrdersList(wrapper.getOrders());
     }
 
     public GuestService getGuestService() {
