@@ -1,7 +1,6 @@
 package ru.senla.bialevich.annotations;
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.annotations.util.PropertyUtil;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
@@ -11,9 +10,8 @@ import java.util.Date;
 public class AnnotationWorker {
     private static final Logger LOG = Logger.getLogger(AnnotationWorker.class);
     private static final String PATH = "annotation.properties";
-    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-    private PropertyUtil props = new PropertyUtil();
+    private AnnotationProperty props = new AnnotationProperty();
 
     public Object configure(Object object) {
         Class<? extends Object> cl = object.getClass();
@@ -28,39 +26,29 @@ public class AnnotationWorker {
                 String propertyName;
                 Class<?> type;
 
-                if (field.getAnnotation(ConfigProperty.class).configName().isEmpty()) {
-                    configName = PATH;
-                } else {
-                    configName = field.getAnnotation(ConfigProperty.class).configName();
-                }
-
-                if (field.getAnnotation(ConfigProperty.class).propertyName().isEmpty()) {
-                    StringBuffer sb = new StringBuffer();
-                    sb.append(cl.getSimpleName()).append(".").append(field.getName());
-                    propertyName = sb.toString();
-                } else {
-                    propertyName = field.getAnnotation(ConfigProperty.class).propertyName();
-                }
-
-                if (field.getAnnotation(ConfigProperty.class).type().equals(Object.class)) {
-                    type = field.getType();
-                } else {
-                    type = field.getAnnotation(ConfigProperty.class).type();
-                }
-
                 try {
-                    if (type.equals(Integer.class)) {
-                        field.setInt(object, Integer.parseInt(props.getProperties(configName, propertyName)));
-                    } else if (type.equals(String.class)) {
-                        field.set(object, props.getProperties(configName, propertyName));
-                    } else if (type.equals(Boolean.class)) {
-                        field.set(object, Boolean.parseBoolean(props.getProperties(configName, propertyName)));
-                    } else if (type.equals(Float.class)) {
-                        field.set(object, Float.parseFloat(props.getProperties(configName, propertyName)));
-                    } else if (type.equals(Date.class)) {
-                        field.set(object, format.parse(props.getProperties(configName, propertyName)));
+                    if (field.getAnnotation(ConfigProperty.class).configName().isEmpty()) {
+                        configName = PATH;
+                    } else {
+                        configName = field.getAnnotation(ConfigProperty.class).configName();
                     }
-                } catch (IllegalArgumentException | IllegalAccessException | ParseException e) {
+
+                    if (field.getAnnotation(ConfigProperty.class).propertyName().isEmpty()) {
+                        propertyName = cl.getSimpleName() + "." + field.getName();
+                    } else {
+                        propertyName = field.getAnnotation(ConfigProperty.class).propertyName();
+                    }
+
+                    if (field.getAnnotation(ConfigProperty.class).type().equals(Object.class)) {
+                        type = field.getType();
+                    } else {
+                        type = field.getAnnotation(ConfigProperty.class).type();
+                    }
+
+                    String value = props.getProperties(configName, propertyName);
+
+                    field.set(object, getValue(type, value));
+                } catch (IllegalArgumentException | IllegalAccessException e) {
                     LOG.error(e.getMessage(), e);
                 } finally {
                     field.setAccessible(isAccessible);
@@ -69,5 +57,29 @@ public class AnnotationWorker {
         }
 
         return object;
+    }
+
+    private Object getValue(Class<?> type, String value) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            if (type.equals(Integer.class)) {
+                return Integer.parseInt(value);
+
+            } else if (type.equals(Boolean.class)) {
+                return Boolean.parseBoolean(value);
+
+            } else if (type.equals(Float.class)) {
+                return Float.parseFloat(value);
+
+            } else if (type.equals(Date.class)) {
+                return format.parse(value);
+            }
+
+        } catch (IllegalArgumentException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return value;
     }
 }

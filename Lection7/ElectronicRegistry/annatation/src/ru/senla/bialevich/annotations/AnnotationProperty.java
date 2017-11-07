@@ -12,7 +12,7 @@ public class AnnotationProperty {
     private static final Logger LOG = Logger.getLogger(AnnotationProperty.class);
     private Map<String, Properties> propertiesMap = new HashMap<>();
 
-    public Object getProperties(String path, String key) {
+    public String getProperties(String path, String key) {
         if (!propertiesMap.containsKey(path)) {
             Properties properties = new Properties();
             try (FileInputStream fis = new FileInputStream(path)){
@@ -24,7 +24,7 @@ public class AnnotationProperty {
             propertiesMap.put(path, properties);
         }
 
-        Object properties = propertiesMap.get(path).getProperty(key);
+        String properties = propertiesMap.get(path).getProperty(key);
         if (properties == null) {
             LOG.error("File not found");
         }

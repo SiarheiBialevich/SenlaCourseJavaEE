@@ -1,6 +1,8 @@
 package ru.senla.bialevich.controller;
 
 import ru.senla.bialevich.ClassSetting;
+import ru.senla.bialevich.annotations.AnnotationWorker;
+import ru.senla.bialevich.annotations.Test;
 import ru.senla.bialevich.api.controller.ControllerHotel;
 import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.api.service.OrderService;
@@ -23,6 +25,7 @@ public class ControllerHotelImpl implements ControllerHotel {
     private OrderService orderService;
     private RoomService roomService;
     private UsedServiceService usedService;
+    private AnnotationWorker worker = new AnnotationWorker();
 
     private Initializer initializer;
 
@@ -40,6 +43,11 @@ public class ControllerHotelImpl implements ControllerHotel {
         }
 
         return hotel;
+    }
+
+    public ControllerHotelImpl() {
+        Test test = new Test();
+        worker.configure(test);
     }
 
     @Override
@@ -289,7 +297,7 @@ public class ControllerHotelImpl implements ControllerHotel {
         Integer id = 1;
 
         for (Order order : orders) {
-            if (hotel.getGuestById(id) != null) {
+            if (hotel.getOrderById(id) != null) {
                 if (hotel.getOrderById(id).getId().equals(order.getId())) {
                     hotel.updateOrder(order);
                 }
@@ -307,7 +315,7 @@ public class ControllerHotelImpl implements ControllerHotel {
         Integer id = 1;
 
         for (Room room : rooms) {
-            if (hotel.getGuestById(id) != null) {
+            if (hotel.getRoomById(id) != null) {
                 if (hotel.getRoomById(id).getId().equals(room.getId())) {
                     hotel.updateRoom(room);
                 }
