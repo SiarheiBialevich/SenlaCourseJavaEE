@@ -48,14 +48,12 @@ public class MenuController {
 
             navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu());
             navigator.printMenu();
-
-            if (navigator.getCurrentMenu() == null) {
-                requestHandler.disconnect();
-            }
         }
 
         ControllerHotelImpl.getInstance().exportAll();
         scanner.close();
         printer.print("Bye.");
+
+        requestHandler.disconnect();
     }
 }
