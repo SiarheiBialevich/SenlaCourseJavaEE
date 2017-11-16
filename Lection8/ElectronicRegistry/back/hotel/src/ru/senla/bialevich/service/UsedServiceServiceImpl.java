@@ -16,13 +16,6 @@ public class UsedServiceServiceImpl implements UsedServiceService {
 
     private UsedServiceDao serviceDao = new UsedServiceDaoImpl();
 
-    public UsedServiceServiceImpl(UsedServiceDao serviceDao) {
-        this.serviceDao = serviceDao;
-    }
-
-    public UsedServiceServiceImpl() {
-    }
-
     private Integer currentId = 1;
 
     private void calcId() {
@@ -37,47 +30,60 @@ public class UsedServiceServiceImpl implements UsedServiceService {
 
     @Override
     public void add(UsedService service) {
-        currentId = service.getId();
-        service.setId(currentId++);
-        serviceDao.add(service);
-        calcId();
+        synchronized (serviceDao) {
+            currentId = service.getId();
+            service.setId(currentId++);
+            serviceDao.add(service);
+            calcId();
+        }
     }
 
     @Override
     public List<UsedService> getAll() {
-        List<UsedService> services = null;
+        synchronized (serviceDao) {
+            List<UsedService> services = null;
 
-        try {
-            services = serviceDao.getAll();
-        } catch (Exception e) {
-            LOG.error(e.getMessage());
+            try {
+                services = serviceDao.getAll();
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+            return services;
         }
-        return services;
     }
 
     @Override
     public UsedService getUsedServiceById(Integer id) {
-        return serviceDao.getUsedServiceById(id);
+        synchronized (serviceDao) {
+            return serviceDao.getUsedServiceById(id);
+        }
     }
 
     @Override
     public List<UsedService> sortUsedServicesByPrice() {
-
-        return copy.getCopiedAndSortedList(serviceDao.getAll(), ServiceSortComparator.SERVICE_PRICE.getServiceComparator());
+        synchronized (serviceDao) {
+            return copy.getCopiedAndSortedList(serviceDao.getAll(), ServiceSortComparator.SERVICE_PRICE.getServiceComparator());
+        }
     }
 
     @Override
     public List<UsedService> getListUsedServices() {
-        return serviceDao.getAll();
+        synchronized (serviceDao) {
+            return serviceDao.getAll();
+        }
     }
 
     @Override
     public void update(UsedService service) {
-        serviceDao.update(service);
+        synchronized (serviceDao) {
+            serviceDao.update(service);
+        }
     }
 
     @Override
     public void setServicesList(List<UsedService> services) {
-        serviceDao.setServicesList(services);
+        synchronized (serviceDao) {
+            serviceDao.setServicesList(services);
+        }
     }
 }
