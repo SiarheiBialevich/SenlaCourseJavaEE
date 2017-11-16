@@ -90,76 +90,46 @@ public class ControllerHotelImpl implements ControllerHotel {
 
     @Override
     public Guest getGuestById(Integer id) {
-        Guest guest = null;
-        synchronized (guestService) {
-            guest = guestService.getGuestById(id);
-        }
-        return guest;
+        return guestService.getGuestById(id);
     }
 
     @Override
     public List<Guest> getAllGuest() {
-        List<Guest> guests = null;
-        synchronized (guestService) {
-            guests = guestService.getAll();
-        }
-        return guests;
+        return guestService.getAll();
     }
 
     @Override
     public void updateGuest(Guest guest) {
-        synchronized (guestService) {
-            guestService.update(guest);
-        }
+        guestService.update(guest);
     }
 
     @Override
     public Integer getTotalNumberOfGuests() {
-        Integer totalGuest = null;
-        synchronized (guestService) {
-            totalGuest = guestService.getTotalNumberOfGuests();
-        }
-        return totalGuest;
+        return guestService.getTotalNumberOfGuests();
     }
 
     @Override
     public List<Guest> sortedGuestsBySurname() {
-        List<Guest> guests = null;
-        synchronized (guestService) {
-            guests = guestService.sortedGuestsBySurname();
-        }
-        return guests;
+        return guestService.sortedGuestsBySurname();
     }
 
     @Override
     public List<Guest> sortedGuestsByDateOfDeparture() {
-        List<Guest> guests = null;
-        synchronized (guestService) {
-            guests = guestService.sortedGuestsByDateOfDeparture();
-        }
-        return guests;
+        return guestService.sortedGuestsByDateOfDeparture();
     }
 
     @Override
     public List<Guest> getListGuests() {
-        List<Guest> guests = null;
-        synchronized (guestService) {
-            guests = guestService.getListGuests();
-        }
-        return guests;
+        return guestService.getListGuests();
     }
 
     @Override
     public void setOrderToGuest(Guest guest, Order order) {
-        synchronized (guestService) {
-            guestService.setOrderToGuest(guest, order);
-        }
+        guestService.setOrderToGuest(guest, order);
     }
 
     public void setRoomToGuest(Guest guest, Room room) {
-        synchronized (guestService) {
-            guestService.setRoomToGuest(guest, room);
-        }
+        guestService.setRoomToGuest(guest, room);
     }
 
     public void importGuests() {
@@ -192,167 +162,102 @@ public class ControllerHotelImpl implements ControllerHotel {
     //Rooms
     @Override
     public void addRoom(Room room) {
-        synchronized (roomService) {
-            roomService.add(room);
-        }
+        roomService.add(room);
     }
 
     @Override
     public Room getRoomById(Integer id) {
-        Room room = null;
-        synchronized (roomService) {
-            room = roomService.getRoomById(id);
-        }
-        return room;
+        return roomService.getRoomById(id);
     }
 
     @Override
     public List<Room> getFreeRooms() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.getFreeRooms();
-        }
-        return rooms;
+        return roomService.getFreeRooms();
     }
 
     @Override
     public List<Room> getTotalFreeNumberOfRooms() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.getFreeRooms();
-        }
-        return rooms;
+        return roomService.getFreeRooms();
     }
 
     @Override
     public Float getRoomTotalPrice(Room room) {
-        Float price = null;
-        synchronized (roomService) {
-            price = roomService.getTotalPrice(room);
-        }
-        return price;
+        return roomService.getTotalPrice(room);
     }
 
     @Override
     public List<Room> getAllRooms() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.getAll();
-        }
-        return rooms;
+        return roomService.getAll();
     }
 
     @Override
     public List<Room> getListRooms() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.getListRooms();
-        }
-        return rooms;
+        return roomService.getListRooms();
     }
 
     @Override
     public void registerGuestInRoom(Guest guest, Room room) {
-        synchronized (roomService) {
-            roomService.registerGuestInRoom(guest, room);
-        }
+        roomService.registerGuestInRoom(guest, room);
     }
 
     @Override
     public boolean changeRoomStatus(Room room) {
-        synchronized (roomService) {
-
-            if (isProps) {
-                room.setFree(false);
-                roomService.update(room);
-                return true;
-            }
-            return false;
+        if (isProps) {
+            room.setFree(false);
+            roomService.update(room);
+            return true;
         }
+        return false;
     }
 
     @Override
     public void changeRoomPrice(Room room, Float value) {
-        synchronized (roomService) {
-            room.setPrice(value);
-            roomService.update(room);
-        }
+        room.setPrice(value);
+        roomService.update(room);
     }
 
     @Override
     public void updateRoom(Room room) {
-        synchronized (roomService) {
-            roomService.update(room);
-        }
+        roomService.update(room);
     }
 
     public Room cloneRoom(Integer id) {
-        Room room = null;
-        synchronized (roomService) {
-            room = roomService.cloneRoom(id);
-        }
-        return room;
+        return roomService.cloneRoom(id);
     }
 
     @Override
     public List<Room> sortedRoomsByPrice() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedRoomsByPrice();
-        }
-        return rooms;
+        return roomService.sortedRoomsByPrice();
     }
 
     @Override
     public List<Room> sortedRoomsByCountBegs() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedRoomsByCountBegs();
-        }
-        return rooms;
+        return roomService.sortedRoomsByCountBegs();
     }
 
     @Override
     public List<Room> sortedRoomsByCategory() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedRoomsByCategory();
-        }
-        return rooms;
+        return roomService.sortedRoomsByCategory();
     }
 
     @Override
     public List<Room> sortedFreeRoomsByPrice() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedFreeRoomsByPrice();
-        }
-        return rooms;
+        return roomService.sortedFreeRoomsByPrice();
     }
 
     @Override
     public List<Room> sortedFreeRoomsByCountBegs() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedFreeRoomsByCountBegs();
-        }
-        return rooms;
+        return roomService.sortedFreeRoomsByCountBegs();
     }
 
     @Override
     public List<Room> sortedFreeRoomsByCategory() {
-        List<Room> rooms = null;
-        synchronized (roomService) {
-            rooms = roomService.sortedFreeRoomsByCategory();
-        }
-        return rooms;
+        return roomService.sortedFreeRoomsByCategory();
     }
 
     @Override
     public void setServiceToRoom(Room room, UsedService service) {
-        synchronized (roomService) {
-            roomService.setServiceToRoom(room, service);
-        }
+        roomService.setServiceToRoom(room, service);
     }
 
     @Override
@@ -385,34 +290,22 @@ public class ControllerHotelImpl implements ControllerHotel {
     //Orders
     @Override
     public void addOrder(Order order) {
-        synchronized (orderService) {
-            orderService.add(order);
-        }
+        orderService.add(order);
     }
 
     @Override
     public Order getOrderById(Integer id) {
-        Order order = null;
-        synchronized (orderService) {
-            order = orderService.getOrderById(id);
-        }
-        return order;
+        return orderService.getOrderById(id);
     }
 
     @Override
     public List<Order> getListOrders() {
-        List<Order> orders = null;
-        synchronized (orderService) {
-            orders = orderService.getListOrders();
-        }
-        return orders;
+        return orderService.getListOrders();
     }
 
     @Override
     public void updateOrder(Order order) {
-        synchronized (orderService) {
-            orderService.update(order);
-        }
+        orderService.update(order);
     }
 
     public void importOrder() {
@@ -449,45 +342,27 @@ public class ControllerHotelImpl implements ControllerHotel {
 
     @Override
     public UsedService getServiceById(Integer id) {
-        UsedService service = null;
-        synchronized (usedService) {
-            service = usedService.getUsedServiceById(id);
-        }
-        return service;
+        return usedService.getUsedServiceById(id);
     }
 
     @Override
     public List<UsedService> getListUsedServices() {
-        List<UsedService> services = null;
-        synchronized (usedService) {
-            services = usedService.getListUsedServices();
-        }
-        return services;
+        return usedService.getListUsedServices();
     }
 
     @Override
     public List<UsedService> getServiceByGuest(Guest guest) {
-        List<UsedService> services = null;
-        synchronized (usedService) {
-            services = guestService.getServiceByGuest(guest);
-        }
-        return services;
+        return guestService.getServiceByGuest(guest);
     }
 
     @Override
     public void updateService(UsedService service) {
-        synchronized (usedService) {
-            usedService.update(service);
-        }
+        usedService.update(service);
     }
 
     @Override
     public List<UsedService> sortUsedServicesByPrice() {
-        List<UsedService> services = null;
-        synchronized (usedService) {
-            services = usedService.sortUsedServicesByPrice();
-        }
-        return services;
+        return usedService.sortUsedServicesByPrice();
     }
 
 
@@ -504,7 +379,6 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     public void fillDataObjects() {
-
         Wrapper wrapper = (Wrapper) writeModel.loadModel(PATH);
 
         if (wrapper != null) {

@@ -13,13 +13,6 @@ public class OrderServiceImpl implements OrderService {
     private static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
     private OrderDao orderDao = new OrderDaoImpl();
 
-    public OrderServiceImpl(OrderDao orderDao) {
-        this.orderDao = orderDao;
-    }
-
-    public OrderServiceImpl() {
-    }
-
     private Integer currentId = 1;
 
     private void calcId() {
@@ -35,40 +28,52 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void add(Order order) {
-        currentId = order.getId();
-        order.setId(currentId++);
-        orderDao.add(order);
-        calcId();
+        synchronized (orderDao) {
+            currentId = order.getId();
+            order.setId(currentId++);
+            orderDao.add(order);
+            calcId();
+        }
     }
 
     @Override
     public List<Order> getAll() {
         List<Order> orders = null;
-        try {
-            orders = orderDao.getAll();
-        } catch (Exception e) {
-            LOG.error(e.getMessage());
+        synchronized (orderDao) {
+            try {
+                orders = orderDao.getAll();
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+            return null;
         }
-        return null;
     }
 
     @Override
     public Order getOrderById(Integer id) {
-        return orderDao.getOrderById(id);
+        synchronized (orderDao) {
+            return orderDao.getOrderById(id);
+        }
     }
 
     @Override
     public List<Order> getListOrders() {
-        return orderDao.getAll();
+        synchronized (orderDao) {
+            return orderDao.getAll();
+        }
     }
 
     @Override
     public void update(Order order) {
-        orderDao.update(order);
+        synchronized (orderDao) {
+            orderDao.update(order);
+        }
     }
 
     @Override
     public void setOrdersList(List<Order> orders) {
-        orderDao.setOrdersList(orders);
+        synchronized (orderDao) {
+            orderDao.setOrdersList(orders);
+        }
     }
 }

@@ -18,17 +18,6 @@ public class RoomServiceImpl implements RoomService {
     private CopyAndSortList<Room> copy = new CopyAndSortList<Room>();
 
     private RoomDao roomDao = new RoomDaoImpl();
-    private GuestDao guestDao;
-    private OrderDao orderDao;
-
-    public RoomServiceImpl(RoomDao roomDao, GuestDao guestDao, OrderDao orderDao) {
-        this.roomDao = roomDao;
-        this.guestDao = guestDao;
-        this.orderDao = orderDao;
-    }
-
-    public RoomServiceImpl() {
-    }
 
     private Integer currentId = 1;
 
@@ -44,117 +33,145 @@ public class RoomServiceImpl implements RoomService {
 
 
     public void add(Room room) {
-        currentId = room.getId();
-        room.setId(currentId++);
-        roomDao.add(room);
-        calcId();
+        synchronized (roomDao) {
+            currentId = room.getId();
+            room.setId(currentId++);
+            roomDao.add(room);
+            calcId();
+        }
     }
 
     @Override
     public void registerGuestInRoom(Guest guest, Room room) {
-        roomDao.registerGuestInRoom(guest, room);
+        synchronized (roomDao) {
+            roomDao.registerGuestInRoom(guest, room);
+        }
     }
 
     public Room cloneRoom(Integer id) {
-        Room room = roomDao.getRoomById(id);
-        Room clone = null;
+        synchronized (roomDao) {
+            Room room = roomDao.getRoomById(id);
+            Room clone = null;
 
-        try {
-            clone = (Room) room.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            try {
+                clone = (Room) room.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+
+            return clone;
         }
-
-        return clone;
     }
 
     @Override
     public void update(Room room) {
-        roomDao.update(room);
+        synchronized (roomDao) {
+            roomDao.update(room);
+        }
     }
 
     @Override
     public Room getRoomById(Integer id) {
-        return roomDao.getRoomById(id);
+        synchronized (roomDao) {
+            return roomDao.getRoomById(id);
+        }
     }
 
     @Override
     public List<Room> getFreeRooms() {
-
-        List<Room> rooms = new ArrayList<>();
-        for (int i = 0; i < roomDao.getAll().size(); i++) {
-            if (roomDao.getAll().get(i).isFree()) {
-                rooms.add(roomDao.getAll().get(i));
+        synchronized (roomDao) {
+            List<Room> rooms = new ArrayList<>();
+            for (int i = 0; i < roomDao.getAll().size(); i++) {
+                if (roomDao.getAll().get(i).isFree()) {
+                    rooms.add(roomDao.getAll().get(i));
+                }
             }
-        }
 
-        return rooms;
+            return rooms;
+        }
     }
 
     @Override
     public List<Room> sortedRoomsByPrice() {
-
-        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
+        }
     }
 
     @Override
     public List<Room> sortedRoomsByCountBegs() {
-
-        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
+        }
     }
 
     @Override
     public List<Room> sortedRoomsByCategory() {
-        return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(roomDao.getAll(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
+        }
     }
 
     @Override
     public List<Room> sortedFreeRoomsByPrice() {
-
-        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_PRICE.getRoomComparator());
+        }
     }
 
     @Override
     public List<Room> sortedFreeRoomsByCountBegs() {
-
-        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_COUNT_BEGS.getRoomComparator());
+        }
     }
 
     @Override
     public List<Room> sortedFreeRoomsByCategory() {
-
-        return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
+        synchronized (roomDao) {
+            return copy.getCopiedAndSortedList(getFreeRooms(), RoomSortComparators.ROOM_CAREGORY.getRoomComparator());
+        }
     }
 
     @Override
     public Integer getTotalFreeNumberOfRooms() {
-
-        return getFreeRooms().size();
+        synchronized (roomDao) {
+            return getFreeRooms().size();
+        }
     }
 
     @Override
     public Float getTotalPrice(Room room) {
-        return room.getPrice();
+        synchronized (roomDao) {
+            return room.getPrice();
+        }
     }
 
     @Override
     public List<Room> getAll() {
-
-        return roomDao.getAll();
+        synchronized (roomDao) {
+            return roomDao.getAll();
+        }
     }
 
     @Override
     public List<Room> getListRooms() {
-        return roomDao.getAll();
+        synchronized (roomDao) {
+            return roomDao.getAll();
+        }
     }
 
     @Override
     public void setServiceToRoom(Room room, UsedService service) {
-        roomDao.setServiceToRoom(room, service);
+        synchronized (roomDao) {
+            roomDao.setServiceToRoom(room, service);
+        }
     }
 
     @Override
     public void setRoomList(List<Room> rooms) {
-        roomDao.setRoomList(rooms);
+        synchronized (roomDao) {
+            roomDao.setRoomList(rooms);
+        }
     }
 }

@@ -31,7 +31,7 @@ public class GuestServiceImpl implements GuestService {
     private void calcId() {
         Integer maxId = 0;
 
-        for (Guest guest :guestDao.getAll()) {
+        for (Guest guest : guestDao.getAll()) {
             if (guest.getId() > maxId) {
                 maxId = guest.getId();
             }
@@ -40,51 +40,69 @@ public class GuestServiceImpl implements GuestService {
     }
 
     public void add(Guest guest) {
-        currentId = guest.getId();
-        guest.setId(currentId++);
-        guestDao.add(guest);
-        calcId();
+        synchronized (guestDao) {
+            currentId = guest.getId();
+            guest.setId(currentId++);
+            guestDao.add(guest);
+            calcId();
+        }
     }
 
     @Override
     public Guest getGuestById(Integer id) {
-        return guestDao.getGuestById(id);
+        synchronized (guestDao) {
+            return guestDao.getGuestById(id);
+        }
     }
 
     public List<Guest> getAll() {
-
-        return guestDao.getAll();
+        List<Guest> guests = null;
+        synchronized (guestDao) {
+            guests = guestDao.getAll();
+        }
+        return guests;
     }
 
     @Override
     public void update(Guest guest) {
-        guestDao.update(guest);
+        synchronized (guestDao) {
+            guestDao.update(guest);
+        }
     }
 
     public void delete(Guest guest) {
-        guestDao.delete(guest);
+        synchronized (guestDao) {
+            guestDao.delete(guest);
+        }
     }
 
     @Override
     public Integer getTotalNumberOfGuests() {
-
-        return guestDao.getAll().size();
+        Integer totalGuest = null;
+        synchronized (guestDao) {
+            totalGuest = guestDao.getAll().size();
+        }
+        return totalGuest;
     }
 
     @Override
     public List<Guest> sortedGuestsBySurname() {
-
-        return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.SURNAME.getGuestComparator());
+        synchronized (guestDao) {
+            return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.SURNAME.getGuestComparator());
+        }
     }
 
     public void setRoomToGuest(Guest guest, Room room) {
-        guestDao.setRoomToGuest(guest, room);
+        synchronized (guestDao) {
+            guestDao.setRoomToGuest(guest, room);
+        }
     }
 
     @Override
     public List<Guest> sortedGuestsByDateOfDeparture() {
-
-        return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.DATE_OF_DEPARTURE.getGuestComparator());
+        synchronized (guestDao) {
+            return copy.getCopiedAndSortedList(guestDao.getAll(), GuestSortComparators.DATE_OF_DEPARTURE.getGuestComparator());
+        }
     }
 
     @Override
@@ -94,15 +112,21 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public List<Guest> getListGuests() {
-        return guestDao.getAll();
+        synchronized (guestDao) {
+            return guestDao.getAll();
+        }
     }
 
     @Override
     public void setOrderToGuest(Guest guest, Order order) {
-        guestDao.setOrderToGuest(guest, order);
+        synchronized (guestDao) {
+            guestDao.setOrderToGuest(guest, order);
+        }
     }
 
     public void setGuestList(List<Guest> guests) {
-        guestDao.setGuestList(guests);
+        synchronized (guestDao) {
+            guestDao.setGuestList(guests);
+        }
     }
 }
