@@ -2,32 +2,33 @@ package ru.senla.bialevich.controller;
 
 import ru.senla.bialevich.ClassSetting;
 import ru.senla.bialevich.annotations.AnnotationWorker;
-import ru.senla.bialevich.annotations.Test;
+import ru.senla.bialevich.annotations.ConfigProperty;
 import ru.senla.bialevich.api.controller.ControllerHotel;
 import ru.senla.bialevich.api.service.GuestService;
 import ru.senla.bialevich.api.service.OrderService;
 import ru.senla.bialevich.api.service.RoomService;
 import ru.senla.bialevich.api.service.UsedServiceService;
+import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;
 import ru.senla.bialevich.util.exporter.Exporter;
 import ru.senla.bialevich.util.importer.Importer;
-import ru.senla.bialevich.util.initializer.Initializer;
+import ru.senla.bialevich.util.serialization.WriteModel;
 import ru.senla.bialevich.util.serialization.WriteObject;
+import ru.senla.bialevich.util.wrapper.Wrapper;
 
 import java.util.List;
 
 public class ControllerHotelImpl implements ControllerHotel {
 
-    private GuestService guestService;
-    private OrderService orderService;
-    private RoomService roomService;
-    private UsedServiceService usedService;
-    private AnnotationWorker worker = new AnnotationWorker();
+    private static final String PATH = ClassSetting.getInstance().getProperty("main.file");
 
-    private Initializer initializer;
+    @ConfigProperty(configName = "property\\resources\\annotation.properties", propertyName = "block.status", type = Boolean.class)
+    private boolean isProps;
+
+    private WriteModel writeModel = new WriteModel();
 
     private Importer importer;
     private Exporter exporter;
@@ -35,7 +36,14 @@ public class ControllerHotelImpl implements ControllerHotel {
     private WriteObject writeObject;
     private ClassSetting setting;
 
+    private GuestService guestService;
+    private OrderService orderService;
+    private RoomService roomService;
+    private UsedServiceService usedService;
+
+
     private static ControllerHotel hotel;
+
 
     public static ControllerHotel getInstance() {
         if (hotel == null) {
@@ -46,18 +54,17 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     public ControllerHotelImpl() {
-        //Test test = new Test();
-        //worker.configure(test);
     }
 
     @Override
     public void init() {
         this.setting = new ClassSetting();
         this.writeObject = new WriteObject();
-        this.initializer = new Initializer();
         this.fillServicesFromInitializer();
         this.importer = new Importer();
         this.exporter = new Exporter(writeObject);
+        fillDataObjects();
+        AnnotationWorker.getInstance().configure(this);
     }
 
     @Override
@@ -67,10 +74,10 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     private void fillServicesFromInitializer() {
-        this.guestService = this.initializer.getGuestService();
-        this.roomService = this.initializer.getRoomService();
-        this.orderService = this.initializer.getOrderService();
-        this.usedService = this.initializer.getServiceService();
+        this.guestService = (GuestService) DependencyInjection.getInjection().getInstance(GuestService.class);
+        this.roomService = (RoomService) DependencyInjection.getInjection().getInstance(RoomService.class);
+        this.orderService = (OrderService) DependencyInjection.getInjection().getInstance(OrderService.class);
+        this.usedService = (UsedServiceService) DependencyInjection.getInjection().getInstance(UsedServiceService.class);
     }
 
     //Guests
@@ -94,7 +101,7 @@ public class ControllerHotelImpl implements ControllerHotel {
     public List<Guest> getAllGuest() {
         List<Guest> guests = null;
         synchronized (guestService) {
-            guests =  guestService.getAll();
+            guests = guestService.getAll();
         }
         return guests;
     }
@@ -254,9 +261,8 @@ public class ControllerHotelImpl implements ControllerHotel {
     @Override
     public boolean changeRoomStatus(Room room) {
         synchronized (roomService) {
-            boolean isBlock = Boolean.parseBoolean(this.getProperty("block.status"));
 
-            if (isBlock) {
+            if (isProps) {
                 room.setFree(false);
                 roomService.update(room);
                 return true;
@@ -484,6 +490,7 @@ public class ControllerHotelImpl implements ControllerHotel {
         return services;
     }
 
+
     @Override
     public void exportServices() {
         synchronized (usedService) {
@@ -494,5 +501,21 @@ public class ControllerHotelImpl implements ControllerHotel {
     @Override
     public void exportAll() {
         exporter.exportAll(this.getAllGuest(), this.getListOrders(), this.getAllRooms(), this.getListUsedServices());
+    }
+
+    public void fillDataObjects() {
+
+        Wrapper wrapper = (Wrapper) writeModel.loadModel(PATH);
+
+        if (wrapper != null) {
+            convertWrapperToModel(wrapper);
+        }
+    }
+
+    private void convertWrapperToModel(Wrapper wrapper) {
+        guestService.setGuestList(wrapper.getGuests());
+        roomService.setRoomList(wrapper.getRooms());
+        usedService.setServicesList(wrapper.getServices());
+        orderService.setOrdersList(wrapper.getOrders());
     }
 }
