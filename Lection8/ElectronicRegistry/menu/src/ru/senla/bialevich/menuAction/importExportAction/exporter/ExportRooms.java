@@ -1,21 +1,29 @@
 package ru.senla.bialevich.menuAction.importExportAction.exporter;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.DataPackage;
+import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
+import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.Printer;
+
+import java.util.List;
 
 public class ExportRooms extends AbstractAction implements IAction {
     private static final Logger LOG = Logger.getLogger(ExportRooms.class);
     private Printer printer = new Printer();
 
     @Override
-    public void execute() {
+    public void execute(IRequestHandler requestHandler) {
         try {
-            if (hotel.getAllRooms().size() == 0) {
+            DataPackage dataPackage = new DataPackage("getAllRooms", null);
+            List<Room> rooms = (List<Room>) requestHandler.sendRequest(dataPackage);
+            if (rooms.size() == 0) {
                 printer.print("Rooms is missing.");
             } else {
-                hotel.exportRooms();
+                dataPackage = new DataPackage("exportRooms", null);
+                requestHandler.sendRequest(dataPackage);
                 printer.print("Rooms have successfully exported.");
             }
         } catch (Exception e) {

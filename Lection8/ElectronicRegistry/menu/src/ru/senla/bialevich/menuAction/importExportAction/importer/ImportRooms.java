@@ -1,6 +1,8 @@
 package ru.senla.bialevich.menuAction.importExportAction.importer;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.DataPackage;
+import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.Printer;
@@ -10,9 +12,10 @@ public class ImportRooms extends AbstractAction implements IAction {
     private Printer printer = new Printer();
 
     @Override
-    public void execute() {
+    public void execute(IRequestHandler requestHandler) {
         try {
-            hotel.importRooms();
+            DataPackage dataPackage = new DataPackage("importRoom", null);
+            requestHandler.sendRequest(dataPackage);
             printer.print("Rooms have successfully imported.");
         } catch (Exception e) {
             LOG.error(e.getMessage());
