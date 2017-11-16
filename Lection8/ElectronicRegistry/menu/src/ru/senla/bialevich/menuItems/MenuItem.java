@@ -1,11 +1,13 @@
 package ru.senla.bialevich.menuItems;
 
+import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
 
 public class MenuItem {
     private String title;
     private IAction action;
     private Menu nextMenu;
+    private IRequestHandler requestHandler;
 
     public MenuItem(String title) {
         this.title = title;
@@ -47,7 +49,7 @@ public class MenuItem {
     }
 
     void doAction() {
-        action.execute();
+        action.execute(requestHandler);
 
     }
 }

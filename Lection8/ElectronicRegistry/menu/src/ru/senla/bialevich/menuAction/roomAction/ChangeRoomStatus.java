@@ -2,6 +2,8 @@ package ru.senla.bialevich.menuAction.roomAction;
 
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.DataPackage;
+import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.menuAction.AbstractAction;
@@ -15,25 +17,28 @@ public class ChangeRoomStatus extends AbstractAction implements IAction {
     private Printer printer = new Printer();
 
     @Override
-    public void execute() {
+    public void execute(IRequestHandler requestHandler) {
         Scanner scanner = new Scanner(System.in);
 
         Integer roomId = InputReader.getInputInt(scanner, "Input room ID: ");
-        Room room = hotel.getRoomById(roomId);
+        try {
+            DataPackage dataPackage = new DataPackage("getRoom", roomId);
+            Room room = (Room) requestHandler.sendRequest(dataPackage);
 
-        if(!hotel.changeRoomStatus(room)) {
-            printer.print("Can't change the status of the rooms!");
-        }else {
-            try {
-                if (room == null) {
-                    printer.print("Room not found.");
+            if (room == null) {
+                printer.print("Room not found.");
+            } else {
+                dataPackage = new DataPackage("changeRoomStatus", room);
+                boolean truth = (boolean) requestHandler.sendRequest(dataPackage);
+                if (!truth) {
+                    printer.print("Can't change room status!");
                 } else {
-                    hotel.changeRoomStatus(room);
                     printer.print("Room status is changed.");
                 }
-            } catch (Exception e) {
-                LOG.error(e.getMessage(), e);
             }
+        } catch (Exception e) {
+            LOG.error(e.getMessage(), e);
         }
     }
 }
+

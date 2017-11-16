@@ -1,6 +1,7 @@
 package ru.senla.bialevich.menuAction.roomAction;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.InputReader;
@@ -12,7 +13,7 @@ public class RoomTotalPrice extends AbstractAction implements IAction {
     private static final Logger log = Logger.getLogger(RoomTotalPrice.class);
 
     @Override
-    public void execute() {
+    public void execute(IRequestHandler requestHandler) {
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
 
