@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 public @interface ConfigProperty {
     String configName();
     String propertyName();
-    Class<?> type();
+    Class<?> type() default Object.class;
 }

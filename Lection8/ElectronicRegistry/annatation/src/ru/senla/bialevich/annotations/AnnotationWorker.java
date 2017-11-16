@@ -10,8 +10,21 @@ import java.util.Date;
 public class AnnotationWorker {
     private static final Logger LOG = Logger.getLogger(AnnotationWorker.class);
     private static final String PATH = "annotation.properties";
+    private static AnnotationWorker instance;
 
-    private AnnotationProperty props = new AnnotationProperty();
+    private AnnotationProperty props;
+
+    private AnnotationWorker() {
+        props = new AnnotationProperty();
+    }
+
+    public static AnnotationWorker getInstance() {
+        if (instance==null) {
+            instance = new AnnotationWorker();
+        }
+
+        return instance;
+    }
 
     public Object configure(Object object) {
         Class<? extends Object> cl = object.getClass();
@@ -26,31 +39,33 @@ public class AnnotationWorker {
                 String propertyName;
                 Class<?> type;
 
+                ConfigProperty property = field.getAnnotation(ConfigProperty.class);
                 try {
-                    if (field.getAnnotation(ConfigProperty.class).configName().isEmpty()) {
+                    if (property.configName().equals("")) {
                         configName = PATH;
                     } else {
-                        configName = field.getAnnotation(ConfigProperty.class).configName();
+                        configName = property.configName();
                     }
 
-                    if (field.getAnnotation(ConfigProperty.class).propertyName().isEmpty()) {
+                    if (property.propertyName().equals("")) {
                         propertyName = cl.getSimpleName() + "." + field.getName();
                     } else {
-                        propertyName = field.getAnnotation(ConfigProperty.class).propertyName();
+                        propertyName = property.propertyName();
                     }
 
-                    if (field.getAnnotation(ConfigProperty.class).type().equals(Object.class)) {
-                        type = field.getType();
+                    if (property.type().equals(Object.class)) {
+                        type = String.class;
                     } else {
-                        type = field.getAnnotation(ConfigProperty.class).type();
+                        type = property.type();
                     }
 
-                    String value = props.getProperties(configName, propertyName);
+                    Object nValue = getValue(configName, propertyName, type);
 
-                    field.set(object, getValue(type, value));
+                    field.set(object, nValue);
                 } catch (IllegalArgumentException | IllegalAccessException e) {
                     LOG.error(e.getMessage(), e);
                 } finally {
+                    field.setAccessible(false);
                     field.setAccessible(isAccessible);
                 }
             }
@@ -59,27 +74,33 @@ public class AnnotationWorker {
         return object;
     }
 
-    private Object getValue(Class<?> type, String value) {
+    private Object getValue(String configName, String propertyName, Class<?> type) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String value = props.getProperties(configName, propertyName);
+        Object obj = null;
 
         try {
             if (type.equals(Integer.class)) {
-                return Integer.parseInt(value);
+                obj = Integer.valueOf(value);
 
             } else if (type.equals(Boolean.class)) {
-                return Boolean.parseBoolean(value);
+                obj = Boolean.valueOf(value);
 
             } else if (type.equals(Float.class)) {
-                return Float.parseFloat(value);
+                obj = Float.valueOf(value);
 
             } else if (type.equals(Date.class)) {
-                return format.parse(value);
+                obj = format.parse(value);
+
+            } else if (type.equals(String.class)) {
+                obj = new String();
+                obj = value;
             }
 
         } catch (IllegalArgumentException | ParseException e) {
             e.printStackTrace();
         }
 
-        return value;
+        return obj;
     }
 }

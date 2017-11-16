@@ -1,15 +1,16 @@
 package ru.senla.bialevich.api.controller;
 
-import ru.senla.bialevich.entity.*;
-import ru.senla.bialevich.enums.entity.RoomStatus;
+import ru.senla.bialevich.entity.Guest;
+import ru.senla.bialevich.entity.Order;
+import ru.senla.bialevich.entity.Room;
+import ru.senla.bialevich.entity.UsedService;
+import ru.senla.bialevich.util.wrapper.Wrapper;
 
 import java.util.List;
 
 public interface ControllerHotel {
 
     void init();
-
-    String getProperty(String string);
 
     void addGuest(Guest guest);
 
@@ -106,5 +107,5 @@ public interface ControllerHotel {
 
     void exportAll();
 
-//    void exportModel();
+    String getProperty(String key);
 }
