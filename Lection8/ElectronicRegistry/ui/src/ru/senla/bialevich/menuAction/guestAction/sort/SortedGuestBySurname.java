@@ -3,7 +3,7 @@ package ru.senla.bialevich.menuAction.guestAction.sort;
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.DataPackage;
 import ru.senla.bialevich.IRequestHandler;
-import ru.senla.bialevich.api.IAction;
+import ru.senla.bialevich.ui.IAction;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.Printer;

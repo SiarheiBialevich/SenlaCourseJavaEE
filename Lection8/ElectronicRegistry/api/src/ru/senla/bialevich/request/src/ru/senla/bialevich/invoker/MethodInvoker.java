@@ -2,8 +2,9 @@ package ru.senla.bialevich.invoker;
 
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.controller.ControllerHotel;
 import ru.senla.bialevich.dependency.DependencyInjection;
-import ru.senla.bialevich.api.controller.ControllerHotel;
+
 
 import java.lang.reflect.InvocationTargetException;
 
