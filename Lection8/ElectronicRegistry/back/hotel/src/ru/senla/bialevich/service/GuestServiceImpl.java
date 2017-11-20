@@ -1,9 +1,8 @@
 package ru.senla.bialevich.service;
 
-import ru.senla.bialevich.api.dao.GuestDao;
-import ru.senla.bialevich.api.dao.OrderDao;
-import ru.senla.bialevich.api.service.GuestService;
+import ru.senla.bialevich.dao.GuestDao;
 import ru.senla.bialevich.dao.GuestDaoImpl;
+import ru.senla.bialevich.dao.OrderDao;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
 import ru.senla.bialevich.entity.Room;

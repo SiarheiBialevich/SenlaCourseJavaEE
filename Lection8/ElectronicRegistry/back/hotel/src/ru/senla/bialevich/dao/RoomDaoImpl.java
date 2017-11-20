@@ -1,6 +1,5 @@
 package ru.senla.bialevich.dao;
 
-import ru.senla.bialevich.api.dao.RoomDao;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.UsedService;

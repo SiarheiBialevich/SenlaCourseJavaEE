@@ -1,8 +1,7 @@
 package ru.senla.bialevich.service;
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.api.dao.OrderDao;
-import ru.senla.bialevich.api.service.OrderService;
+import ru.senla.bialevich.dao.OrderDao;
 import ru.senla.bialevich.dao.OrderDaoImpl;
 import ru.senla.bialevich.entity.Order;
 
