@@ -1,6 +1,5 @@
 package ru.senla.bialevich.dao;
 
-import ru.senla.bialevich.api.dao.UsedServiceDao;
 import ru.senla.bialevich.entity.UsedService;
 
 import java.util.List;

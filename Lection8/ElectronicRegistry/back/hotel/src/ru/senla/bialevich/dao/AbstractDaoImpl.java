@@ -1,6 +1,5 @@
 package ru.senla.bialevich.dao;
 
-import ru.senla.bialevich.api.dao.AbstractDao;
 import ru.senla.bialevich.database.DataBase;
 import ru.senla.bialevich.entity.BaseEntity;
 

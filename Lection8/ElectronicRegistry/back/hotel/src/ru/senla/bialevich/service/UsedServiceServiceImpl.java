@@ -1,8 +1,8 @@
 package ru.senla.bialevich.service;
 
 import org.apache.log4j.Logger;
-import ru.senla.bialevich.api.dao.UsedServiceDao;
-import ru.senla.bialevich.api.service.UsedServiceService;
+
+import ru.senla.bialevich.dao.UsedServiceDao;
 import ru.senla.bialevich.dao.UsedServiceDaoImpl;
 import ru.senla.bialevich.entity.UsedService;
 import ru.senla.bialevich.enums.comparator.ServiceSortComparator;

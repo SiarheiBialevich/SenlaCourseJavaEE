@@ -3,11 +3,7 @@ package ru.senla.bialevich.controller;
 import ru.senla.bialevich.ClassSetting;
 import ru.senla.bialevich.annotations.AnnotationWorker;
 import ru.senla.bialevich.annotations.ConfigProperty;
-import ru.senla.bialevich.api.controller.ControllerHotel;
-import ru.senla.bialevich.api.service.GuestService;
-import ru.senla.bialevich.api.service.OrderService;
-import ru.senla.bialevich.api.service.RoomService;
-import ru.senla.bialevich.api.service.UsedServiceService;
+
 import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Order;
@@ -18,6 +14,10 @@ import ru.senla.bialevich.util.importer.Importer;
 import ru.senla.bialevich.util.serialization.WriteModel;
 import ru.senla.bialevich.util.serialization.WriteObject;
 import ru.senla.bialevich.util.wrapper.Wrapper;
+import ru.senla.bialevich.service.GuestService;
+import ru.senla.bialevich.service.OrderService;
+import ru.senla.bialevich.service.RoomService;
+import ru.senla.bialevich.service.UsedServiceService;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class ControllerHotelImpl implements ControllerHotel {
 
     private static final String PATH = ClassSetting.getInstance().getProperty("main.file");
 
-    @ConfigProperty(configName = "back\\property\\resources\\annotation.properties", propertyName = "block.status", type = Boolean.class)
+    @ConfigProperty(configName = "props\\resources\\annotation.properties", propertyName = "block.status", type = Boolean.class)
     private boolean isProps;
 
     private WriteModel writeModel = new WriteModel();
