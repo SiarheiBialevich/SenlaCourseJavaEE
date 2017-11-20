@@ -1,8 +1,10 @@
 package ru.senla.bialevich.menuAction.roomAction;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.DataPackage;
 import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
+import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.InputReader;
 import ru.senla.bialevich.util.Printer;
@@ -16,14 +18,16 @@ public class RoomTotalPrice extends AbstractAction implements IAction {
     public void execute(IRequestHandler requestHandler) {
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
+        Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
 
         try {
-            Integer idRoom = InputReader.getInputInt(scanner, "Enter ID the room.");
+            DataPackage dataPackage = new DataPackage("getRoom", idRoom);
+            Room room = (Room) requestHandler.sendRequest(dataPackage);
 
-            if (hotel.getRoomById(idRoom) == null) {
+            if (room == null) {
                 printer.print("Room not found.");
             } else {
-                printer.print(hotel.getRoomTotalPrice(hotel.getRoomById(idRoom)));
+                printer.print(room);
             }
         } catch (Exception e) {
             log.error(e.getMessage());

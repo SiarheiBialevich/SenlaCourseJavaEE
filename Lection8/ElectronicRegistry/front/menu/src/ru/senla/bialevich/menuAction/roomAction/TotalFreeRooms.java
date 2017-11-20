@@ -1,10 +1,12 @@
 package ru.senla.bialevich.menuAction.roomAction;
 
 import org.apache.log4j.Logger;
+import ru.senla.bialevich.DataPackage;
 import ru.senla.bialevich.IRequestHandler;
 import ru.senla.bialevich.api.IAction;
 import ru.senla.bialevich.menuAction.AbstractAction;
 import ru.senla.bialevich.util.Printer;
+
 
 public class TotalFreeRooms extends AbstractAction implements IAction {
     private static final Logger log = Logger.getLogger(TotalFreeRooms.class);
@@ -14,9 +16,15 @@ public class TotalFreeRooms extends AbstractAction implements IAction {
         Printer printer = new Printer();
 
         try {
-            printer.print(hotel.getTotalFreeNumberOfRooms());
+            DataPackage dataPackage = new DataPackage("getAllRooms", null);
+            Integer count = (Integer) requestHandler.sendRequest(dataPackage);
+            if (count == 0) {
+                printer.print("Not free rooms");
+            } else {
+                printer.print(String.valueOf(count));
+            }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(e.getMessage(), e);
         }
     }
 }
