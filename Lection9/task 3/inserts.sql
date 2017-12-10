@@ -12,16 +12,10 @@ INSERT INTO guests (name, surname, rooms_id) VALUES
   ('Ann', 'Petrova', 2),
   ('John', 'Fool', 3);
 
-INSERT INTO services (name, price, section, start_date, final_date) VALUES
-  ('Service1', 55.5, 'mandatory', '2003-01-08', '2016-06-06'),
-  ('Service2', 33.4, 'food', '2014-05-05', '2015-05-05'),
-  ('Service3', 240, 'place', '2013-05-08', '2014-07-15');
-
-INSERT INTO services_guests (guests_id, services_id) VALUES
-  (1, 1),
-  (2, 2),
-  (3, 1),
-  (4, 3);
+INSERT INTO services (name, price, section, start_date, final_date, guests_id) VALUES
+  ('Service1', 55.5, 'mandatory', '2003-01-08', '2016-06-06', 1),
+  ('Service2', 33.4, 'food', '2014-05-05', '2015-05-05', 2),
+  ('Service3', 240, 'place', '2013-05-08', '2014-07-15', 4);
 
 INSERT INTO registrations (start_date, final_date, rooms_id, guests_id) VALUES
   ('2017-01-08', '2017-06-06', 1, 1),
@@ -29,4 +23,4 @@ INSERT INTO registrations (start_date, final_date, rooms_id, guests_id) VALUES
   ('2017-05-08', '2017-05-25', 2, 3),
   ('2017-02-01', '2017-03-10', 3, 4);
 
-COMMIT;
+COMMIT
