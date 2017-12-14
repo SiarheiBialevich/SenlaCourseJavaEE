@@ -2,6 +2,7 @@ package ru.senla.bialevich.service;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.dao.GuestDao;
+import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Room;
 import ru.senla.bialevich.entity.Service;
@@ -14,7 +15,7 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
 
     private static final Logger LOG = Logger.getLogger(GuestServiceImpl.class);
 
-    private GuestDao guestDao;
+    private GuestDao guestDao = (GuestDao) DependencyInjection.getInjection().getInstance(GuestDao.class);
 
     public GuestServiceImpl() {
     }

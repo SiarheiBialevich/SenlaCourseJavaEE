@@ -47,23 +47,10 @@ public class ControllerHotelImpl implements ControllerHotel {
     }
 
     private void fillServicesFromInitializer() {
-        GuestDao guestDao = (GuestDao) DependencyInjection.getInjection().getInstance(GuestDao.class);
-        RoomDao roomDao = (RoomDao) DependencyInjection.getInjection().getInstance(RoomDao.class);
-        RegistrationDao registrationDao = (RegistrationDao) DependencyInjection.getInjection().getInstance(RegistrationDao.class);
-        ServiceDao serviceDao = (ServiceDao) DependencyInjection.getInjection().getInstance(ServiceDao.class);
         guestService = (GuestService) DependencyInjection.getInjection().getInstance(GuestService.class);
-        guestService.setGuestDao(guestDao);
-
         roomService = (RoomService) DependencyInjection.getInjection().getInstance(RoomService.class);
-        roomService.setGuestDao(guestDao);
-        roomService.setRoomDao(roomDao);
-        roomService.setRegistrationDao(registrationDao);
-
         registrationService = (RegistrationService) DependencyInjection.getInjection().getInstance(RegistrationService.class);
-        registrationService.setRegistrationRepository(registrationDao);
-
         serviceService = (ServiceService) DependencyInjection.getInjection().getInstance(ServiceService.class);
-        serviceService.setServiceDao(serviceDao);
     }
 
     //Guests

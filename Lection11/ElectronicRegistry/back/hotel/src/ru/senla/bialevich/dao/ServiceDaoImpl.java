@@ -26,6 +26,9 @@ public class ServiceDaoImpl extends AbstractDaoImpl<Service> implements ServiceD
     private final String GET_SERVICE = "SELECT * FROM services WHERE id = ?";
     private final String DELETE_SERVICE = "DELETE * FROM services WHERE id = ?";
     private final String GET_SORT_SERVICE = "SELECT * FROM services ORDER BY ";
+
+    private final String TABLE_SERVICES = "services";
+
     private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM");
 
     public ServiceDaoImpl() {
@@ -82,11 +85,10 @@ public class ServiceDaoImpl extends AbstractDaoImpl<Service> implements ServiceD
 
     @Override
     public List<Double> getPriceBySection(ServicesSection section, Connection connection) {
-        PreparedStatement statement = null;
+
         List<Double> prices = new ArrayList<>();
 
-        try {
-            statement = connection.prepareStatement("SELECT price FROM services ORDER BY ?");
+        try (PreparedStatement statement = connection.prepareStatement("SELECT price FROM " + TABLE_SERVICES + " ORDER BY ?")) {
             statement.setString(1, section.toString());
             ResultSet set = statement.executeQuery();
             while (set.next()) {
@@ -95,8 +97,6 @@ public class ServiceDaoImpl extends AbstractDaoImpl<Service> implements ServiceD
             set.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return prices;

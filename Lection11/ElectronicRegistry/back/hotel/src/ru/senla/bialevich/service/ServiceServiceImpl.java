@@ -2,6 +2,7 @@ package ru.senla.bialevich.service;
 
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.dao.ServiceDao;
+import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Service;
 import ru.senla.bialevich.enums.entity.ServicesSection;
 import ru.senla.bialevich.enums.entity.SortType;
@@ -13,7 +14,7 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
 
     private static final Logger LOG = Logger.getLogger(ServiceServiceImpl.class);
 
-    private ServiceDao serviceDao;
+    private ServiceDao serviceDao = (ServiceDao) DependencyInjection.getInjection().getInstance(ServiceDao.class);
 
     public ServiceServiceImpl() {
     }

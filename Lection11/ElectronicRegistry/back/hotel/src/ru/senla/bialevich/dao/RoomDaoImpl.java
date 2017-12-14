@@ -29,6 +29,9 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
     private final String GET_SORT_ROOM = "SELECT * FROM rooms ORDER BY ";
     private final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-dd-MM");
 
+    private final String TABLE_REGISTRATIONS = "registrations";
+    private final String TABLE_ROOMS = "rooms";
+
     public RoomDaoImpl() {
     }
 
@@ -88,19 +91,16 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
     @Override
     public Integer getCountFreeRoom(Connection connection) {
-        Statement statement = null;
+
         int count = 0;
 
-        try {
-            statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT count(*) FROM rooms WHERE status = 'free'");
+        try (Statement statement = connection.createStatement()) {
+            ResultSet set = statement.executeQuery("SELECT count(*) FROM " + TABLE_ROOMS + " WHERE status = 'free'");
             while (set.next()) {
                 count = set.getInt(1);
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return count;
@@ -108,12 +108,13 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
     @Override
     public List<Room> getLatestGuest(Integer count, Connection connection) {
-        PreparedStatement statement = null;
+
         List<Room> rooms = new ArrayList<>();
 
-        try {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT DISTINCT rooms_id FROM "
+                + TABLE_REGISTRATIONS + " JOIN rooms ON registrations.rooms_id = rooms.id ORDER BY id DESC LIMIT ?")) {
+
             List<Integer> list = new ArrayList<>();
-            statement = connection.prepareStatement("SELECT DISTINCT rooms_id FROM registrations JOIN rooms ON registrations.rooms_id = rooms.id ORDER BY id DESC LIMIT ?");
             statement.setInt(1, count);
             ResultSet set = statement.executeQuery();
 
@@ -122,7 +123,7 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
             }
 
             for (Integer aList : list) {
-                set = statement.executeQuery("SELECT * FROM rooms WHERE id = ?");
+                set = statement.executeQuery("SELECT * FROM " + TABLE_ROOMS + " WHERE id = ?");
                 statement.setInt(1, aList);
                 statement.executeQuery();
                 rooms.add(parseRoom(set));
@@ -130,8 +131,6 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return rooms;
@@ -139,12 +138,14 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
     @Override
     public List<Room> getReleasedInFuture(Date date, Connection connection) {
-        PreparedStatement statement = null;
+
         List<Room> rooms = new ArrayList<>();
 
-        try {
-            String currentDate = formatter.format(date);
-            statement = connection.prepareStatement("SELECT * FROM rooms JOIN registrations ON rooms.id = registrations.rooms_id WHERE final_date < " + currentDate);
+        String currentDate = formatter.format(date);
+
+        try (PreparedStatement statement =connection.prepareStatement("SELECT * FROM " + TABLE_ROOMS + " JOIN "
+                + TABLE_REGISTRATIONS + " ON rooms.id = registrations.rooms_id WHERE final_date < " + currentDate)) {
+
             ResultSet set = statement.executeQuery();
 
             while (set.next()) {
@@ -153,8 +154,6 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return rooms;
@@ -162,11 +161,11 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
 
     @Override
     public List<Double> getPriceBySection(RoomSection section, Connection connection) {
-        PreparedStatement statement = null;
+
         List<Double> prices = new ArrayList<>();
 
-        try {
-            statement = connection.prepareStatement("SELECT price FROM rooms ORDER BY ?");
+        try (PreparedStatement statement = connection.prepareStatement("SELECT price FROM " + TABLE_ROOMS + " ORDER BY ?")) {
+
             statement.setString(1, section.toString());
             ResultSet set = statement.executeQuery();
 
@@ -177,8 +176,6 @@ public class RoomDaoImpl extends AbstractDaoImpl<Room> implements RoomDao {
             set.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return prices;

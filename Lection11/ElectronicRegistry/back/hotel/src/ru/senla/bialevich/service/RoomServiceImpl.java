@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ru.senla.bialevich.dao.GuestDao;
 import ru.senla.bialevich.dao.RegistrationDao;
 import ru.senla.bialevich.dao.RoomDao;
+import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Guest;
 import ru.senla.bialevich.entity.Registration;
 import ru.senla.bialevich.entity.Room;
@@ -20,9 +21,9 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
 
     private static final Logger LOG = Logger.getLogger(RoomServiceImpl.class);
 
-    private RoomDao roomDao;
-    private GuestDao guestDao;
-    private RegistrationDao registrationDao;
+    private RoomDao roomDao = (RoomDao) DependencyInjection.getInjection().getInstance(RoomDao.class);
+    private GuestDao guestDao = (GuestDao) DependencyInjection.getInjection().getInstance(GuestDao.class);
+    private RegistrationDao registrationDao = (RegistrationDao) DependencyInjection.getInjection().getInstance(RegistrationDao.class);
 
 
     public RoomServiceImpl() {

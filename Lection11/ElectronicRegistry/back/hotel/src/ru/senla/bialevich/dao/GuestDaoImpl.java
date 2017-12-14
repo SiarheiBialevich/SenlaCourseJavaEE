@@ -25,6 +25,10 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
     private final String DELETE_GUEST = "DELETE * FROM guests WHERE id = ?";
     private final String GET_SORT_GUEST = "SELECT * FROM guests ORDER BY ";
 
+    private final String TABLE_GUESTS = "guests";
+    private final String TABLE_SERVICES = "services";
+    private final String TABLE_REGISTRATIONS = "registrations";
+
     public GuestDaoImpl() {
     }
 
@@ -79,11 +83,9 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
     @Override
     public List<Service> getServices(Guest guest, SortType type, Connection connection) {
-        PreparedStatement statement = null;
         List<Service> services = new ArrayList<>();
 
-        try {
-            statement = connection.prepareStatement("SELECT * FROM service WHERE guests_id = ? ORDER BY ?");
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + TABLE_SERVICES + " WHERE guests_id = ? ORDER BY ?")) {
             statement.setInt(1, guest.getId());
             statement.setString(2, type.toString());
             ResultSet set = statement.executeQuery();
@@ -96,8 +98,6 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
             statement.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return services;
@@ -105,12 +105,12 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
     @Override
     public List<Guest> getSortedByFinalDate(Connection connection) {
-        Statement statement = null;
         List<Guest> guests = new ArrayList<>();
 
-        try {
-            statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * FROM guests JOIN registrations ON guests.id = registrations.guests_id ORDER BY registrations.final_date ");
+        try (Statement statement = connection.createStatement()) {
+
+            ResultSet set = statement.executeQuery("SELECT * FROM " + TABLE_GUESTS + " JOIN " + TABLE_REGISTRATIONS +
+                    " ON guests_id = registrations.guests_id ORDER BY registrations.final_date ");
 
             while (set.next()) {
                 guests.add(parseGuest(set));
@@ -119,8 +119,6 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
             set.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return guests;
@@ -128,11 +126,10 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
     @Override
     public double getSumByRoom(Room room, Guest guest, Connection connection) {
-        PreparedStatement statement = null;
+
         double sum = 0;
 
-        try {
-            statement = connection.prepareStatement("SELECT start_date, final_date FROM registrations WHERE guests_id = ? AND rooms_id = ?");
+        try (PreparedStatement statement = connection.prepareStatement("SELECT start_date, final_date FROM " + TABLE_REGISTRATIONS + " WHERE guests_id = ? AND rooms_id = ?")) {
             statement.setInt(1, guest.getId());
             statement.setInt(2, room.getId());
             ResultSet set = statement.executeQuery();
@@ -145,26 +142,23 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
             sum = count * room.getPrice();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
+
         return sum;
     }
 
     @Override
     public Integer getCount(Connection connection) {
-        Statement statement = null;
+
         int count = 0;
-        try {
-            statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT count(id) FROM guests");
+        try (Statement statement = connection.createStatement()) {
+
+            ResultSet set = statement.executeQuery("SELECT count(id) FROM " + TABLE_GUESTS);
             while (set.next()) {
                 count = set.getInt(1);
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            ConnectorDb.getInstance().closeStatement(statement);
         }
 
         return count;

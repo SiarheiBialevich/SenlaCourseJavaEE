@@ -3,6 +3,7 @@ package ru.senla.bialevich.service;
 import org.apache.log4j.Logger;
 import ru.senla.bialevich.dao.RegistrationDao;
 import ru.senla.bialevich.dao.RegistrationDaoImpl;
+import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.entity.Registration;
 import ru.senla.bialevich.enums.entity.SortType;
 
@@ -14,7 +15,7 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
 
     private static final Logger LOG = Logger.getLogger(RegistrationServiceImpl.class);
 
-    private RegistrationDao registrationDao;
+    private RegistrationDao registrationDao = (RegistrationDao) DependencyInjection.getInjection().getInstance(RegistrationDao.class);
 
     public RegistrationServiceImpl() {
     }

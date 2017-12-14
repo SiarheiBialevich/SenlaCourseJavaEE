@@ -6,7 +6,6 @@ import ru.senla.bialevich.ClassSetting;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ConnectorDb {
     private static final Logger LOG = Logger.getLogger(ConnectorDb.class);
@@ -51,14 +50,6 @@ public class ConnectorDb {
             }
         } catch (SQLException e) {
             LOG.error("Connection is not closed", e);
-        }
-    }
-
-    public void closeStatement(Statement statement) {
-        try {
-            statement.close();
-        } catch (SQLException e) {
-            LOG.error(e.getMessage());
         }
     }
 
