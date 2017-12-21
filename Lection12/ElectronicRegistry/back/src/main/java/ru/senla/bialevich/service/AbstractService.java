@@ -6,5 +6,5 @@ import ru.senla.bialevich.connectordb.HibernateUtil;
 
 public abstract class AbstractService {
 
-    protected Session session = HibernateUtil.getSession();
+    protected Session session = HibernateUtil.getCurrentSession();
 }

@@ -93,15 +93,15 @@ public class Registration extends BaseEntity implements Serializable {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Registration{");
-        sb.append("id=").append(id);
-        sb.append(", guestId=").append(guestId);
-        sb.append(", roomId=").append(roomId);
-        sb.append(", startDate=").append(startDate);
-        sb.append(", finalDate=").append(finalDate);
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Registration{");
+//        sb.append("id=").append(id);
+//        sb.append(", guestId=").append(guestId);
+//        sb.append(", roomId=").append(roomId);
+//        sb.append(", startDate=").append(startDate);
+//        sb.append(", finalDate=").append(finalDate);
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }

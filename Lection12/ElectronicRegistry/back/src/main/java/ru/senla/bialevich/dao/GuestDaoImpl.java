@@ -3,8 +3,11 @@ package ru.senla.bialevich.dao;
 import org.apache.log4j.Logger;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import ru.senla.bialevich.model.Guest;
 import ru.senla.bialevich.model.Room;
 import ru.senla.bialevich.model.Service;
@@ -39,4 +42,5 @@ public class GuestDaoImpl extends AbstractDaoImpl<Guest> implements GuestDao {
 
         return count;
     }
+
 }

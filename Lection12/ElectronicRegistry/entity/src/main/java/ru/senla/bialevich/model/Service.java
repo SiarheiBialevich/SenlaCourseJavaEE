@@ -13,6 +13,7 @@ public class Service extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -3980863425685185211L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "name")
@@ -118,17 +119,17 @@ public class Service extends BaseEntity implements Serializable {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Service{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", price=").append(price);
-        sb.append(", section=").append(section);
-        sb.append(", starDate=").append(starDate);
-        sb.append(", finalDate=").append(finalDate);
-        sb.append(", guest=").append(guest);
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Service{");
+//        sb.append("id=").append(id);
+//        sb.append(", name='").append(name).append('\'');
+//        sb.append(", price=").append(price);
+//        sb.append(", section=").append(section);
+//        sb.append(", starDate=").append(starDate);
+//        sb.append(", finalDate=").append(finalDate);
+//        sb.append(", guest=").append(guest);
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }

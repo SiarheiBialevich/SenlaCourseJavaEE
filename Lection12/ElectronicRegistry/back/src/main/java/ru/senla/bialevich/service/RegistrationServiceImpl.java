@@ -23,12 +23,12 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
     @Override
     public void addRecord(Registration registration) {
         try {
+            session.beginTransaction();
             registrationDao.add(session, registration);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -43,9 +43,6 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
         } catch (Exception e) {
             session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -53,12 +50,12 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
     public double getSumByRoom(Room room, Guest guest) {
         double sum = 0;
         try {
+            session.beginTransaction();
             sum = registrationDao.getSumByRoom(session, room, guest);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
 
         return sum;
@@ -68,13 +65,14 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
     public List<Guest> getSortedByFinalDate() {
         List<Guest> guests = null;
         try {
+            session.beginTransaction();
             guests = registrationDao.getSortedByFinalDate(session);
+            session.getTransaction().commit();
         }catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return guests;
     }
 
@@ -82,13 +80,14 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
     public Registration getRegistration(int id) {
         Registration registration = null;
         try {
+            session.beginTransaction();
             registration = registrationDao.getById(session, id);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return registration;
     }
 
@@ -97,13 +96,14 @@ public class RegistrationServiceImpl extends AbstractService implements Registra
     public List<Registration> getAll(SortType type) {
         List<Registration> registrations = null;
         try {
+            session.beginTransaction();
             registrations = registrationDao.getAll(session, type, null);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return registrations;
     }
 }

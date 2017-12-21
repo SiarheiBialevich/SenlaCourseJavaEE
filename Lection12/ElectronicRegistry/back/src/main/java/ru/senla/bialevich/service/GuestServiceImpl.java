@@ -5,8 +5,6 @@ import ru.senla.bialevich.dao.GuestDao;
 import ru.senla.bialevich.dependency.DependencyInjection;
 import ru.senla.bialevich.enums.SortType;
 import ru.senla.bialevich.model.Guest;
-import ru.senla.bialevich.model.Room;
-import ru.senla.bialevich.model.Service;
 
 import java.util.List;
 
@@ -23,12 +21,12 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
     public void addGuest(Guest guest) {
 
         try {
+            session.beginTransaction();
             guestDao.add(session, guest);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -37,13 +35,14 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
     public Guest getGuest(int id) {
         Guest guest = null;
         try {
+            session.beginTransaction();
             guest = guestDao.getById(session, id);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
+
         return guest;
     }
 
@@ -51,7 +50,6 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
     @Override
     public void update(Guest guest) {
 
-        boolean status = false;
         try {
             session.beginTransaction();
             guestDao.update(session, guest);
@@ -59,21 +57,18 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
         } catch (Exception e) {
             session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
     @Override
     public void delete(Guest guest) {
         try {
+            session.beginTransaction();
             guestDao.remove(session, guest);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -82,12 +77,12 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
         List<Guest> guests = null;
 
         try {
+            session.beginTransaction();
             guests = guestDao.getAll(session, type, null);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
 
         return guests;
@@ -98,12 +93,12 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
         int count = 0;
 
         try {
+            session.beginTransaction();
             count = guestDao.getCount(session);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
 
         return count;

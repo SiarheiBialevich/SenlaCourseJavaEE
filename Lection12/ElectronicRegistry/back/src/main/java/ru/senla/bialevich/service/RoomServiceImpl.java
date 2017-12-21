@@ -33,12 +33,12 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     @Override
     public void addRoom(Room room) {
         try {
+            session.beginTransaction();
             roomDao.add(session, room);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -47,13 +47,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public Room getRoom(int id) {
         Room room = null;
         try {
+            session.beginTransaction();
             room = roomDao.getById(session, id);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
+
         return room;
     }
 
@@ -67,49 +68,46 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
         } catch (Exception e) {
             session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
     @Override
     public void delete(Room room) {
         try {
+            session.beginTransaction();
             roomDao.remove(session, room);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
     @Override
     public void registerGuest(Guest guest, Room room, Date startDate, Date finalDate) {
         try {
+            session.beginTransaction();
             guest.setRoom(room);
             guestDao.update(session, guest);
             Registration registration = new Registration(guest.getId(), room.getId(), startDate, finalDate);
             registrationDao.add(session, registration);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
     @Override
     public void evictGuest(Guest guest) {
         try {
+            session.beginTransaction();
             guest.setRoom(null);
             guestDao.update(session, guest);
+            session.getTransaction().commit();
         }catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -117,15 +115,16 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public Room cloneRoom(int id) {
         Room clone = null;
         try {
+            session.beginTransaction();
             Room room = roomDao.getById(session, id);
             clone = (Room) room.clone();
+            session.getTransaction().commit();
         }
         catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return clone;
     }
 
@@ -134,13 +133,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public List<Room> getAll(SortType type) {
         List<Room> rooms = null;
         try {
+            session.beginTransaction();
             rooms = roomDao.getAll(session, type, null);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage(), e);
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return rooms;
     }
 
@@ -148,13 +148,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public List<Room> getAllFree(SortType type) {
         List<Room> rooms = null;
         try {
+            session.beginTransaction();
             rooms = roomDao.getAll(session, type, RoomStatus.FREE);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return rooms;
     }
 
@@ -162,13 +163,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public int getCountFreeRooms() {
         int count = 0;
         try {
+            session.beginTransaction();
             count = roomDao.getCountFreeRooms(session);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return count;
     }
 
@@ -176,13 +178,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public List<Room> getReleasedInFuture(Date date) {
         List<Room> rooms = new ArrayList<>();
         try {
+            session.beginTransaction();
             rooms = roomDao.getReleasedInFuture(session, date);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return rooms;
     }
 
@@ -190,13 +193,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public List<Room> getLatestGuests(int count) {
         List<Room> rooms = null;
         try {
+            session.beginTransaction();
             rooms = roomDao.getLatestGuests(session, count);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return rooms;
     }
 
@@ -204,13 +208,14 @@ public class RoomServiceImpl extends AbstractService implements RoomService {
     public List<Double> getPriceBySection(RoomSection section) {
         List<Double> prices = null;
         try {
+            session.beginTransaction();
             prices = roomDao.getPriceBySection(session, section);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
+
         return prices;
     }
 }

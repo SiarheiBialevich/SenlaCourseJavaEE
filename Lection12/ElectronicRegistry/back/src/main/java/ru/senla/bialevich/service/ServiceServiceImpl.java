@@ -26,9 +26,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             serviceDao.add(session, service);
         } catch (Exception e) {
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -39,9 +36,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             serviceDao.update(session, service);
         }catch (Exception e) {
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -52,9 +46,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             serviceDao.update(session, service);
         }catch (Exception e) {
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -66,10 +57,8 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             service = serviceDao.getById(session, id);
         } catch (Exception e) {
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
+
         return service;
     }
 
@@ -83,9 +72,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
         } catch (Exception e) {
             session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        } finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -96,9 +82,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             serviceDao.remove(session, service);
         } catch (Exception e) {
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
     }
 
@@ -109,9 +92,6 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
             services = serviceDao.getServices(session, guest, type);
         } catch (Exception e) {
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
         return services;
     }
@@ -121,12 +101,12 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
     public List<Service> getAll(SortType type) {
         List<Service> services = null;
         try {
+            session.beginTransaction();
             services = serviceDao.getAll(session, type, null);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
         return services;
     }
@@ -136,12 +116,12 @@ public class ServiceServiceImpl extends AbstractService implements ServiceServic
     public List<Double> getPricesBySection(ServicesSection section) {
         List<Double> prices = null;
         try {
+            session.beginTransaction();
             prices = serviceDao.getPriceBySection(session, section);
+            session.getTransaction().commit();
         } catch (Exception e) {
+            session.getTransaction().rollback();
             LOG.error(e.getMessage());
-        }finally {
-            if (session != null)
-                session.close();
         }
         return prices;
     }

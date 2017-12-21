@@ -93,15 +93,15 @@ public class Guest extends BaseEntity implements Serializable {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Guest{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", surname='").append(surname).append('\'');
-        sb.append(", room=").append(room);
-        sb.append(", services=").append(services);
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Guest{");
+//        sb.append("id=").append(id);
+//        sb.append(", name='").append(name).append('\'');
+//        sb.append(", surname='").append(surname).append('\'');
+//        sb.append(", room=").append(room);
+//        sb.append(", services=").append(services);
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }
