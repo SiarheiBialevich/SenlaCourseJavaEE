@@ -10,6 +10,7 @@
         <property name="hibernate.connection.url">
             jdbc:mysql://localhost:3306/hotel?useSSL=false &amp; useLegacyDatetimeCode=false &amp; serverTimezone=UTC
         </property>
+        <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
 

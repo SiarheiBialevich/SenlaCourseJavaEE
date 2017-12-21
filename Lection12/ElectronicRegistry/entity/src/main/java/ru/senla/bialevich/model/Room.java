@@ -15,6 +15,7 @@ public class Room extends BaseEntity implements Cloneable, Serializable {
     private static final long serialVersionUID = -4085288967304236682L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "price")
@@ -124,17 +125,17 @@ public class Room extends BaseEntity implements Cloneable, Serializable {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Room{");
-        sb.append("id=").append(id);
-        sb.append(", price=").append(price);
-        sb.append(", capacity=").append(capacity);
-        sb.append(", status=").append(status);
-        sb.append(", section=").append(section);
-        sb.append(", rating=").append(rating);
-        sb.append(", guests=").append(guests);
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Room{");
+//        sb.append("id=").append(id);
+//        sb.append(", price=").append(price);
+//        sb.append(", capacity=").append(capacity);
+//        sb.append(", status=").append(status);
+//        sb.append(", section=").append(section);
+//        sb.append(", rating=").append(rating);
+//        sb.append(", guests=").append(guests);
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }

@@ -32,7 +32,7 @@ public abstract class AbstractDaoImpl<T extends BaseEntity> implements AbstractD
         try {
             session.update(entity);
         } catch (Exception e) {
-            LOG.error("Error in dao, getAll method", e);
+            LOG.error("Error in dao, update method", e);
         }
     }
 
@@ -55,7 +55,7 @@ public abstract class AbstractDaoImpl<T extends BaseEntity> implements AbstractD
         try {
             session.save(entity);
         } catch (Exception e) {
-            LOG.error("Error in dao, getById method", e);
+            LOG.error("Error in dao, add method", e);
         }
     }
 
@@ -80,7 +80,7 @@ public abstract class AbstractDaoImpl<T extends BaseEntity> implements AbstractD
         try {
             session.delete(entity);
         } catch (Exception e) {
-            LOG.error("Error in dao, getById method", e);
+            LOG.error("Error in dao, remove method", e);
         }
     }
 }

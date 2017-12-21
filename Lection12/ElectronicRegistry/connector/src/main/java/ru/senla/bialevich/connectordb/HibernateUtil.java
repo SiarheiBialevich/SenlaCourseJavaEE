@@ -27,16 +27,14 @@ public class HibernateUtil {
                     .applySettings(configuration.getProperties()).build();
             log.info("Hibernate serviceRegistry created");
 
-            SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-
-            return sessionFactory;
+            return configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             log.error("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
-    public static Session getSession() {
+    public static Session getCurrentSession() {
 
         if (sessionFactory == null)
             sessionFactory = buildSessionFactory();
@@ -44,11 +42,27 @@ public class HibernateUtil {
         Session session = null;
 
         try {
-            session = sessionFactory.openSession();
+            session = sessionFactory.getCurrentSession();
         } catch (HibernateException e) {
             log.error("SessionFactory.openSession failed." + e);
         }
 
         return session;
+    }
+
+    public void closeSession(Session session) {
+        try {
+            if (session != null) {
+                session.close();
+            }
+        } catch (HibernateException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
