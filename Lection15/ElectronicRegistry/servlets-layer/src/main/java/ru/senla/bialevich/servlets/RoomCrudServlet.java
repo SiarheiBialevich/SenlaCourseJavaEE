@@ -35,21 +35,30 @@ public class RoomCrudServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-
-        StringBuffer sb = new StringBuffer();
-        String query = null;
-        BufferedReader reader = req.getReader();
-
-        while ((query = reader.readLine()) != null) {
-            sb.append(query);
-        }
-
-        Room room = mapper.readValue(sb.toString(), Room.class);
-
         PrintWriter writer = resp.getWriter();
 
-        hotel.updateRoom(room);
+        resp.setContentType(JSON);
+
+        Integer id = Integer.parseInt(req.getParameter("id"));
+        Double price = Double.parseDouble(req.getParameter("price"));
+        Integer capacity = Integer.parseInt(req.getParameter("capacity"));
+        String section = req.getParameter("section");
+        Integer rating = Integer.parseInt(req.getParameter("rating"));
+
+        Room room = hotel.getRoom(id);
+
+        if ((!req.getParameter(price.toString()).equals("")) || (req.getParameter(price.toString()) != null)) {
+            room.setPrice(price);
+        }
+        if ((!req.getParameter(capacity.toString()).equals("")) || (req.getParameter(capacity.toString()) != null)) {
+            room.setCapacity(capacity);
+        }
+        if ((!req.getParameter(section).equals("")) || (req.getParameter(section) != null)) {
+            room.setSection(section);
+        }
+        if ((!req.getParameter(rating.toString()).equals("")) || (req.getParameter(rating.toString()) != null)) {
+            room.setRating(rating);
+        }
 
         writer.println("Update room is successful.");
     }

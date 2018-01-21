@@ -12,13 +12,10 @@
         <module>annotation</module>
         <module>api</module>
         <module>back</module>
-        <module>client</module>
         <module>connector</module>
         <module>dependency</module>
         <module>entity</module>
         <module>props</module>
-        <module>server</module>
-        <module>ui</module>
         <module>servlets-layer</module>
     </modules>
 

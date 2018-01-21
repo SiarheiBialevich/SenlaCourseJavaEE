@@ -33,14 +33,4 @@ public class RoomSortingServlet extends AbstractServlet {
             writer.write(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(rooms));
         }
     }
-
-    public SortType getSort(String query) {
-        SortType type = null;
-        for (SortType sortType : SortType.values()) {
-            if (sortType.getSort().equals(query)) {
-                type = sortType;
-            }
-        }
-        return type;
-    }
 }
