@@ -18,6 +18,7 @@ public class GuestServiceImpl extends AbstractService implements GuestService {
     public GuestServiceImpl() {
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
     public void addGuest(Guest guest) {
         session = HibernateUtil.getCurrentSession();

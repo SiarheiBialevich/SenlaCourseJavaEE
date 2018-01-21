@@ -22,7 +22,6 @@ public class GetAllRoomsServlet extends AbstractServlet {
         resp.setContentType(JSON);
         PrintWriter writer = resp.getWriter();
 
-
         List<Room> rooms = hotel.getAllRooms(null);
 
         writer.write(mapper.writeValueAsString(rooms));

@@ -33,21 +33,23 @@ public class GuestCrudServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-
-        StringBuffer sb = new StringBuffer();
-        String query = null;
-        BufferedReader reader = req.getReader();
-
-        while ((query = reader.readLine()) != null) {
-            sb.append(query);
-        }
-
-        Guest guest = mapper.readValue(sb.toString(), Guest.class);
-
         PrintWriter writer = resp.getWriter();
 
-        hotel.updateGuest(guest);
+        resp.setContentType(JSON);
+
+        Integer id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String surname = req.getParameter("surname");
+
+        Guest guest = hotel.getGuest(id);
+
+        if ((!req.getParameter(name).equals("")) || (req.getParameter(name) != null)) {
+            guest.setName(name);
+        }
+
+        if ((!req.getParameter(surname).equals("")) || (req.getParameter(surname) != null)) {
+            guest.setSurname(surname);
+        }
 
         writer.println("Update guest is successful.");
     }
